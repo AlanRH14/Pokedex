@@ -65,5 +65,5 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
 
-    implementation()
+    implementation(libs.kotlin.serialization)
 }
