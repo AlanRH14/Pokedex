@@ -18,6 +18,8 @@ retrofit = "3.0.0"
 loggingInterceptor = "5.1.0"
 navigationCompose = "2.9.5"
 
+coil = "3.3.0"
+
 
 
 
