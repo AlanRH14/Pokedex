@@ -70,4 +70,6 @@ dependencies {
     implementation(libs.retrofit.converter.kotlinx.serialization)
 
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.coil.compose)
 }
