@@ -56,4 +56,24 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation(libs.androidx.core.splashscreen)
+
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+
+    implementation(libs.kotlin.serialization)
+    implementation(libs.kotlin.serialization.json)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
+
+    implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.coil.compose)
+
+    implementation(libs.room.runtime)
+    implementation(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }
