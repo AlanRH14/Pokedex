@@ -66,4 +66,6 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.kotlin.serialization)
+    implementation(libs.kotlin.serialization.json)
+
 }
