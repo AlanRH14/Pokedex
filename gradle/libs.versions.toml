@@ -14,6 +14,12 @@ koinAndroid = "4.1.1"
 ksp = "2.1.21-2.0.1"
 
 kotlinxSerialization = "1.9.0"
+retrofit = "3.0.0"
+
+
+
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
