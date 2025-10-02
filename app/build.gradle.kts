@@ -74,4 +74,5 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.room.runtime)
+    implementation(libs.androidx.room.compiler)
 }
