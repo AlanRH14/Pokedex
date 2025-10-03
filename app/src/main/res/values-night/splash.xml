@@ -2,6 +2,8 @@
 <resources>
 
     <style name="Theme.App.Pokedex" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#FFFF</item>
+        <item name="windowSplashScreenBackground">#000000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_pokeball_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.Pokedex</item>
     </style>
 </resources>
