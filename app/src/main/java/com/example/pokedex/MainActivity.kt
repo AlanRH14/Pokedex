@@ -27,36 +27,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen().apply {
             setKeepOnScreenCondition { isSplashScreenVisible }
-            setOnExitAnimationListener { splashProvider ->
-                val zoomX = ObjectAnimator.ofFloat(
-                    splashProvider.iconView,
-                    "scaleX",
-                    0.4F,
-                    0F
-                )
-
-                val zoomY = ObjectAnimator.ofFloat(
-                    splashProvider.iconView,
-                    "scaleY",
-                    0.4F,
-                    0F
-                )
-
-                zoomX.apply {
-                    duration = 300
-                    doOnEnd {
-                        splashProvider.remove()
-                    }
-                    start()
-                }
-                zoomY.apply {
-                    duration = 300
-                    doOnEnd {
-                        splashProvider.remove()
-                    }
-                    start()
-                }
-            }
         }
         enableEdgeToEdge()
         setContent {
