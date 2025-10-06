@@ -8,4 +8,5 @@ data class PokemonDetail(
     val sprites: Sprites? = null,
     val types: List<PokemonType>? = null,
     val stats: List<Stat>? = null,
+    val abilities: List<Ability>? = null
 )
