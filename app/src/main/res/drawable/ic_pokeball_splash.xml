@@ -5,8 +5,8 @@
     android:viewportHeight="288">
     <group
         android:name="animatedIcon"
-        android:pivotX="74"
-        android:pivotY="74">
+        android:pivotX="144"
+        android:pivotY="144">
         <clip-path
             android:pathData="M84,84h120v120h-120z"/>
         <path
