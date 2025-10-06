@@ -15,6 +15,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.pokedex.ui.theme.PokedexTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     private var isSplashScreenVisible = true
@@ -65,6 +69,10 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(2000)
+            isSplashScreenVisible = false
         }
     }
 }
