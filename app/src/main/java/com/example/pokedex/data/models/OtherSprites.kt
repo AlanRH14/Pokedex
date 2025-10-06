@@ -1,5 +1,8 @@
 package com.example.pokedex.data.models
 
+import kotlinx.serialization.SerialName
+
+
 data class OtherSprites(
-    val officialArtwork: OfficialArtwork? = null
+    @SerialName("official_artwork") val officialArtwork: OfficialArtwork? = null
 )
