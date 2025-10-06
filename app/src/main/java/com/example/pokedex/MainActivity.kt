@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.example.pokedex.ui.theme.PokedexTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch {
             delay(2000)
             isSplashScreenVisible = false
         }
