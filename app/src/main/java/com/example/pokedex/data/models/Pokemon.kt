@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class Pokemon(
     @SerialName("id") val id: Long = 0,
     @SerialName("name") val name: String? = null,
-    val url: String? = null
+    @SerialName("url") val url: String? = null
 )
