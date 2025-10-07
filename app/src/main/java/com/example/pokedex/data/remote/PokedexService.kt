@@ -2,6 +2,7 @@ package com.example.pokedex.data.remote
 
 import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.data.models.PokemonDto
+import com.example.pokedex.utils.Constants.NAME_PATH
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -16,6 +17,6 @@ interface PokedexService {
 
     @GET("pokemon/{name}")
     suspend fun fetchPokemonInfo(
-        @Path("name") name: String
+        @Path(NAME_PATH) name: String
     ): PokemonDetailDto
 }
