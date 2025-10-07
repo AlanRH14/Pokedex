@@ -4,6 +4,7 @@ import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.data.models.PokemonDto
 import com.example.pokedex.data.models.PokemonType
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PokemonApi {
@@ -15,5 +16,7 @@ interface PokemonApi {
     ): List<PokemonDto>
 
     @GET("pokemon/{name}")
-    suspend fun fetchPokemonInfo(): PokemonDetailDto
+    suspend fun fetchPokemonInfo(
+        @Path("name") name: String
+    ): PokemonDetailDto
 }
