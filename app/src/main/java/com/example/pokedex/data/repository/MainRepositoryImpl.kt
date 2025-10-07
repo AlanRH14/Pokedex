@@ -1,8 +1,8 @@
 package com.example.pokedex.data.repository
 
-import com.example.pokedex.data.remote.PokemonApi
+import com.example.pokedex.data.remote.PokedexService
 
 class MainRepositoryImpl(
-    pokedexService: PokemonApi
+    pokedexService: PokedexService
 ) {
 }
