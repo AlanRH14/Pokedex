@@ -5,4 +5,5 @@ object Constants {
     const val LIMIT_QUERY = "limit"
     const val OFFSET_QUERY = "offset"
     const val NAME_PATH = "name"
+    const val PAGING_SIZE = 20
 }
