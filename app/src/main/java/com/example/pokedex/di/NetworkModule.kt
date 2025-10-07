@@ -1,10 +1,13 @@
 package com.example.pokedex.di
 
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
+
+private val contentType = "application/json".toMediaType()
 
 val networkModule = module {
     single {
