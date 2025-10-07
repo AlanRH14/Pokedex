@@ -1,6 +1,7 @@
 package com.example.pokedex.data.remote
 
 import com.example.pokedex.data.models.PokemonDto
+import com.example.pokedex.data.models.PokemonTypeDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,4 +12,6 @@ interface PokemonApi {
         @Query("limit") limit: Int = 20,
         @Query("offset") offset: Int = 0,
     ): List<PokemonDto>
+
+    suspend fun fetchPokemonInfo(): PokemonTypeDto
 }
