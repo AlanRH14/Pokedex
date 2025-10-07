@@ -1,5 +1,6 @@
 package com.example.pokedex.di
 
+import com.example.pokedex.utils.Constants.BASE_URL
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -28,7 +29,7 @@ val networkModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BASE_URL)
             .client(get<OkHttpClient>())
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
