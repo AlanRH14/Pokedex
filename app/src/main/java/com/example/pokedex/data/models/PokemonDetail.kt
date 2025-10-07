@@ -10,7 +10,7 @@ data class PokemonDetail(
     @SerialName("height") val height: Long? = null,
     @SerialName("weight") val weight: Long? = null,
     @SerialName("sprites") val sprites: Sprites? = null,
-    @SerialName("types") val types: List<PokemonType>? = null,
+    @SerialName("types") val types: List<PokemonTypeDto>? = null,
     @SerialName("stats") val stats: List<Stat>? = null,
     @SerialName("abilities") val abilities: List<Ability>? = null
 )

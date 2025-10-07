@@ -4,6 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PokemonType(
+data class PokemonTypeDto(
     @SerialName("type") val type: String? = null
 )
