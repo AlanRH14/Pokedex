@@ -14,5 +14,6 @@ interface PokemonApi {
         @Query("offset") offset: Int = 0,
     ): List<PokemonDto>
 
+    @GET("pokemon/{name}")
     suspend fun fetchPokemonInfo(): PokemonDetailDto
 }
