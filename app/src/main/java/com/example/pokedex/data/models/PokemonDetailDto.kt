@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PokemonDetail(
+data class PokemonDetailDto(
     @SerialName("id") val id: Long = 0,
     @SerialName("name") val name: String? = null,
     @SerialName("height") val height: Long? = null,
