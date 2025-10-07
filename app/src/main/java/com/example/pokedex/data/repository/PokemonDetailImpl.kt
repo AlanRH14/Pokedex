@@ -1,4 +1,8 @@
 package com.example.pokedex.data.repository
 
-class PokemonDetailImpl {
+import com.example.pokedex.data.remote.PokemonApi
+
+class PokemonDetailImpl(
+    pokedexService: PokemonApi
+) {
 }
