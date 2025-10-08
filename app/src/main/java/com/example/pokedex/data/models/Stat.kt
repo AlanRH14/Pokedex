@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Stat(
     @SerialName("base_stat") val baseStat: Long? = null,
-    @SerialName("stat") val stat: StatInfo? = null
+    @SerialName("stat") val statName: String? = null
 )
