@@ -1,8 +1,12 @@
 package com.example.pokedex.data.models
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class PokemonResponse(
-    val count: Long? = null,
-    val next: String? = null,
+    @SerialName("count") val count: Long? = null,
+    @SerialName("next") val next: String? = null,
     val previous: String? = null,
     val results: List<PokemonDto>? = null
 )
