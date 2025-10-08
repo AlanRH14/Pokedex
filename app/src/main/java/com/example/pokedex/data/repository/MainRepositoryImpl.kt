@@ -12,10 +12,12 @@ class MainRepositoryImpl(
 ) : MainRepository {
 
     override fun fetchPokemonList(): Flow<Resource<List<PokemonDto>>> = flow {
+        emit(Resource.Loading)
         try {
             val response = pokedexService.fetchPokemonList()
+            emit(Resource.Success(data = response.results ?: emptyList()))
         } catch (e: Exception) {
-
+            emit(Resource.Error(data = null, message = "Error: $e"))
         }
     }
 }
