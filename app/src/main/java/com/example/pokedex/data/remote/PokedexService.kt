@@ -1,7 +1,7 @@
 package com.example.pokedex.data.remote
 
 import com.example.pokedex.data.models.PokemonDetailDto
-import com.example.pokedex.data.models.PokemonDto
+import com.example.pokedex.data.models.PokemonResponse
 import com.example.pokedex.utils.Constants.LIMIT_QUERY
 import com.example.pokedex.utils.Constants.NAME_PATH
 import com.example.pokedex.utils.Constants.OFFSET_QUERY
@@ -16,7 +16,7 @@ interface PokedexService {
     suspend fun fetchPokemonList(
         @Query(LIMIT_QUERY) limit: Int = PAGING_SIZE,
         @Query(OFFSET_QUERY) offset: Int = 0,
-    ): List<PokemonDto>
+    ): PokemonResponse
 
     @GET("pokemon/{name}")
     suspend fun fetchPokemonInfo(
