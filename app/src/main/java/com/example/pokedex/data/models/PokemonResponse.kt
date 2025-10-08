@@ -7,6 +7,6 @@ import kotlinx.serialization.Serializable
 data class PokemonResponse(
     @SerialName("count") val count: Long? = null,
     @SerialName("next") val next: String? = null,
-    val previous: String? = null,
-    val results: List<PokemonDto>? = null
+    @SerialName("previous") val previous: String? = null,
+    @SerialName("results") val results: List<PokemonDto>? = null
 )
