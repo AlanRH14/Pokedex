@@ -1,3 +1,6 @@
 package com.example.pokedex.data.models
 
-data class PokemonResponse()
+data class PokemonResponse(
+    val count: Long? = null,
+    val next: String? = null
+)
