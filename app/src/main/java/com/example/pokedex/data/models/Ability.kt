@@ -4,5 +4,5 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 data class Ability(
-    val ability: AbilityInfo? = null
+    val name: String? = null
 )
