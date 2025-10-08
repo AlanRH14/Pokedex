@@ -4,8 +4,6 @@ import com.example.pokedex.data.models.Ability
 import com.example.pokedex.data.models.PokemonType
 import com.example.pokedex.data.models.Sprites
 import com.example.pokedex.data.models.Stat
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 data class PokemonDetail(
     val id: Long = 0,
