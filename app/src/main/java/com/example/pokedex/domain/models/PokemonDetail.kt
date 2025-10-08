@@ -9,8 +9,8 @@ import kotlinx.serialization.Serializable
 
 data class PokemonDetail(
     val id: Long = 0,
-    val name: String? = null,
-    val height: Long? = null,
+    val name: String = "",
+    val height: Long = 0,
     val weight: Long? = null,
     val sprites: Sprites? = null,
     val types: List<PokemonType>? = null,
