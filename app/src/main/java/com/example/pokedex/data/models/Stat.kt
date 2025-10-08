@@ -4,6 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 data class Stat(
-    val baseStat: Long? = null,
-    val statName: String? = null
+    val baseStat: Long = 0,
+    val statName: String = ""
 )
