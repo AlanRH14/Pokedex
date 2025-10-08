@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 
 class PokemonDetailImpl(
     private val pokedexService: PokedexService
-): PokemonDetailRepository {
+) : PokemonDetailRepository {
 
     override fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetailDto>> = flow {
         emit(Resource.Loading)
@@ -17,7 +17,7 @@ class PokemonDetailImpl(
             val response = pokedexService.fetchPokemonInfo(name = name)
             emit(Resource.Success(data = response))
         } catch (e: Exception) {
-
+            emit(Resource.Error(data = null, message = "Error: $e"))
         }
     }
 }
