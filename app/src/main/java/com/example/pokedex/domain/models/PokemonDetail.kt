@@ -1,9 +1,5 @@
 package com.example.pokedex.domain.models
 
-import com.example.pokedex.data.models.Ability
-import com.example.pokedex.data.models.Sprites
-import com.example.pokedex.data.models.Stat
-
 data class PokemonDetail(
     val id: Long = 0,
     val name: String = "",
@@ -12,5 +8,5 @@ data class PokemonDetail(
     val sprites: Sprites = Sprites(),
     val types: List<String> = emptyList(),
     val stats: List<Stat> = emptyList(),
-    val abilities: List<Ability> = emptyList()
+    val abilities: List<String> = emptyList()
 )
