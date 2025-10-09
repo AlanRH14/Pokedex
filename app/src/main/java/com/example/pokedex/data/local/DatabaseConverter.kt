@@ -55,5 +55,4 @@ class DatabaseConverter {
     fun converterStringToAbilities(abilities: String): List<String> {
         return if (abilities.isEmpty()) emptyList() else json.decodeFromString(abilities)
     }
-
 }
