@@ -1,7 +1,6 @@
 package com.example.pokedex.data.local
 
 import androidx.room.TypeConverter
-import com.example.pokedex.domain.models.PokemonType
 import com.example.pokedex.domain.models.Sprites
 import kotlinx.serialization.json.Json
 
