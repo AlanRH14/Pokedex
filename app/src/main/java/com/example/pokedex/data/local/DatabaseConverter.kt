@@ -1,7 +1,9 @@
 package com.example.pokedex.data.local
 
 import androidx.room.TypeConverter
+import com.example.pokedex.data.models.Stat
 import com.example.pokedex.domain.models.Sprites
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
 class DatabaseConverter {
@@ -21,12 +23,20 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    fun converterTypesToString(types: List<String>): String {
-        return if (types.isEmpty()) "" else json.encodeToString(types)
+    fun converterTypesToString(types: List<String>?): String {
+        return if (types.isNullOrEmpty()) "" else json.encodeToString(types)
     }
 
     @TypeConverter
     fun converterStringToTypes(types: String): List<String> {
         return if (types.isEmpty()) emptyList() else json.decodeFromString(types)
+    }
+
+    @TypeConverter
+    fun converterStatsToString(stats: List<Stat>?): String {
+        return if (stats.isNullOrEmpty())
+            ""
+        else
+            json.encodeToString(ListSerializer(Stat.serializer()), stats)
     }
 }
