@@ -10,7 +10,7 @@ class DatabaseConverter {
     private val json = Json { ignoreUnknownKeys = true }
 
     @TypeConverter
-    fun convertSpritesToString(sprites: Sprites?): String {
+    fun converterSpritesToString(sprites: Sprites?): String {
         return if (sprites == null) "" else json.encodeToString(Sprites.serializer(), sprites)
     }
 
@@ -41,5 +41,6 @@ class DatabaseConverter {
     }
 
     @TypeConverter
+    fun convertER
 
 }
