@@ -1,7 +1,6 @@
 package com.example.pokedex.domain.models
 
 import com.example.pokedex.data.models.Ability
-import com.example.pokedex.data.models.PokemonType
 import com.example.pokedex.data.models.Sprites
 import com.example.pokedex.data.models.Stat
 
