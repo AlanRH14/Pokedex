@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PokemonEntity(
-    val page: Int = 0,
+    val page: Int,
     @PrimaryKey val id: Long,
     val name: String,
     val url: String,
