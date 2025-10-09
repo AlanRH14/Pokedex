@@ -23,12 +23,12 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    fun converterTypesToString(types: List<String>?): String {
+    fun converterListStrToString(types: List<String>?): String {
         return if (types.isNullOrEmpty()) "[]" else json.encodeToString(types)
     }
 
     @TypeConverter
-    fun converterStringToTypes(types: String): List<String> {
+    fun converterStringToListStr(types: String): List<String> {
         return if (types.isBlank() || types == "[]") emptyList() else json.decodeFromString(types)
     }
 
@@ -44,15 +44,5 @@ class DatabaseConverter {
     fun converterStringToStats(stats: String): List<Stat> {
         return if(stats.isBlank() || stats == "[]") emptyList()
         else json.decodeFromString(ListSerializer(Stat.serializer()),stats)
-    }
-
-    @TypeConverter
-    fun converterAbilitiesToString(abilities: List<String>?): String {
-        return if (abilities.isNullOrEmpty()) "[]" else json.encodeToString(abilities)
-    }
-
-    @TypeConverter
-    fun converterStringToAbilities(abilities: String): List<String> {
-        return if (abilities.isBlank() || abilities == "[]") emptyList() else json.decodeFromString(abilities)
     }
 }
