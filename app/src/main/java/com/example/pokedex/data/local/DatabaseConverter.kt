@@ -1,6 +1,7 @@
 package com.example.pokedex.data.local
 
 import androidx.room.TypeConverter
+import com.example.pokedex.data.models.Ability
 import com.example.pokedex.domain.models.Sprites
 import com.example.pokedex.domain.models.Stat
 import kotlinx.serialization.builtins.ListSerializer
@@ -41,6 +42,8 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    fun convertER
+    fun converterStringToAbilities(abilities: List<String>?): String {
+        return if (abilities.isNullOrEmpty()) "" else json.encodeToString(ListSerializer(Ability.serializer()))
+    }
 
 }
