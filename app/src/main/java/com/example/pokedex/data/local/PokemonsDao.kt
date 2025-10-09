@@ -13,7 +13,8 @@ interface PokemonsDao {
     suspend fun insertPokemons(pokemonS: List<PokemonEntity>)
 
     @Query("SELECT * FROM pokemonEntity WHERE page = :page")
-    fun getPokemons(page: Int): Flow<List<PokemonEntity>>
+    fun getCurrentPagePokemons(page: Int): Flow<List<PokemonEntity>>
 
-
+    @Query("SELECT * FROM pokemonEntity WHERE page <= :page")
+    fun getAllPokemons(page: Int): Flow<List<PokemonEntity>>
 }
