@@ -14,12 +14,19 @@ class DatabaseConverter {
 
     @TypeConverter
     fun converterStringToSprints(sprites: String): Sprites {
-        return if (sprites.isEmpty()) Sprites()
-        else json.decodeFromString(Sprites.serializer(), sprites)
+        return if (sprites.isEmpty())
+            Sprites()
+        else
+            json.decodeFromString(Sprites.serializer(), sprites)
     }
 
     @TypeConverter
-    fun converterTypesToString(types: List<PokemonType>): String {
-        return if (types.isEmpty()) "" else json.encodeToString(types.sera)
+    fun converterTypesToString(types: List<String>): String {
+        return if (types.isEmpty()) "" else json.encodeToString(types)
+    }
+
+    @TypeConverter
+    fun converterStringToTypes(types: String): List<String> {
+        return if (types.isEmpty()) emptyList() else json.decodeFromString(types)
     }
 }
