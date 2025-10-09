@@ -1,8 +1,8 @@
 package com.example.pokedex.domain.models
 
-import kotlinx.serialization.Serializer
+import kotlinx.serialization.Serializable
 
-@Serializer
+@Serializable
 data class Stat(
     val baseStat: Long = 0,
     val stat: String = ""

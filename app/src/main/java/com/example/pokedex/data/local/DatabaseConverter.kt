@@ -1,9 +1,10 @@
 package com.example.pokedex.data.local
 
 import androidx.room.TypeConverter
-import com.example.pokedex.data.models.Stat
 import com.example.pokedex.domain.models.Sprites
+import com.example.pokedex.domain.models.Stat
 import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
 
 class DatabaseConverter {
