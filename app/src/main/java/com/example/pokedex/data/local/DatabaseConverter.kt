@@ -42,6 +42,12 @@ class DatabaseConverter {
     }
 
     @TypeConverter
+    fun converterStringToStats(stats: String): List<Stat> {
+        return if(stats.isEmpty()) emptyList()
+        else json.decodeFromString(ListSerializer(Stat.serializer()),stats)
+    }
+
+    @TypeConverter
     fun converterAbilitiesToString(abilities: List<String>?): String {
         return if (abilities.isNullOrEmpty()) "" else json.encodeToString(abilities)
     }
