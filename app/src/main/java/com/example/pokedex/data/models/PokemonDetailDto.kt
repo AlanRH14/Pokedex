@@ -9,6 +9,7 @@ data class PokemonDetailDto(
     @SerialName("name") val name: String? = null,
     @SerialName("height") val height: Long? = null,
     @SerialName("weight") val weight: Long? = null,
+    @SerialName("base_experience") val experience: Long? = null,
     @SerialName("sprites") val sprites: Sprites? = null,
     @SerialName("types") val types: List<PokemonType>? = null,
     @SerialName("stats") val stats: List<Stat>? = null,
