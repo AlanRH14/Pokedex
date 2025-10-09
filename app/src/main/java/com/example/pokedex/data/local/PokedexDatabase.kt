@@ -1,5 +1,10 @@
 package com.example.pokedex.data.local
 
-abstract class PokedexDatabase {
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
+@Database(entities = [PokemonEntity::class, PokemonDetailEntity::class], version = 1)
+abstract class PokedexDatabase: RoomDatabase() {
+
+    abstract fun pokemonsDao(): PokemonsDao
 }
