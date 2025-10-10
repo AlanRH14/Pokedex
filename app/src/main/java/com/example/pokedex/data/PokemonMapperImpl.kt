@@ -4,6 +4,7 @@ import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.PokemonDto
 import com.example.pokedex.data.models.PokemonResponse
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.utils.Constants.BAR_URL_IMAGE
 
 class PokemonMapperImpl: ApiMapper<PokemonResponse, List<Pokemon>> {
 
@@ -12,7 +13,7 @@ class PokemonMapperImpl: ApiMapper<PokemonResponse, List<Pokemon>> {
             Pokemon(
                 id = 0,
                 name = it.name ?: "",
-                url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
+                url = BAR_URL_IMAGE
             )
         } ?: emptyList()
     }
