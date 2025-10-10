@@ -6,4 +6,5 @@ object Constants {
     const val OFFSET_QUERY = "offset"
     const val NAME_PATH = "name"
     const val PAGING_SIZE = 20
+    const val POKEDEX_DATABASE = "pokemon_database"
 }

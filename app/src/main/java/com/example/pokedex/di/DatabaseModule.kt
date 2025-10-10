@@ -2,6 +2,7 @@ package com.example.pokedex.di
 
 import androidx.room.Room
 import com.example.pokedex.data.local.PokedexDatabase
+import com.example.pokedex.utils.Constants.POKEDEX_DATABASE
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -10,7 +11,11 @@ val databaseModule = module {
         Room.databaseBuilder(
             androidContext(),
             PokedexDatabase::class.java,
-            ""
-        )
+            POKEDEX_DATABASE
+        ).build()
     }
+
+    single { get<PokedexDatabase>().pokemonsDao() }
+
+    single { get<PokedexDatabase>().pokemonDetailDao() }
 }
