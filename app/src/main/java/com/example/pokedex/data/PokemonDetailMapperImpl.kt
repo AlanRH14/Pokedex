@@ -1,0 +1,40 @@
+package com.example.pokedex.data
+
+import com.example.pokedex.common.ApiMapper
+import com.example.pokedex.data.models.PokemonDetailDto
+import com.example.pokedex.domain.models.PokemonDetail
+import com.example.pokedex.domain.models.Sprites
+import com.example.pokedex.domain.models.Stat
+
+class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
+
+    override fun mapperToDomain(dto: PokemonDetailDto): PokemonDetail {
+        return PokemonDetail(
+            id = formatPokemonID(id = dto.id),
+            name = dto.name ?: "",
+            height = dto.height ?: 0,
+            weight = dto.weight ?: 0,
+            sprites = Sprites(
+                frontDefault = dto.sprites?.frontDefault ?: "",
+                backDefault = dto.sprites?.backDefault ?: "",
+                officialArtwork = dto.sprites?.other?.officialArtwork?.frontDefault ?: ""
+            ),
+            types = dto.types?.map { it.type ?: "" } ?: emptyList(),
+            stats = dto.stats?.map {
+                Stat(
+                    baseStat = it.baseStat ?: 0L,
+                    stat = it.stat?.name ?: "",
+                )
+            } ?: emptyList(),
+            abilities = dto.abilities?.map { it.ability?.name ?: "" } ?: emptyList()
+        )
+    }
+
+    private fun formatPokemonID(id: Long): String {
+        return when (id.toString().length) {
+            1 -> "#00$id"
+            2 -> "#0$id"
+            else -> "#$id"
+        }
+    }
+}
