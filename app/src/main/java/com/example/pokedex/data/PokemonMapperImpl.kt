@@ -8,10 +8,10 @@ import com.example.pokedex.utils.Constants.BAR_URL_IMAGE
 class PokemonMapperImpl: ApiMapper<PokemonResponse, List<Pokemon>> {
 
     override fun mapperToDomain(dto: PokemonResponse): List<Pokemon> {
-        return dto.results?.map {
+        return dto.results?.mapIndexed { index, pokemon ->
             Pokemon(
                 id = 0,
-                name = it.name ?: "",
+                name = pokemon.name ?: "",
                 url = BAR_URL_IMAGE
             )
         } ?: emptyList()
