@@ -8,10 +8,10 @@ import androidx.room.TypeConverters
     entities = [PokemonEntity::class, PokemonDetailEntity::class],
     version = 1
 )
-@TypeConverters(DatabaseConverter::class)
+//@TypeConverters(DatabaseConverter::class)
 abstract class PokedexDatabase : RoomDatabase() {
 
     abstract fun pokemonsDao(): PokemonsDao
 
-    abstract fun pokemonDetailDao(): PokemonDetailDao
+    //abstract fun pokemonDetailDao(): PokemonDetailDao
 }
