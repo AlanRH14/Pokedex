@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class Sprites(
     val frontDefault: String = "",
     val backDefault: String= "",
-    val other: OtherSprites = OtherSprites()
+    val officialArtwork: String = ""
 )
