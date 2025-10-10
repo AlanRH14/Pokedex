@@ -1,7 +1,7 @@
 package com.example.pokedex.domain.models
 
 data class PokemonDetail(
-    val id: Long = 0,
+    val id: String = "",
     val name: String = "",
     val height: Long = 0,
     val weight: Long = 0,
