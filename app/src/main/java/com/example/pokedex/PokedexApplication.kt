@@ -1,6 +1,7 @@
 package com.example.pokedex
 
 import android.app.Application
+import com.example.pokedex.di.apiMapperModule
 import com.example.pokedex.di.databaseModule
 import com.example.pokedex.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -18,7 +19,8 @@ class PokedexApplication : Application() {
             androidLogger(Level.DEBUG)
             modules(
                 networkModule,
-                databaseModule
+                databaseModule,
+                apiMapperModule
             )
         }
     }
