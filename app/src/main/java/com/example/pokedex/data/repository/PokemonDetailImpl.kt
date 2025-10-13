@@ -14,7 +14,7 @@ class PokemonDetailImpl(
     private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>
 ) : PokemonDetailRepository {
 
-    override fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetailDto>> = flow {
+    override fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetail>> = flow {
         emit(Resource.Loading)
         try {
             val response = pokedexService.fetchPokemonInfo(name = name)
