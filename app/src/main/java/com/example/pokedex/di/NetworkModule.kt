@@ -1,5 +1,6 @@
 package com.example.pokedex.di
 
+import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.utils.Constants.BASE_URL
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -34,4 +35,6 @@ val networkModule = module {
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
     }
+
+    single { get<Retrofit>().create(PokedexService::class.java) }
 }
