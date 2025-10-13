@@ -39,11 +39,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PokedexTheme {
-        Greeting("Android")
-    }
-}
