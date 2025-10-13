@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -18,7 +19,11 @@ fun PokemonListScreen(
 
     LaunchedEffect(key1 = true) {
         viewModel.onEvent(PokemonUIEvent.OnGetPokemonList)
-
+        viewModel.effect.collectLatest { effect ->
+            when (effect) {
+                is PokemonEffect.NavigateToPokemonDetail -> Unit
+            }
+        }
     }
 
     Column(
