@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -11,6 +12,8 @@ fun PokemonListScreen(
     modifier: Modifier,
     viewModel: PokemonViewModel = koinViewModel()
 ) {
+
+    val state = viewModel.state.collectAsStateWithLifecycle()
 
     Column(
         modifier = modifier
