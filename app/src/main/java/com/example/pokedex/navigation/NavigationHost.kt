@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pokedex.presentation.PokemonListScreen
 
 @Composable
 fun NavigationHost(
@@ -21,7 +22,10 @@ fun NavigationHost(
     ) {
 
         composable<NavRoute.PokemonsScreen> {
-
+            PokemonListScreen(
+                modifier = modifier,
+                navController = navController,
+            )
         }
     }
 }
