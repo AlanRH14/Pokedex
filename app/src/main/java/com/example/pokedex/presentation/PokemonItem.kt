@@ -51,6 +51,7 @@ fun PokemonItem(
         ) {
             AsyncImage(
                 modifier = Modifier
+                    .padding(all = 4.dp)
                     .fillMaxWidth()
                     .aspectRatio(1.2F)
                     .fillMaxHeight(),
@@ -59,12 +60,12 @@ fun PokemonItem(
                     Log.d("LordMiau", "Error Image: ${it.result.throwable.message}")
                 },
                 contentDescription = "Image ${pokemon.name}",
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Fit
             )
 
             Text(
                 modifier = Modifier
-                    .padding(8.dp)
+                    .padding(all = 4.dp)
                     .fillMaxWidth()
                     .alpha(8F),
                 textAlign = TextAlign.Center,
