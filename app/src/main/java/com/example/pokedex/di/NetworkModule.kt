@@ -1,5 +1,6 @@
 package com.example.pokedex.di
 
+import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.utils.Constants.BASE_URL
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -10,6 +11,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import java.util.concurrent.TimeUnit
 
+private val json = Json {
+    coerceInputValues = true
+    ignoreUnknownKeys = true
+}
 private val contentType = "application/json".toMediaType()
 
 val networkModule = module {
@@ -31,7 +36,9 @@ val networkModule = module {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(get<OkHttpClient>())
-            .addConverterFactory(Json.asConverterFactory(contentType))
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }
+
+    single { get<Retrofit>().create(PokedexService::class.java) }
 }
