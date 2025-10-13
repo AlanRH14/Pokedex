@@ -1,14 +1,17 @@
 package com.example.pokedex.data.repository
 
+import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.data.remote.PokedexService
+import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class PokemonDetailImpl(
-    private val pokedexService: PokedexService
+    private val pokedexService: PokedexService,
+    private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>
 ) : PokemonDetailRepository {
 
     override fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetailDto>> = flow {
