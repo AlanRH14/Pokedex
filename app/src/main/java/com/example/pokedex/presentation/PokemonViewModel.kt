@@ -43,7 +43,12 @@ class PokemonViewModel(
                         )
                     }
 
-                    is Resource.Error -> _state.update { it.copy(errorMessage = result.message) }
+                    is Resource.Error -> _state.update {
+                        it.copy(
+                            errorMessage = result.message,
+                            isLoading = false
+                        )
+                    }
                 }
             }
         }
