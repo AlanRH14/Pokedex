@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val repositoryNetwork = module {
     single { MainRepositoryImpl(pokedexService = get(), pokemonMapper = get()) }
-    single { PokemonDetailImpl(pokedexService = get()) }
+    single { PokemonDetailImpl(pokedexService = get(), pokemonDetailMapper = get()) }
 }
