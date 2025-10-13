@@ -16,4 +16,12 @@ class PokemonViewModel(
 
     private val _effect = MutableSharedFlow<PokemonEffect>()
     val effect = _effect.asSharedFlow()
+
+    fun onEvent(event: PokemonUIEvent) {
+        when (event) {
+            is PokemonUIEvent.OnGetPokemonList -> Unit
+
+            is PokemonUIEvent.OnClickPokemonDetail -> Unit
+        }
+    }
 }
