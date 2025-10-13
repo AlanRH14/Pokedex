@@ -26,7 +26,7 @@ class PokemonViewModel(
         when (event) {
             is PokemonUIEvent.OnGetPokemonList -> getPokemons()
 
-            is PokemonUIEvent.OnClickPokemonDetail -> Unit
+            is PokemonUIEvent.OnClickPokemonDetail -> navigateToPokemonDetail(pokemonName = event.pokemonName)
         }
     }
 
@@ -51,6 +51,12 @@ class PokemonViewModel(
                     }
                 }
             }
+        }
+    }
+
+    private fun navigateToPokemonDetail(pokemonName: String) {
+        viewModelScope.launch {
+            _effect.emit(PokemonEffect.NavigateToPokemonDetail)
         }
     }
 }
