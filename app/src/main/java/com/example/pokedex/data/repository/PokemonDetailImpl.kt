@@ -18,7 +18,7 @@ class PokemonDetailImpl(
         emit(Resource.Loading)
         try {
             val response = pokedexService.fetchPokemonInfo(name = name)
-            emit(Resource.Success(data = response))
+            emit(Resource.Success(data = pokemonDetailMapper.mapperToDomain(response)))
         } catch (e: Exception) {
             emit(Resource.Error(data = null, message = "Error: $e"))
         }
