@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -51,6 +52,10 @@ fun PokemonListScreen(
                     onEvent = viewModel::onEvent
                 )
             }
+        }
+
+        if (!state.errorMessage.isNullOrEmpty()) {
+            Text(state.errorMessage ?: "")
         }
     }
 }
