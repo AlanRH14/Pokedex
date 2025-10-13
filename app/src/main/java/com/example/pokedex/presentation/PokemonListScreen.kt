@@ -1,4 +1,7 @@
 package com.example.pokedex.presentation
 
-class PokemonListScreen {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun PokemonListScreen() {
 }
