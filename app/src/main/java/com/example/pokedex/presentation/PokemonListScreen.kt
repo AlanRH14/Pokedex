@@ -23,7 +23,9 @@ fun PokemonListScreen(
         viewModel.onEvent(PokemonUIEvent.OnGetPokemonList)
         viewModel.effect.collectLatest { effect ->
             when (effect) {
-                is PokemonEffect.NavigateToPokemonDetail -> Unit
+                is PokemonEffect.NavigateToPokemonDetail -> {
+
+                }
             }
         }
     }
