@@ -8,13 +8,16 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val repositoryNetwork = module {
-    single<MainRepository> { MainRepositoryImpl(pokedexService = get(), pokemonMapper = get()) }
+    single<MainRepository> {
+        MainRepositoryImpl(
+            pokedexService = get(),
+            pokemonMapper = get(named("PokemonMapperImpl"))
+        )
+    }
     single<PokemonDetailRepository> {
         PokemonDetailImpl(
-            pokedexService = get(named("PokemonMapperImpl")),
-            pokemonDetailMapper = get(
-                named("PokemonDetailMapperImpl")
-            )
+            pokedexService = get(),
+            pokemonDetailMapper = get(named("PokemonDetailMapperImpl"))
         )
     }
 }
