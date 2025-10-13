@@ -11,6 +11,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import java.util.concurrent.TimeUnit
 
+private val json = Json {
+    coerceInputValues = true
+    ignoreUnknownKeys = true
+}
 private val contentType = "application/json".toMediaType()
 
 val networkModule = module {
@@ -32,7 +36,7 @@ val networkModule = module {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(get<OkHttpClient>())
-            .addConverterFactory(Json.asConverterFactory(contentType))
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }
 
