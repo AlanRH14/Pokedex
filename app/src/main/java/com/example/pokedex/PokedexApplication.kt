@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.pokedex.di.apiMapperModule
 import com.example.pokedex.di.databaseModule
 import com.example.pokedex.di.networkModule
+import com.example.pokedex.di.repositoryNetwork
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -20,7 +21,8 @@ class PokedexApplication : Application() {
             modules(
                 networkModule,
                 databaseModule,
-                apiMapperModule
+                apiMapperModule,
+                repositoryNetwork
             )
         }
     }
