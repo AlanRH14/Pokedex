@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.coil.compose)
+    implementation(libs.coil.network.okthp)
 
     implementation(libs.room.runtime)
     implementation(libs.androidx.room.ktx)
