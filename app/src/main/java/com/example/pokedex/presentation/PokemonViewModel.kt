@@ -24,7 +24,7 @@ class PokemonViewModel(
 
     fun onEvent(event: PokemonUIEvent) {
         when (event) {
-            is PokemonUIEvent.OnGetPokemonList -> Unit
+            is PokemonUIEvent.OnGetPokemonList -> getPokemons()
 
             is PokemonUIEvent.OnClickPokemonDetail -> Unit
         }
