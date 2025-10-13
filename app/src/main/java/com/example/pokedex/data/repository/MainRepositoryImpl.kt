@@ -2,6 +2,7 @@ package com.example.pokedex.data.repository
 
 import com.example.pokedex.data.models.PokemonDto
 import com.example.pokedex.data.remote.PokedexService
+import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.repository.MainRepository
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +12,7 @@ class MainRepositoryImpl(
     private val pokedexService: PokedexService
 ) : MainRepository {
 
-    override fun fetchPokemonList(): Flow<Resource<List<PokemonDto>>> = flow {
+    override fun fetchPokemonList(): Flow<Resource<List<Pokemon>>> = flow {
         emit(Resource.Loading)
         try {
             val response = pokedexService.fetchPokemonList()
