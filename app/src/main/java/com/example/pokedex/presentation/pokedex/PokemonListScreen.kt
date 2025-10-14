@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.example.pokedex.presentation.pokedex.PokemonEffect
 import com.example.pokedex.presentation.pokedex.PokemonUIEvent
 import com.example.pokedex.presentation.pokedex.PokemonViewModel
 import kotlinx.coroutines.flow.collectLatest
