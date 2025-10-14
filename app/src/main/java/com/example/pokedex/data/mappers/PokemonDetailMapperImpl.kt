@@ -5,6 +5,7 @@ import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.models.Sprites
 import com.example.pokedex.domain.models.Stat
+import com.example.pokedex.utils.Constants.BAR_URL_IMAGE
 import com.example.pokedex.utils.StringUtils.capitalized
 
 class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
@@ -13,6 +14,7 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
         return PokemonDetail(
             id = formatPokemonID(id = dto.id),
             name = dto.name.capitalized(),
+            url = "$BAR_URL_IMAGE${dto.id}.png",
             height = dto.height ?: 0,
             weight = dto.weight ?: 0,
             sprites = Sprites(
