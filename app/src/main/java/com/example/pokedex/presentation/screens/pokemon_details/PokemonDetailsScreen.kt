@@ -1,8 +1,6 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -11,6 +9,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -61,10 +60,10 @@ fun PokemonDetailsScreen(
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        /*TopAppBar(
+        TopAppBar(
             title = {
                 Text(
-                    modifier = Modifier.alpha(8F),
+                    modifier = Modifier.fillMaxWidth().alpha(8F),
                     text = state.pokemonDetail?.name ?: "Pokemon Empty",
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge.copy(
@@ -81,46 +80,23 @@ fun PokemonDetailsScreen(
                         contentDescription = stringResource(R.string.icon_back)
                     )
                 }
-            }
-        )*/
-
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(
-                onClick = {}
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_arrow_back),
-                    contentDescription = stringResource(R.string.icon_back)
-                )
-            }
-
-            Text(
-                modifier = Modifier
-                    .weight(1F)
-                    .alpha(8F),
-                text = state.pokemonDetail?.name ?: "Pokemon Empty",
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold
-                ),
-            )
-
-            IconToggleButton(
-                checked = state.isFavorite,
-                onCheckedChange = {
-                    viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
+            },
+            actions = {
+                IconToggleButton(
+                    checked = state.isFavorite,
+                    onCheckedChange = {
+                        viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_favorite),
+                        tint = if (state.isFavorite) Color.Red else Color.Transparent,
+                        contentDescription = stringResource(R.string.icon_toggle_favorite),
+                    )
                 }
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_favorite),
-                    tint = if (state.isFavorite) Color.Red else Color.Transparent,
-                    contentDescription = stringResource(R.string.icon_toggle_favorite),
-                )
             }
-        }
+        )
+
         val imageRequest = ImageRequest.Builder(LocalContext.current)
             .data(state.pokemonDetail?.url ?: "")
             .crossfade(true)
