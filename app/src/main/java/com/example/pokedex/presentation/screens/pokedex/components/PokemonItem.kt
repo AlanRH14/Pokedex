@@ -62,8 +62,8 @@ fun PokemonItem(
                     modifier = Modifier
                         .weight(1F)
                         .alpha(8F),
-                    textAlign = TextAlign.Center,
                     text = pokemon.name,
+                    textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.Bold
                     ),
