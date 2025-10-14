@@ -6,7 +6,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 import com.example.pokedex.presentation.screens.pokedex.PokemonListScreen
+import com.example.pokedex.presentation.screens.pokemon_details.PokemonDetailsScreen
 
 @Composable
 fun NavigationHost(
@@ -25,6 +27,15 @@ fun NavigationHost(
             PokemonListScreen(
                 modifier = modifier,
                 navController = navController,
+            )
+        }
+
+        composable<NavRoute.PokemonDetailScreen> {
+            val pokemonName = it.toRoute<NavRoute.PokemonDetailScreen>().pokemonName
+            PokemonDetailsScreen(
+                modifier = modifier,
+                pokemonName = pokemonName,
+                navController = navController
             )
         }
     }
