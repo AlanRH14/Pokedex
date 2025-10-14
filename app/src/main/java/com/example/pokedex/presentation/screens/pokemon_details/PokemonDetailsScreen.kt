@@ -114,7 +114,7 @@ fun PokemonDetailsScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_favorite),
-                    contentDescription = "Icon Toggle Favorite",
+                    contentDescription = stringResource(R.string.icon_toggle_favorite),
                 )
             }
         }
