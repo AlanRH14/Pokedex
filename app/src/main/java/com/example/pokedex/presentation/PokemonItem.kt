@@ -1,6 +1,7 @@
 package com.example.pokedex.presentation
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -16,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -42,29 +44,30 @@ fun PokemonItem(
             containerColor = Color.Transparent,
             contentColor = MaterialTheme.colorScheme.onBackground
         ),
+        shape = MaterialTheme.shapes.large,
+        elevation = CardDefaults.cardElevation(4.dp),
         onClick = { onEvent(PokemonUIEvent.OnClickPokemonDetail(pokemonName = pokemon.name)) }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.background(Color.Transparent)
         ) {
             AsyncImage(
                 modifier = Modifier
-                    .padding(all = 4.dp)
                     .fillMaxWidth()
-                    .aspectRatio(1.2F)
+                    .aspectRatio(1.2f)
                     .fillMaxHeight(),
                 model = imgRequest,
                 onError = {
                     Log.d("LordMiau", "Error Image: ${it.result.throwable.message}")
                 },
+                contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
-                contentScale = ContentScale.Fit
             )
 
             Text(
                 modifier = Modifier
-                    .padding(all = 4.dp)
                     .fillMaxWidth()
                     .alpha(8F),
                 textAlign = TextAlign.Center,
