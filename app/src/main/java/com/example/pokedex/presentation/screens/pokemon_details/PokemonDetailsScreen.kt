@@ -86,13 +86,13 @@ fun PokemonDetailsScreen(
             )
 
             IconToggleButton(
-                checked = ,
-                onCheckedChange = {
+                checked = state.isFavorite,
+                onCheckedChange = {}
+            ) {
+                Icon(
 
-                }
-            ) { }
-
-
+                )
+            }
         }
         val imageRequest = ImageRequest.Builder(LocalContext.current)
             .data(state.pokemonDetail?.url ?: "")
