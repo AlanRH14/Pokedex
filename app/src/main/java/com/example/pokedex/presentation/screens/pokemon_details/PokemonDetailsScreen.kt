@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -7,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.flow.collectLatest
@@ -36,6 +38,7 @@ fun PokemonDetailsScreen(
 
     Column(
         modifier = modifier
+            .background(Color.Cyan)
             .fillMaxSize()
     ) {
         if (state.errorMessage.isNullOrEmpty()) {
