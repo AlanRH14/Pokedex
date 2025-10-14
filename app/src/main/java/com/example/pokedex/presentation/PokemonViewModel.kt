@@ -56,7 +56,7 @@ class PokemonViewModel(
 
     private fun navigateToPokemonDetail(pokemonName: String) {
         viewModelScope.launch {
-            _effect.emit(PokemonEffect.NavigateToPokemonDetail)
+            _effect.emit(PokemonEffect.NavigateToPokemonDetail(pokemonName = pokemonName))
         }
     }
 }
