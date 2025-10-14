@@ -63,7 +63,9 @@ fun PokemonDetailsScreen(
         TopAppBar(
             title = {
                 Text(
-                    modifier = Modifier.fillMaxWidth().alpha(8F),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .alpha(8F),
                     text = state.pokemonDetail?.name ?: "Pokemon Empty",
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge.copy(
@@ -89,8 +91,11 @@ fun PokemonDetailsScreen(
                     }
                 ) {
                     Icon(
-                        painter = painterResource(R.drawable.ic_favorite),
-                        tint = if (state.isFavorite) Color.Red else Color.Transparent,
+                        painter = if (state.isFavorite)
+                            painterResource(R.drawable.ic_favorite)
+                        else
+                            painterResource(R.drawable.ic_favorite_border),
+                        tint = Color.LightGray,
                         contentDescription = stringResource(R.string.icon_toggle_favorite),
                     )
                 }
