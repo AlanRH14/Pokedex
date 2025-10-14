@@ -1,17 +1,21 @@
-package com.example.pokedex.data
+package com.example.pokedex.data.mappers
 
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.models.Sprites
 import com.example.pokedex.domain.models.Stat
+import com.example.pokedex.utils.StringUtils.capitalized
+import com.example.pokedex.utils.StringUtils.formatPokemonID
+import com.example.pokedex.utils.StringUtils.formatPokemonImageURL
 
 class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
 
     override fun mapperToDomain(dto: PokemonDetailDto): PokemonDetail {
         return PokemonDetail(
-            id = formatPokemonID(id = dto.id),
-            name = dto.name ?: "",
+            id = dto.id.formatPokemonID(),
+            name = dto.name.capitalized(),
+            url = dto.id.formatPokemonImageURL(),
             height = dto.height ?: 0,
             weight = dto.weight ?: 0,
             sprites = Sprites(
@@ -19,7 +23,7 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
                 backDefault = dto.sprites?.backDefault ?: "",
                 officialArtwork = dto.sprites?.other?.officialArtwork?.frontDefault ?: ""
             ),
-            types = dto.types?.map { it.type ?: "" } ?: emptyList(),
+            types = dto.types?.map { it.type?.name ?: "" } ?: emptyList(),
             stats = dto.stats?.map {
                 Stat(
                     baseStat = it.baseStat ?: 0L,
@@ -28,13 +32,5 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
             } ?: emptyList(),
             abilities = dto.abilities?.map { it.ability?.name ?: "" } ?: emptyList()
         )
-    }
-
-    private fun formatPokemonID(id: Long): String {
-        return when (id.toString().length) {
-            1 -> "#00$id"
-            2 -> "#0$id"
-            else -> "#$id"
-        }
     }
 }

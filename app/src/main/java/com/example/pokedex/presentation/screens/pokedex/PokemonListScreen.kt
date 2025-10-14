@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.example.pokedex.navigation.NavRoute
 import com.example.pokedex.presentation.screens.pokedex.components.PokemonItem
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
@@ -34,7 +35,7 @@ fun PokemonListScreen(
         viewModel.effect.collectLatest { effect ->
             when (effect) {
                 is PokemonEffect.NavigateToPokemonDetail -> {
-
+                    navController.navigate(NavRoute.PokemonDetailScreen(pokemonName = effect.pokemonName))
                 }
             }
         }
