@@ -1,7 +1,9 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
 import com.example.pokedex.domain.repository.PokemonDetailRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class PokemonDetailViewModel(
@@ -10,4 +12,7 @@ class PokemonDetailViewModel(
 
     private val _state = MutableStateFlow(PokemonDetailState())
     val state = _state.asStateFlow()
+
+    private val _effect = MutableSharedFlow<PokemonDetailEffect>()
+    val effect = _effect.asSharedFlow()
 }
