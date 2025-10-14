@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -27,6 +29,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.pokedex.domain.models.Pokemon
+import java.util.Locale
 
 @Composable
 fun PokemonItem(
@@ -53,6 +56,32 @@ fun PokemonItem(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.background(Color.Transparent)
         ) {
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier
+                        .weight(1F)
+                        .alpha(8F),
+                    textAlign = TextAlign.Center,
+                    text = pokemon.name,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                )
+
+                Text(
+                    modifier = Modifier.alpha(0.5F),
+                    text = pokemon.id,
+                    textAlign = TextAlign.End,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+            }
+
             AsyncImage(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -64,17 +93,6 @@ fun PokemonItem(
                 },
                 contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
-            )
-
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .alpha(8F),
-                textAlign = TextAlign.Center,
-                text = pokemon.name.uppercase(),
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold
-                ),
             )
         }
     }
