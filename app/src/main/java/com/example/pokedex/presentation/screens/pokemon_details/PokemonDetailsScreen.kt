@@ -35,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -138,16 +139,15 @@ fun PokemonDetailsScreen(
             },
             containerColor = Color.Transparent
         ) { paddingValues ->
-            Column {
+            Column(modifier = Modifier.padding(paddingValues)) {
                 Box(
-                    modifier = Modifier
-                        .padding(paddingValues),
+                    modifier = Modifier,
                 ) {
                     AsyncImage(
                         model = imageRequest,
                         contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier
+                        modifier = modifier
                             .widthIn(max = 500.dp)
                             .fillMaxWidth()
                             .aspectRatio(1.2f)
@@ -158,7 +158,16 @@ fun PokemonDetailsScreen(
                 if (!state.errorMessage.isNullOrEmpty()) {
                     Text(text = state.errorMessage ?: "Unknown")
                 } else {
-                    Text("Content")
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .alpha(0.5F),
+                        text = state.pokemonDetail?.id ?: "Unknown",
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold
+                        ),
+                    )
                 }
             }
         }
