@@ -4,6 +4,14 @@ import com.example.pokedex.utils.Constants.BAR_URL_IMAGE
 import java.util.Locale
 
 object StringUtils {
+    fun Long?.formatPokemonID(): String {
+        return when (this.toString().length) {
+            1 -> "#00$this"
+            2 -> "#0$this"
+            else -> "#$this"
+        }
+    }
+
     fun String?.capitalized(): String {
         return this?.replaceFirstChar {
             if (it.isLowerCase())
