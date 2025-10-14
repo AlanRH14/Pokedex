@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import coil3.compose.AsyncImage
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
@@ -38,9 +39,11 @@ fun PokemonDetailsScreen(
 
     Column(
         modifier = modifier
-            .background(Color.Cyan)
             .fillMaxSize()
     ) {
+        AsyncImage(
+            model = state.pokemonDetail.
+        )
         if (state.errorMessage.isNullOrEmpty()) {
             Text(text = state.pokemonDetail?.name ?: "Pokemon Empty")
         } else {
