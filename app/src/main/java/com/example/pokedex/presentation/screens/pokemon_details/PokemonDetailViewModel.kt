@@ -24,7 +24,7 @@ class PokemonDetailViewModel(
 
     fun onEvent(event: PokemonDetailUIEvent) {
         when (event) {
-            is PokemonDetailUIEvent.GetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
+            is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
         }
     }
 
