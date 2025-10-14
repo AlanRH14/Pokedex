@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokedex
+package com.example.pokedex.presentation.screens.pokedex.components
 
 import android.util.Log
 import androidx.compose.foundation.background
