@@ -25,6 +25,8 @@ class PokemonDetailViewModel(
     fun onEvent(event: PokemonDetailUIEvent) {
         when (event) {
             is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
+
+            is PokemonDetailUIEvent.OnClickedToggleFavorite -> Unit
         }
     }
 
