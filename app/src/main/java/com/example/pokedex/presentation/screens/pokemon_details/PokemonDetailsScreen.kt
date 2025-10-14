@@ -70,7 +70,7 @@ fun PokemonDetailsScreen(
         }
     }
 
-    Box(modifier = modifier) {
+    Box(contentAlignment = Alignment.TopCenter) {
         val imageRequest = ImageRequest.Builder(LocalContext.current)
             .data(state.pokemonDetail?.url ?: "")
             .build()
@@ -89,81 +89,80 @@ fun PokemonDetailsScreen(
             contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
         )
 
-        AsyncImage(
-            model = imageRequest,
-            contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .widthIn(max = 500.dp)
-                .fillMaxWidth()
-                .aspectRatio(1.2f)
-                .fillMaxHeight()
-        )
-    }
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .alpha(8F),
-                        text = state.pokemonDetail?.name ?: "Pokemon Empty",
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold
-                        ),
-                    )
-                },
-                navigationIcon = {
-                    IconButton(
-                        onClick = {}
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_arrow_back),
-                            contentDescription = stringResource(R.string.icon_back)
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .alpha(8F),
+                            text = state.pokemonDetail?.name ?: "Pokemon Empty",
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                fontWeight = FontWeight.Bold
+                            ),
                         )
-                    }
-                },
-                actions = {
-                    IconToggleButton(
-                        checked = state.isFavorite,
-                        onCheckedChange = {
-                            viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
+                    },
+                    navigationIcon = {
+                        IconButton(
+                            onClick = {}
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_arrow_back),
+                                contentDescription = stringResource(R.string.icon_back)
+                            )
                         }
-                    ) {
-                        Icon(
-                            painter = if (state.isFavorite)
-                                painterResource(R.drawable.ic_favorite)
-                            else
-                                painterResource(R.drawable.ic_favorite_border),
-                            tint = if (state.isFavorite)
-                                Color.Red
-                            else
-                                Color.LightGray,
-                            contentDescription = stringResource(R.string.icon_toggle_favorite),
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent
-                ),
-            )
-        },
-        containerColor = Color.Transparent
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
+                    },
+                    actions = {
+                        IconToggleButton(
+                            checked = state.isFavorite,
+                            onCheckedChange = {
+                                viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
+                            }
+                        ) {
+                            Icon(
+                                painter = if (state.isFavorite)
+                                    painterResource(R.drawable.ic_favorite)
+                                else
+                                    painterResource(R.drawable.ic_favorite_border),
+                                tint = if (state.isFavorite)
+                                    Color.Red
+                                else
+                                    Color.LightGray,
+                                contentDescription = stringResource(R.string.icon_toggle_favorite),
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.Transparent
+                    ),
+                )
+            },
+            containerColor = Color.Transparent
+        ) { paddingValues ->
+            Column {
+                Box(
+                    modifier = Modifier
+                        .padding(paddingValues),
+                ) {
+                    AsyncImage(
+                        model = imageRequest,
+                        contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .widthIn(max = 500.dp)
+                            .fillMaxWidth()
+                            .aspectRatio(1.2f)
+                            .fillMaxHeight()
+                    )
+                }
 
-            if (!state.errorMessage.isNullOrEmpty()) {
-                Text(text = state.errorMessage ?: "Unknown")
-            } else {
-                Text("Content")
+                if (!state.errorMessage.isNullOrEmpty()) {
+                    Text(text = state.errorMessage ?: "Unknown")
+                } else {
+                    Text("Content")
+                }
             }
         }
     }
