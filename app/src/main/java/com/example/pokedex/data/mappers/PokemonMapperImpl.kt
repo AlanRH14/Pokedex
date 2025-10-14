@@ -1,9 +1,9 @@
-package com.example.pokedex.data
+package com.example.pokedex.data.mappers
 
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.PokemonResponse
 import com.example.pokedex.domain.models.Pokemon
-import com.example.pokedex.utils.Constants.BAR_URL_IMAGE
+import com.example.pokedex.utils.Constants
 import java.util.Locale
 
 class PokemonMapperImpl : ApiMapper<PokemonResponse, List<Pokemon>> {
@@ -13,7 +13,7 @@ class PokemonMapperImpl : ApiMapper<PokemonResponse, List<Pokemon>> {
             Pokemon(
                 id = formatPokemonID(index),
                 name = pokemon.name?.capitalized() ?: "",
-                url = "$BAR_URL_IMAGE${index + 1}.png"
+                url = "${Constants.BAR_URL_IMAGE}${index + 1}.png"
             )
         } ?: emptyList()
     }
