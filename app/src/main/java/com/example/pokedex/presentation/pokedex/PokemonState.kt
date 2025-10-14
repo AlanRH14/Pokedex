@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation
+package com.example.pokedex.presentation.pokedex
 
 import com.example.pokedex.domain.models.Pokemon
 
