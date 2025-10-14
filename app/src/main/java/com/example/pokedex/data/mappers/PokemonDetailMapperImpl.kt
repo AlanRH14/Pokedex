@@ -5,13 +5,14 @@ import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.models.Sprites
 import com.example.pokedex.domain.models.Stat
+import com.example.pokedex.utils.StringUtils.capitalized
 
 class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
 
     override fun mapperToDomain(dto: PokemonDetailDto): PokemonDetail {
         return PokemonDetail(
             id = formatPokemonID(id = dto.id),
-            name = dto.name ?: "",
+            name = dto.name.capitalized(),
             height = dto.height ?: 0,
             weight = dto.weight ?: 0,
             sprites = Sprites(
