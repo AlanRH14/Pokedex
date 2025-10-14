@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokedex
+package com.example.pokedex.presentation.screens.pokedex.mvi
 
 sealed interface PokemonUIEvent {
     data object OnGetPokemonList : PokemonUIEvent

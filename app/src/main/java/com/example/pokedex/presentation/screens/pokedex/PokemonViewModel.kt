@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.MainRepository
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonState
+import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow

@@ -26,6 +26,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 
 @Composable
 fun PokemonItem(
