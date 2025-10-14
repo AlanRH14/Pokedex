@@ -10,7 +10,7 @@ import com.example.pokedex.domain.models.PokemonDetail
 @Composable
 fun PokemonDetailsScreen(
     modifier: Modifier = Modifier,
-    pokemonDetail: PokemonDetail,
+    pokemonName: String,
     navController: NavHostController,
 ) {
     Column(
