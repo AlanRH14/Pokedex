@@ -1,9 +1,8 @@
-package com.example.pokedex.presentation.pokedex
+package com.example.pokedex.presentation.screens.pokedex
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.MainRepository
-import com.example.pokedex.presentation.pokedex.PokemonEffect
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
