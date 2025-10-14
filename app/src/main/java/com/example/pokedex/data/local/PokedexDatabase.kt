@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.pokedex.data.local.dao.PokemonDetailDao
+import com.example.pokedex.data.local.dao.PokemonsDao
 
 @Database(
     entities = [PokemonEntity::class, PokemonDetailEntity::class],
