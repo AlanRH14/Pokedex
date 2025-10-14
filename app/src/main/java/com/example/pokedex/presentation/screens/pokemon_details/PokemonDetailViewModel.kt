@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class PokemonDetailViewModel(
-    private val pokemonDetail: PokemonDetailRepository
+    private val pokemonDetailRepository: PokemonDetailRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(PokemonDetailState())
@@ -30,7 +30,7 @@ class PokemonDetailViewModel(
 
     private fun getPokemonDetail(pokemonName: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            pokemonDetail.fetchPokemonDetail(name = pokemonName).collect { result ->
+            pokemonDetailRepository.fetchPokemonDetail(name = pokemonName).collect { result ->
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
