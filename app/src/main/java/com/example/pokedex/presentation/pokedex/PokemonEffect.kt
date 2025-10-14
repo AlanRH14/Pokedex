@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation
+package com.example.pokedex.presentation.pokedex
 
 sealed interface PokemonEffect {
     data class NavigateToPokemonDetail(val pokemonName: String): PokemonEffect
