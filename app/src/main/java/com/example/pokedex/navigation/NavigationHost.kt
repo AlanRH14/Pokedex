@@ -17,7 +17,7 @@ fun NavigationHost(
 ) {
 
     NavHost(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize(),
         navController = navController,
         startDestination = NavRoute.PokemonsScreen
