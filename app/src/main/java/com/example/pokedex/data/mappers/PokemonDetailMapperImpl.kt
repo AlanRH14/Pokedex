@@ -15,7 +15,7 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
         return PokemonDetail(
             id = formatPokemonID(id = dto.id),
             name = dto.name.capitalized(),
-            url = formatPokemonImageURL(dto.id),
+            url = dto.id.formatPokemonImageURL(),
             height = dto.height ?: 0,
             weight = dto.weight ?: 0,
             sprites = Sprites(
@@ -32,13 +32,5 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
             } ?: emptyList(),
             abilities = dto.abilities?.map { it.ability?.name ?: "" } ?: emptyList()
         )
-    }
-
-    private fun formatPokemonID(id: Long): String {
-        return when (id.toString().length) {
-            1 -> "#00$id"
-            2 -> "#0$id"
-            else -> "#$id"
-        }
     }
 }

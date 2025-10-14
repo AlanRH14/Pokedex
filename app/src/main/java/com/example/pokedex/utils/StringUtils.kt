@@ -13,9 +13,9 @@ object StringUtils {
         } ?: ""
     }
 
-    fun formatPokemonImageURL(pokemonID: Long?): String {
-        return if (pokemonID != null) {
-            "$BAR_URL_IMAGE$pokemonID.png"
+    fun Long?.formatPokemonImageURL(): String {
+        return if (this != null) {
+            "$BAR_URL_IMAGE$this.png"
         } else {
             ""
         }
