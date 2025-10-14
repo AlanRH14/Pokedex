@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -59,29 +61,29 @@ fun PokemonDetailsScreen(
         }
     }
 
-    Column(
-        modifier = modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Box {
-            val imageRequest = ImageRequest.Builder(LocalContext.current)
-                .data(state.pokemonDetail?.url ?: "")
-                .crossfade(true)
-                .build()
 
-            AsyncImage(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                model = imageRequest,
-                contentScale = ContentScale.Fit,
-                contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
-            )
+    Box {
+        val imageRequest = ImageRequest.Builder(LocalContext.current)
+            .data(state.pokemonDetail?.url ?: "")
+            .crossfade(true)
+            .build()
 
+        AsyncImage(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Cyan)
+                .padding(top = 100.dp),
+            model = imageRequest,
+            contentScale = ContentScale.Fit,
+            contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
+        )
+
+    }
+
+    Scaffold(
+        topBar = {
             TopAppBar(
-                modifier = Modifier
-                    .align(Alignment.TopCenter),
+                modifier = Modifier,
                 title = {
                     Text(
                         modifier = Modifier
@@ -129,9 +131,20 @@ fun PokemonDetailsScreen(
                 }
             )
         }
+    ) { paddingValues ->
+        Column(
+            modifier = modifier
+                .padding(paddingValues)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
 
-        if (!state.errorMessage.isNullOrEmpty()) {
-            Text(text = state.errorMessage ?: "Unknown")
+
+            if (!state.errorMessage.isNullOrEmpty()) {
+                Text(text = state.errorMessage ?: "Unknown")
+            } else {
+                Text("Content")
+            }
         }
     }
 }
