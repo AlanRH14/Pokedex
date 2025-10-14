@@ -1,13 +1,13 @@
-package com.example.pokedex.presentation
+package com.example.pokedex.presentation.screens.pokedex.components
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -26,6 +26,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 
 @Composable
 fun PokemonItem(
@@ -43,36 +44,52 @@ fun PokemonItem(
             containerColor = Color.Transparent,
             contentColor = MaterialTheme.colorScheme.onBackground
         ),
+        shape = MaterialTheme.shapes.large,
+        elevation = CardDefaults.cardElevation(4.dp),
         onClick = { onEvent(PokemonUIEvent.OnClickPokemonDetail(pokemonName = pokemon.name)) }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.background(Color.Transparent)
         ) {
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    modifier = Modifier
+                        .weight(1F)
+                        .alpha(8F),
+                    textAlign = TextAlign.Center,
+                    text = pokemon.name,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                )
+
+                Text(
+                    modifier = Modifier.alpha(0.5F),
+                    text = pokemon.id,
+                    textAlign = TextAlign.End,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+            }
+
             AsyncImage(
                 modifier = Modifier
-                    .padding(all = 4.dp)
                     .fillMaxWidth()
-                    .aspectRatio(1.2F)
+                    .aspectRatio(1.2f)
                     .fillMaxHeight(),
                 model = imgRequest,
                 onError = {
                     Log.d("LordMiau", "Error Image: ${it.result.throwable.message}")
                 },
+                contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
-                contentScale = ContentScale.Fit
-            )
-
-            Text(
-                modifier = Modifier
-                    .padding(all = 4.dp)
-                    .fillMaxWidth()
-                    .alpha(8F),
-                textAlign = TextAlign.Center,
-                text = pokemon.name.uppercase(),
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold
-                ),
             )
         }
     }

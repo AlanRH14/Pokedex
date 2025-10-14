@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.pokedex.presentation.PokemonListScreen
+import com.example.pokedex.presentation.screens.pokedex.PokemonListScreen
 
 @Composable
 fun NavigationHost(
