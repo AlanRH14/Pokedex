@@ -1,7 +1,4 @@
-package com.example.pokedex.data.local
-
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+package com.example.pokedex.data.local.entity
 
 @Entity
 data class PokemonDetailEntity(
