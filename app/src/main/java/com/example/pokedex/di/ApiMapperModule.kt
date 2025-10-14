@@ -1,7 +1,7 @@
 package com.example.pokedex.di
 
 import com.example.pokedex.common.ApiMapper
-import com.example.pokedex.data.PokemonDetailMapperImpl
+import com.example.pokedex.data.mappers.PokemonDetailMapperImpl
 import com.example.pokedex.data.PokemonMapperImpl
 import com.example.pokedex.data.models.PokemonDetailDto
 import com.example.pokedex.data.models.PokemonResponse

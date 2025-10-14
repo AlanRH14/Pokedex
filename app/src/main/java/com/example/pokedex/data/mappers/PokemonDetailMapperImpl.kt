@@ -1,4 +1,4 @@
-package com.example.pokedex.data
+package com.example.pokedex.data.mappers
 
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.PokemonDetailDto
