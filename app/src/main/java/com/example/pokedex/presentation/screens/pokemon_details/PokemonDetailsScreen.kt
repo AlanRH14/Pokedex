@@ -110,7 +110,9 @@ fun PokemonDetailsScreen(
 
             IconToggleButton(
                 checked = state.isFavorite,
-                onCheckedChange = {}
+                onCheckedChange = {
+                    viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
+                }
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_favorite),
