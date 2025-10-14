@@ -34,9 +34,20 @@ class PokemonDetailViewModel(
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
-                    is Resource.Success -> _state.update { it.copy(isLoading = false) }
+                    is Resource.Success -> _state.update {
+                        it.copy(
+                            pokemonDetail = result.data,
+                            isLoading = false,
+                        )
+                    }
 
-                    is Resource.Error -> _state.update { it.copy(isLoading = false) }
+                    is Resource.Error -> _state.update {
+                        it.copy(
+                            errorMessage = result.message,
+                            pokemonDetail = null,
+                            isLoading = false
+                        )
+                    }
                 }
             }
         }
