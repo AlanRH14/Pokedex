@@ -19,9 +19,7 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
                 backDefault = dto.sprites?.backDefault ?: "",
                 officialArtwork = dto.sprites?.other?.officialArtwork?.frontDefault ?: ""
             ),
-            types = dto.types?.map {
-                it.type?.
-            } ?: emptyList(),
+            types = dto.types?.map { it.type?.name ?: "" } ?: emptyList(),
             stats = dto.stats?.map {
                 Stat(
                     baseStat = it.baseStat ?: 0L,
