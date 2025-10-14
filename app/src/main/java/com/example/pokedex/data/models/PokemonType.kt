@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PokemonType(
     @SerialName("slot") val slot: Int? = null,
-    @SerialName("type") val type: String? = null
+    @SerialName("type") val type: List<Types>? = null
 )
