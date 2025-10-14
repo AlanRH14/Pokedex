@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -114,6 +115,7 @@ fun PokemonDetailsScreen(
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_favorite),
+                    tint = if (state.isFavorite) Color.Red else Color.Transparent,
                     contentDescription = stringResource(R.string.icon_toggle_favorite),
                 )
             }
