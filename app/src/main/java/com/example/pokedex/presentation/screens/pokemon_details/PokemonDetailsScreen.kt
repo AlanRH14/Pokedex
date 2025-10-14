@@ -41,9 +41,9 @@ fun PokemonDetailsScreen(
         modifier = modifier
             .fillMaxSize()
     ) {
-        AsyncImage(
+        /*AsyncImage(
             model = state.pokemonDetail.
-        )
+        )*/
         if (state.errorMessage.isNullOrEmpty()) {
             Text(text = state.pokemonDetail?.name ?: "Pokemon Empty")
         } else {
