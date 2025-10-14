@@ -24,7 +24,7 @@ class PokemonMapperImpl : ApiMapper<PokemonResponse, List<Pokemon>> {
     private fun formatPokemonID(id: Int): String {
         return when (id.toString().length) {
             1 -> "#00$id"
-            2 -> "0$id"
+            2 -> "#0$id"
             else -> "#$id"
         }
     }
