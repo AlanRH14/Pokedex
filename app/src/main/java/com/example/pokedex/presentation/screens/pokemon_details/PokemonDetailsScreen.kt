@@ -61,6 +61,29 @@ fun PokemonDetailsScreen(
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        /*TopAppBar(
+            title = {
+                Text(
+                    modifier = Modifier.alpha(8F),
+                    text = state.pokemonDetail?.name ?: "Pokemon Empty",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                )
+            },
+            navigationIcon = {
+                IconButton(
+                    onClick = {}
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_arrow_back),
+                        contentDescription = stringResource(R.string.icon_back)
+                    )
+                }
+            }
+        )*/
+
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
@@ -90,7 +113,8 @@ fun PokemonDetailsScreen(
                 onCheckedChange = {}
             ) {
                 Icon(
-
+                    painter = painterResource(R.drawable.ic_favorite),
+                    contentDescription = "Icon Toggle Favorite",
                 )
             }
         }
