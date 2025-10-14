@@ -70,7 +70,7 @@ fun PokemonDetailsScreen(
         }
     }
 
-    Box {
+    Box(modifier = modifier) {
         val imageRequest = ImageRequest.Builder(LocalContext.current)
             .data(state.pokemonDetail?.url ?: "")
             .build()
