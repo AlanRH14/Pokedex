@@ -54,4 +54,8 @@ class PokemonDetailViewModel(
             }
         }
     }
+
+    private fun changeToggleFavoriteState() {
+        _state.update { it.copy(isFavorite = !it.isFavorite) }
+    }
 }

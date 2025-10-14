@@ -4,6 +4,3 @@ sealed interface PokemonDetailUIEvent {
     data class OnGetPokemonDetail(val pokemonName: String): PokemonDetailUIEvent
     data object OnClickedToggleFavorite: PokemonDetailUIEvent
 }
-
-
-}
