@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Type
 
 @Composable
-fun PokemonAbilities(
+fun PokemonTypeItem(
     modifier: Modifier = Modifier,
     abilities: List<Type>
 ) {

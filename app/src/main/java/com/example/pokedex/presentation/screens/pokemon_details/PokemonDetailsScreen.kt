@@ -171,7 +171,7 @@ fun PokemonDetailsScreen(
                     )
                 }
 
-                PokemonAbilities(
+                PokemonTypeItem(
                     modifier = Modifier.padding(8.dp),
                     abilities = state.pokemonDetail?.types ?: emptyList()
                 )
