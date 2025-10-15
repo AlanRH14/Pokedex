@@ -167,6 +167,10 @@ fun PokemonDetailsScreen(
                         ),
                     )
                 }
+
+                PokemonAbilities(
+                    abilities = state.pokemonDetail?.abilities ?: emptyList()
+                )
             }
         }
     }
