@@ -32,7 +32,7 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
             } ?: emptyList(),
             stats = dto.stats?.map {
                 Stat(
-                    baseStat = it.baseStat ?: 0L,
+                    baseStat = it.baseStat ?: 0,
                     stat = it.stat?.name ?: "",
                 )
             } ?: emptyList(),
