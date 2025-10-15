@@ -1,9 +1,13 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import android.widget.Space
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +29,7 @@ fun PokemonInfoItem(
     contentDescription: String
 ) {
     Column(
-        modifier = modifier.padding(all = 16.dp),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -34,10 +38,11 @@ fun PokemonInfoItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                modifier = Modifier.padding(horizontal = 4.dp),
                 painter = icon,
                 contentDescription = contentDescription,
             )
+
+            Spacer(modifier = Modifier.width(4.dp))
 
             Text(
                 text = textInfo,
@@ -48,11 +53,11 @@ fun PokemonInfoItem(
             )
         }
 
+        Spacer(modifier = Modifier.height(4.dp))
+
         Text(
-            modifier = Modifier
-                .alpha(0.5F)
-                .padding(4.dp),
             text = title,
+            color = MaterialTheme.colorScheme.outline.copy(.8F),
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center
         )
