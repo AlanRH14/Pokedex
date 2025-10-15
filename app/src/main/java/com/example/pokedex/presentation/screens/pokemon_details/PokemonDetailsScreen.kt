@@ -169,6 +169,7 @@ fun PokemonDetailsScreen(
                 }
 
                 PokemonAbilities(
+                    modifier = Modifier.fillMaxWidth(),
                     abilities = state.pokemonDetail?.abilities ?: emptyList()
                 )
             }
