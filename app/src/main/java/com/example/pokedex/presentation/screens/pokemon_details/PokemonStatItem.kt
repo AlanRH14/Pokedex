@@ -13,6 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.example.pokedex.domain.models.Stat
+import com.example.pokedex.ui.theme.Green300
+import com.example.pokedex.ui.theme.Red400
+import com.example.pokedex.ui.theme.Yellow400
 import kotlin.math.roundToInt
 
 @Composable
@@ -29,7 +32,7 @@ fun PokemonStatItem(
         animationProgress.animateTo(
             targetValue = 1F,
             animationSpec = tween(
-                durationMillis = 8 * stat.baseStat.toInt(),
+                durationMillis = 8 * stat.baseStat,
                 easing = LinearEasing
             )
         )
@@ -51,13 +54,23 @@ fun PokemonStatItem(
 
         Text(
             modifier = Modifier.weight(.2F),
-            text = "${(stat.baseStat.toInt() * animationProgress.value).roundToInt()}",
+            text = "${(stat.baseStat * animationProgress.value).roundToInt()}",
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.Bold
             )
         )
 
-        val progress = stat.baseStat.toFloat()
+        val progress = stat.baseStat.toFloat() / stat.maxValue.toFloat()
+        val animatedProgress = progress * animationProgress.value
+
+        val progressColor = when (progress) {
+            in 0.0 .. 0.2 -> Red400
+
+            in 0.2 .. 0.5 -> Yellow400
+
+            else -> Green300
+        }
+        val progressTrackColor = MaterialTheme.colorScheme.outline.copy(0.2F)
     }
 }
