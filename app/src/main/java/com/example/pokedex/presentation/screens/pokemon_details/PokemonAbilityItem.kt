@@ -20,8 +20,8 @@ fun PokemonAbilityItem(ability: String) {
                 shape = CircleShape
             )
             .padding(
-                horizontal = 10.dp,
-                vertical = 4.dp
+                horizontal = 16.dp,
+                vertical = 8.dp
             ),
         text = ability,
         color = Color.White,

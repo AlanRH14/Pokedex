@@ -17,8 +17,8 @@ fun PokemonAbilities(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(abilities) { ability ->
-            PokemonAbilityItem(ability = ability)
+        items(abilities, key = { it.slot }) { ability ->
+            PokemonAbilityItem(ability = ability.type)
         }
     }
 }
