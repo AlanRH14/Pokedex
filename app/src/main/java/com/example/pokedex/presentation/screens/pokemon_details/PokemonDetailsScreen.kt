@@ -179,8 +179,8 @@ fun PokemonDetailsScreen(
                 )
 
                 PokemonInfo(
-                    weight = state.pokemonDetail?.height ?: 0,
-                    height = state.pokemonDetail?.weight ?: 0,
+                    weight = state.pokemonDetail?.height ?: 0F,
+                    height = state.pokemonDetail?.weight ?: 0F,
                 )
             }
         }

@@ -17,8 +17,8 @@ class PokemonDetailMapperImpl : ApiMapper<PokemonDetailDto, PokemonDetail> {
             id = dto.id.formatPokemonID(),
             name = dto.name.capitalized(),
             url = dto.id.formatPokemonImageURL(),
-            height = dto.height ?: 0,
-            weight = dto.weight ?: 0,
+            height = (dto.height ?: 0) / 10F,
+            weight = (dto.weight ?: 0) / 10F,
             sprites = Sprites(
                 frontDefault = dto.sprites?.frontDefault ?: "",
                 backDefault = dto.sprites?.backDefault ?: "",

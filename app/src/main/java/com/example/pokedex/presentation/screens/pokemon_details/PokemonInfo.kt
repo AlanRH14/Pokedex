@@ -17,8 +17,8 @@ import com.example.pokedex.R
 
 @Composable
 fun PokemonInfo(
-    weight: Long,
-    height: Long,
+    weight: Float,
+    height: Float,
 ) {
     Card(
         modifier = Modifier
