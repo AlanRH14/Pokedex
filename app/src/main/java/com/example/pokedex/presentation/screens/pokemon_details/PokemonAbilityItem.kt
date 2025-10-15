@@ -1,12 +1,30 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.example.pokedex.data.models.Ability
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun PokemonAbilityItem(abilities: Ability) {
+fun PokemonAbilityItem(ability: String) {
     Text(
-        ""
+        modifier = Modifier
+            .border(
+                width = 1.dp,
+                color = Color.White,
+                shape = CircleShape
+            )
+            .padding(
+                horizontal = 10.dp,
+                vertical = 4.dp
+            ),
+        text = ability,
+        color = Color.White,
+        style = MaterialTheme.typography.bodyLarge,
     )
 }
