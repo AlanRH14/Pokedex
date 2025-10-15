@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PokemonTypeItem(ability: String) {
+fun PokemonTypes(ability: String) {
     Text(
         modifier = Modifier
             .border(

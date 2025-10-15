@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Type
 
 @Composable
-fun PokemonTypeItem(
+fun PokemonTypes(
     modifier: Modifier = Modifier,
     abilities: List<Type>
 ) {
@@ -18,7 +18,7 @@ fun PokemonTypeItem(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(abilities, key = { it.slot }) { ability ->
-            PokemonTypeItem(ability = ability.type)
+            PokemonTypes(ability = ability.type)
         }
     }
 }
