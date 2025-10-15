@@ -28,7 +28,7 @@ fun PokemonInfo(
                 contentDescription = "Icon Weight",
             )
 
-            VerticalDivider(thickness = 1.dp)
+            // VerticalDivider(thickness = 1.dp)
 
             PokemonInfoItem(
                 icon = painterResource(R.drawable.ic_favorite_border),
