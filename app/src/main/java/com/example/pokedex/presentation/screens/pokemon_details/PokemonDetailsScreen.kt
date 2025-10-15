@@ -182,6 +182,8 @@ fun PokemonDetailsScreen(
                     weight = state.pokemonDetail?.weight ?: 0F,
                     height = state.pokemonDetail?.height ?: 0F,
                 )
+
+                PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
             }
         }
     }
