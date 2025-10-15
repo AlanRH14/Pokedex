@@ -137,7 +137,10 @@ fun PokemonDetailsScreen(
             },
             containerColor = Color.Transparent
         ) { paddingValues ->
-            Column(modifier = Modifier.padding(paddingValues)) {
+            Column(modifier = Modifier
+                .padding(paddingValues),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Box(
                     modifier = Modifier,
                 ) {
@@ -169,8 +172,8 @@ fun PokemonDetailsScreen(
                 }
 
                 PokemonAbilities(
-                    modifier = Modifier.fillMaxWidth(),
-                    abilities = state.pokemonDetail?.abilities ?: emptyList()
+                    modifier = Modifier.padding(8.dp),
+                    abilities = state.pokemonDetail?.types ?: emptyList()
                 )
             }
         }
