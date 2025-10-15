@@ -47,7 +47,6 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonDetailsScreen(
-    modifier: Modifier = Modifier,
     pokemonName: String,
     viewModel: PokemonDetailViewModel = koinViewModel(),
     navController: NavHostController,
@@ -146,7 +145,7 @@ fun PokemonDetailsScreen(
                         model = imageRequest,
                         contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
                         contentScale = ContentScale.Fit,
-                        modifier = modifier
+                        modifier = Modifier
                             .widthIn(max = 500.dp)
                             .fillMaxWidth()
                             .aspectRatio(1.2f)
