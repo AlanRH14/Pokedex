@@ -35,7 +35,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -48,7 +47,6 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonDetailsScreen(
-    modifier: Modifier = Modifier,
     pokemonName: String,
     viewModel: PokemonDetailViewModel = koinViewModel(),
     navController: NavHostController,
@@ -139,7 +137,11 @@ fun PokemonDetailsScreen(
             },
             containerColor = Color.Transparent
         ) { paddingValues ->
-            Column(modifier = Modifier.padding(paddingValues)) {
+            Column(
+                modifier = Modifier
+                    .padding(paddingValues),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Box(
                     modifier = Modifier,
                 ) {
@@ -147,7 +149,7 @@ fun PokemonDetailsScreen(
                         model = imageRequest,
                         contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
                         contentScale = ContentScale.Fit,
-                        modifier = modifier
+                        modifier = Modifier
                             .widthIn(max = 500.dp)
                             .fillMaxWidth()
                             .aspectRatio(1.2f)
@@ -161,7 +163,8 @@ fun PokemonDetailsScreen(
                     Text(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .alpha(0.5F),
+                            .alpha(0.5F)
+                            .padding(bottom = 8.dp),
                         text = state.pokemonDetail?.id ?: "Unknown",
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.titleLarge.copy(
@@ -169,6 +172,16 @@ fun PokemonDetailsScreen(
                         ),
                     )
                 }
+
+                PokemonTypes(
+                    modifier = Modifier.padding(8.dp),
+                    abilities = state.pokemonDetail?.types ?: emptyList()
+                )
+
+                PokemonInfo(
+                    weight = state.pokemonDetail?.weight ?: 0F,
+                    height = state.pokemonDetail?.height ?: 0F,
+                )
             }
         }
     }

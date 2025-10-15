@@ -33,7 +33,6 @@ fun NavigationHost(
         composable<NavRoute.PokemonDetailScreen> {
             val pokemonName = it.toRoute<NavRoute.PokemonDetailScreen>().pokemonName
             PokemonDetailsScreen(
-                modifier = modifier,
                 pokemonName = pokemonName,
                 navController = navController
             )
