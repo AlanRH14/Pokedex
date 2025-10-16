@@ -43,6 +43,7 @@ import coil3.request.ImageRequest
 import com.example.pokedex.R
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
+import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonInfo
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
