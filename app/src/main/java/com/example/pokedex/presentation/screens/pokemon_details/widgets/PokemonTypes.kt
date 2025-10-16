@@ -19,7 +19,7 @@ fun PokemonTypes(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(types, key = { it.slot }) { ability ->
-            PokemonTypes(ability = ability.type)
+            PokemonTypes(types = ability.type)
         }
     }
 }
