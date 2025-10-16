@@ -12,13 +12,13 @@ import com.example.pokedex.presentation.screens.pokemon_details.components.Pokem
 @Composable
 fun PokemonTypes(
     modifier: Modifier = Modifier,
-    abilities: List<Type>
+    types: List<Type>
 ) {
     LazyRow(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(abilities, key = { it.slot }) { ability ->
+        items(types, key = { it.slot }) { ability ->
             PokemonTypes(ability = ability.type)
         }
     }

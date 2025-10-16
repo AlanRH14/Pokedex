@@ -124,7 +124,7 @@ fun PokemonDetailsScreen(
 
                 PokemonTypes(
                     modifier = Modifier.padding(8.dp),
-                    abilities = state.pokemonDetail?.types ?: emptyList()
+                    types = state.pokemonDetail?.types ?: emptyList()
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
