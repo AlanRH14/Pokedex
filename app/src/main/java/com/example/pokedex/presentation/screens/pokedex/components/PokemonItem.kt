@@ -26,6 +26,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 
 @Composable
@@ -33,11 +34,6 @@ fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
-    val imgRequest = ImageRequest.Builder(LocalContext.current)
-        .data(pokemon.url)
-        .crossfade(true)
-        .build()
-
     Card(
         modifier = Modifier,
         colors = CardDefaults.cardColors(
@@ -79,15 +75,12 @@ fun PokemonItem(
                 )
             }
 
-            AsyncImage(
+            PokemonImage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1.2f)
                     .fillMaxHeight(),
-                model = imgRequest,
-                onError = {
-                    Log.d("LordMiau", "Error Image: ${it.result.throwable.message}")
-                },
+                image = pokemon.url,
                 contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
             )
