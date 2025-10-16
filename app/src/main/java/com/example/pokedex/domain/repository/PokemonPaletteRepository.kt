@@ -1,7 +1,7 @@
 package com.example.pokedex.domain.repository
 
-import com.example.pokedex.domain.models.PokemonPaletteColors
+import com.example.pokedex.domain.models.Pokemon
 
 interface PokemonPaletteRepository {
-    suspend fun generatePokemonPalette(pokemonURL: String): PokemonPaletteColors
+    suspend fun generatePokemonPalette(pokemonURL: String): Pokemon
 }
