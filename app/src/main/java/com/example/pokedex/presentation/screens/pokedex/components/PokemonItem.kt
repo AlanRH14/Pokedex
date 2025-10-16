@@ -29,6 +29,11 @@ fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
+    if (pokemon.colorPalette.isNotEmpty()) {
+
+    } else {
+
+    }
     Card(
         modifier = Modifier,
         colors = CardDefaults.cardColors(
