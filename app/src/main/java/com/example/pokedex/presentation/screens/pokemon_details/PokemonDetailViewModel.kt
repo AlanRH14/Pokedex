@@ -25,8 +25,8 @@ class PokemonDetailViewModel(
     fun onEvent(event: PokemonDetailUIEvent) {
         when (event) {
             is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
-
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
+            is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
         }
     }
 
@@ -57,5 +57,9 @@ class PokemonDetailViewModel(
 
     private fun changeToggleFavoriteState() {
         _state.update { it.copy(isFavorite = !it.isFavorite) }
+    }
+
+    private fun navigateToBack() {
+        viewModelScope.launch { _effect.emit(PokemonDetailEffect.NavigateToBack) }
     }
 }

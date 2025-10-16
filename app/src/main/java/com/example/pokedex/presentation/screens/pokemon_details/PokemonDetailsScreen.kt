@@ -102,7 +102,7 @@ fun PokemonDetailsScreen(
                     },
                     navigationIcon = {
                         IconButton(
-                            onClick = {}
+                            onClick = { viewModel.onEvent(PokemonDetailUIEvent.OnClickedBack) }
                         ) {
                             Icon(
                                 painter = painterResource(R.drawable.ic_arrow_back),
