@@ -6,7 +6,7 @@ import coil3.Bitmap
 import com.example.pokedex.data.remote.PaletteDataSource
 import com.example.pokedex.domain.models.PokemonPaletteColors
 
-class GeneratePaletteImpl: PaletteDataSource {
+class PaletteIDataSourceImpl: PaletteDataSource {
 
     override suspend fun generatePalette(bitmap: Bitmap): PokemonPaletteColors {
         val palette = Palette.from(bitmap).generate()
