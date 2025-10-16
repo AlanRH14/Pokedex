@@ -15,7 +15,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.R
-import com.example.pokedex.presentation.screens.pokemon_details.PokemonInfoItem
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonInfoItem
 
 @Composable
 fun PokemonInfo(
