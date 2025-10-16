@@ -162,21 +162,17 @@ fun PokemonDetailsScreen(
                     )
                 }
 
-                if (!state.errorMessage.isNullOrEmpty()) {
-                    Text(text = state.errorMessage ?: "Unknown")
-                } else {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .alpha(0.5F)
-                            .padding(bottom = 8.dp),
-                        text = state.pokemonDetail?.id ?: "Unknown",
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold
-                        ),
-                    )
-                }
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .alpha(0.5F)
+                        .padding(bottom = 8.dp),
+                    text = state.pokemonDetail?.id ?: "Unknown",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                )
 
                 PokemonTypes(
                     modifier = Modifier.padding(8.dp),
