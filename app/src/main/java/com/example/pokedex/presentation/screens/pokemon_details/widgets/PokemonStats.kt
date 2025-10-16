@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokemon_details
+package com.example.pokedex.presentation.screens.pokemon_details.widgets
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,6 +8,7 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Stat
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonStatItem
 
 @Composable
 fun PokemonStats(
@@ -16,11 +17,7 @@ fun PokemonStats(
 ) {
     Column(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(
-                horizontal = 32.dp,
-                vertical = 16.dp
-            ),
+            .fillMaxWidth(),
     ) {
         stats.forEach { stat ->
             key(stat.name) {

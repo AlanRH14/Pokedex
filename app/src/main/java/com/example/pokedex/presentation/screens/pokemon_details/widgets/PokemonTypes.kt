@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokemon_details
+package com.example.pokedex.presentation.screens.pokemon_details.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyRow
@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Type
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTypes
 
 @Composable
 fun PokemonTypes(

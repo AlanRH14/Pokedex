@@ -3,6 +3,9 @@ package com.example.pokedex.presentation.screens.pokemon_details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.PokemonDetailRepository
+import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
+import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailState
+import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -25,8 +28,8 @@ class PokemonDetailViewModel(
     fun onEvent(event: PokemonDetailUIEvent) {
         when (event) {
             is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
-
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
+            is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
         }
     }
 
@@ -57,5 +60,9 @@ class PokemonDetailViewModel(
 
     private fun changeToggleFavoriteState() {
         _state.update { it.copy(isFavorite = !it.isFavorite) }
+    }
+
+    private fun navigateToBack() {
+        viewModelScope.launch { _effect.emit(PokemonDetailEffect.NavigateToBack) }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokemon_details
+package com.example.pokedex.presentation.screens.pokemon_details.widgets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -11,9 +11,11 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.R
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonInfoItem
 
 @Composable
 fun PokemonInfo(
@@ -21,11 +23,6 @@ fun PokemonInfo(
     height: Float,
 ) {
     Card(
-        modifier = Modifier
-            .padding(
-                horizontal = 32.dp,
-                vertical = 16.dp
-            ),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.outline.copy(.2F),
@@ -42,7 +39,7 @@ fun PokemonInfo(
         ) {
             PokemonInfoItem(
                 modifier = Modifier.weight(1F),
-                icon = painterResource(R.drawable.ic_favorite_border),
+                icon = painterResource(R.drawable.ic_scale),
                 textInfo = "$weight kg",
                 title = "Weight",
                 contentDescription = "Icon Weight",
@@ -56,7 +53,8 @@ fun PokemonInfo(
 
             PokemonInfoItem(
                 modifier = Modifier.weight(1F),
-                icon = painterResource(R.drawable.ic_favorite_border),
+                iconModifier = Modifier.rotate(90F),
+                icon = painterResource(R.drawable.ic_straighten),
                 textInfo = "$height m",
                 title = "Height",
                 contentDescription = "Icon Height"

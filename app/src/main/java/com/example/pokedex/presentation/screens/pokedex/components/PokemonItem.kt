@@ -1,6 +1,5 @@
 package com.example.pokedex.presentation.screens.pokedex.components
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,14 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 
 @Composable
@@ -33,11 +29,6 @@ fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
-    val imgRequest = ImageRequest.Builder(LocalContext.current)
-        .data(pokemon.url)
-        .crossfade(true)
-        .build()
-
     Card(
         modifier = Modifier,
         colors = CardDefaults.cardColors(
@@ -79,15 +70,12 @@ fun PokemonItem(
                 )
             }
 
-            AsyncImage(
+            PokemonImage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1.2f)
                     .fillMaxHeight(),
-                model = imgRequest,
-                onError = {
-                    Log.d("LordMiau", "Error Image: ${it.result.throwable.message}")
-                },
+                image = pokemon.url,
                 contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
             )
