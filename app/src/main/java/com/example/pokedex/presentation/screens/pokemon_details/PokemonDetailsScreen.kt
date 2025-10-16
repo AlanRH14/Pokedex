@@ -2,9 +2,11 @@ package com.example.pokedex.presentation.screens.pokemon_details
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -89,7 +91,8 @@ fun PokemonDetailsScreen(
         ) { paddingValues ->
             Column(
                 modifier = Modifier
-                    .padding(paddingValues),
+                    .padding(paddingValues)
+                    .padding(horizontal = 32.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Box(
@@ -124,10 +127,14 @@ fun PokemonDetailsScreen(
                     abilities = state.pokemonDetail?.types ?: emptyList()
                 )
 
+                Spacer(modifier = Modifier.height(16.dp))
+
                 PokemonInfo(
                     weight = state.pokemonDetail?.weight ?: 0F,
                     height = state.pokemonDetail?.height ?: 0F,
                 )
+
+                Spacer(modifier = Modifier.height(64.dp))
 
                 PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
             }

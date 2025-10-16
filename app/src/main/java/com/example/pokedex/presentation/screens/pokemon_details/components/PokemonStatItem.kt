@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,11 +27,7 @@ import com.example.pokedex.ui.theme.Yellow400
 import kotlin.math.roundToInt
 
 @Composable
-fun PokemonStatItem(
-    modifier: Modifier = Modifier,
-    stat: Stat
-) {
-
+fun PokemonStatItem(stat: Stat) {
     val animationProgress = remember {
         Animatable(initialValue = 0F)
     }
@@ -46,7 +43,7 @@ fun PokemonStatItem(
     }
 
     Row(
-        modifier = modifier,
+        modifier = Modifier.padding(all = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
 

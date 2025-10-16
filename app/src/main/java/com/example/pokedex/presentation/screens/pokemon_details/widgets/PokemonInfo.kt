@@ -23,11 +23,6 @@ fun PokemonInfo(
     height: Float,
 ) {
     Card(
-        modifier = Modifier
-            .padding(
-                horizontal = 32.dp,
-                vertical = 16.dp
-            ),
         shape = MaterialTheme.shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.outline.copy(.2F),

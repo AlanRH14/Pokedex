@@ -17,11 +17,7 @@ fun PokemonStats(
 ) {
     Column(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(
-                horizontal = 32.dp,
-                vertical = 16.dp
-            ),
+            .fillMaxWidth(),
     ) {
         stats.forEach { stat ->
             key(stat.name) {
