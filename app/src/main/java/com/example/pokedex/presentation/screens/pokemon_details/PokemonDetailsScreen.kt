@@ -41,6 +41,7 @@ import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.example.pokedex.R
+import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonInfo
@@ -72,11 +73,7 @@ fun PokemonDetailsScreen(
     }
 
     Box(contentAlignment = Alignment.TopCenter) {
-        val imageRequest = ImageRequest.Builder(LocalContext.current)
-            .data(state.pokemonDetail?.url ?: "")
-            .build()
-
-        AsyncImage(
+        PokemonImage(
             modifier = Modifier
                 .widthIn(max = 800.dp)
                 .fillMaxWidth(.9f)
@@ -84,7 +81,7 @@ fun PokemonDetailsScreen(
                 .scale(1f, 1.8f)
                 .blur(70.dp, BlurredEdgeTreatment.Unbounded)
                 .alpha(.5f),
-            model = imageRequest,
+            image = state.pokemonDetail?.url ?: "",
             contentScale = ContentScale.FillWidth,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(3f) }),
             contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
@@ -150,15 +147,15 @@ fun PokemonDetailsScreen(
                 Box(
                     modifier = Modifier,
                 ) {
-                    AsyncImage(
-                        model = imageRequest,
-                        contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
-                        contentScale = ContentScale.Fit,
+                    PokemonImage(
                         modifier = Modifier
                             .widthIn(max = 500.dp)
                             .fillMaxWidth()
                             .aspectRatio(1.2f)
-                            .fillMaxHeight()
+                            .fillMaxHeight(),
+                        image = state.pokemonDetail?.url ?: "",
+                        contentDescription = "Image ${state.pokemonDetail?.name ?: pokemonName}",
+                        contentScale = ContentScale.Fit,
                     )
                 }
 
