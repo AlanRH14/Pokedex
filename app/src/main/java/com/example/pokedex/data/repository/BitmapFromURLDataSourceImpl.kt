@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
 
-class GenerateBitmapFromURLImpl : ImageRemoteDataSource {
+class BitmapFromURLDataSourceImpl : ImageRemoteDataSource {
 
     override suspend fun generatePaletteFromURL(pokemonURL: String): Bitmap? =
         withContext(Dispatchers.IO) {
