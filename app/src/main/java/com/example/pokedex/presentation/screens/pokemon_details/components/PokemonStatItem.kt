@@ -51,9 +51,7 @@ fun PokemonStatItem(stat: Stat) {
             modifier = Modifier.weight(.3F),
             text = stat.name,
             color = MaterialTheme.colorScheme.outline.copy(0.8F),
-            style = MaterialTheme.typography.bodyLarge.copy(
-                fontWeight = FontWeight.Bold
-            )
+            style = MaterialTheme.typography.bodyLarge
         )
 
         Text(
@@ -69,9 +67,9 @@ fun PokemonStatItem(stat: Stat) {
         val animatedProgress = progress * animationProgress.value
 
         val progressColor = when {
-            progress <= 0.2F -> Red400
-            progress <= 0.5F -> Yellow400
-            progress >= 0.6F -> Green300
+            progress <= 0.3F -> Red400
+            progress <= 0.6F -> Yellow400
+            progress >= 0.7F -> Green300
             else -> Green300
         }
         val progressTrackColor = MaterialTheme.colorScheme.outline.copy(0.2F)
