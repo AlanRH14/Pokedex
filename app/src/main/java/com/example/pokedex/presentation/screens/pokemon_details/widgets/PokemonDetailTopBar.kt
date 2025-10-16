@@ -23,7 +23,9 @@ import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetai
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonDetailTopBar(
-
+    pokemonName: String,
+    isFavorite: Boolean,
+    onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
     TopAppBar(
         title = {
@@ -31,7 +33,7 @@ fun PokemonDetailTopBar(
                 modifier = Modifier
                     .fillMaxWidth()
                     .alpha(8F),
-                text = state.pokemonDetail?.name ?: "Pokemon Empty",
+                text = pokemonName,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold
@@ -40,7 +42,7 @@ fun PokemonDetailTopBar(
         },
         navigationIcon = {
             IconButton(
-                onClick = { viewModel.onEvent(PokemonDetailUIEvent.OnClickedBack) }
+                onClick = { onEvent(PokemonDetailUIEvent.OnClickedBack) }
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_arrow_back),
@@ -50,17 +52,17 @@ fun PokemonDetailTopBar(
         },
         actions = {
             IconToggleButton(
-                checked = state.isFavorite,
+                checked = isFavorite,
                 onCheckedChange = {
-                    viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
+                    onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
                 }
             ) {
                 Icon(
-                    painter = if (state.isFavorite)
+                    painter = if (isFavorite)
                         painterResource(R.drawable.ic_favorite)
                     else
                         painterResource(R.drawable.ic_favorite_border),
-                    tint = if (state.isFavorite)
+                    tint = if (isFavorite)
                         Color.Red
                     else
                         Color.LightGray,
