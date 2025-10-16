@@ -4,5 +4,5 @@ data class Pokemon(
     val id: String = "",
     val name: String = "",
     val url: String = "",
-    val colorPalette: Map<String, String> = emptyMap()
+    val colorPalette: PokemonPaletteColors? = null,
 )
