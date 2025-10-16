@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokemon_details
+package com.example.pokedex.presentation.screens.pokemon_details.components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
