@@ -11,6 +11,7 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.R
@@ -42,7 +43,7 @@ fun PokemonInfo(
         ) {
             PokemonInfoItem(
                 modifier = Modifier.weight(1F),
-                icon = painterResource(R.drawable.ic_favorite_border),
+                icon = painterResource(R.drawable.ic_scale),
                 textInfo = "$weight kg",
                 title = "Weight",
                 contentDescription = "Icon Weight",
@@ -56,7 +57,8 @@ fun PokemonInfo(
 
             PokemonInfoItem(
                 modifier = Modifier.weight(1F),
-                icon = painterResource(R.drawable.ic_favorite_border),
+                iconModifier = Modifier.rotate(90F),
+                icon = painterResource(R.drawable.ic_straighten),
                 textInfo = "$height m",
                 title = "Height",
                 contentDescription = "Icon Height"

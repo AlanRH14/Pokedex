@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun PokemonInfoItem(
     modifier: Modifier = Modifier,
+    iconModifier: Modifier = Modifier,
     icon: Painter,
     textInfo: String,
     title: String,
@@ -38,6 +39,7 @@ fun PokemonInfoItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
+                modifier = iconModifier,
                 painter = icon,
                 contentDescription = contentDescription,
             )
