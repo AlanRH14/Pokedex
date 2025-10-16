@@ -23,6 +23,7 @@ class PokemonPaletteRepositoryImpl(
                     pokemon
                 }
             } catch (e: Exception) {
+                print("Error: ${e.message}")
                 pokemon
             }
         }
