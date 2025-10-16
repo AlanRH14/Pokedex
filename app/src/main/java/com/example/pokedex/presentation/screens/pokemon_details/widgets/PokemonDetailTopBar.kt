@@ -23,7 +23,7 @@ import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetai
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonDetailTopBar(
-    pokemonName: String,
+    title: String,
     isFavorite: Boolean,
     onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
@@ -33,7 +33,7 @@ fun PokemonDetailTopBar(
                 modifier = Modifier
                     .fillMaxWidth()
                     .alpha(8F),
-                text = pokemonName,
+                text = title,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge.copy(
                     fontWeight = FontWeight.Bold

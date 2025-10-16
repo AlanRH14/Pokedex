@@ -41,6 +41,7 @@ import com.example.pokedex.R
 import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
+import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonDetailTopBar
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonInfo
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonTypes
@@ -86,52 +87,10 @@ fun PokemonDetailsScreen(
 
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = {
-                        Text(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .alpha(8F),
-                            text = state.pokemonDetail?.name ?: "Pokemon Empty",
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.titleLarge.copy(
-                                fontWeight = FontWeight.Bold
-                            ),
-                        )
-                    },
-                    navigationIcon = {
-                        IconButton(
-                            onClick = { viewModel.onEvent(PokemonDetailUIEvent.OnClickedBack) }
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_arrow_back),
-                                contentDescription = stringResource(R.string.icon_back)
-                            )
-                        }
-                    },
-                    actions = {
-                        IconToggleButton(
-                            checked = state.isFavorite,
-                            onCheckedChange = {
-                                viewModel.onEvent(PokemonDetailUIEvent.OnClickedToggleFavorite)
-                            }
-                        ) {
-                            Icon(
-                                painter = if (state.isFavorite)
-                                    painterResource(R.drawable.ic_favorite)
-                                else
-                                    painterResource(R.drawable.ic_favorite_border),
-                                tint = if (state.isFavorite)
-                                    Color.Red
-                                else
-                                    Color.LightGray,
-                                contentDescription = stringResource(R.string.icon_toggle_favorite),
-                            )
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Transparent
-                    ),
+                PokemonDetailTopBar(
+                    title = state.pokemonDetail?.name ?: "Pokemon Empty",
+                    isFavorite = state.isFavorite,
+                    onEvent = viewModel::onEvent,
                 )
             },
             containerColor = Color.Transparent
