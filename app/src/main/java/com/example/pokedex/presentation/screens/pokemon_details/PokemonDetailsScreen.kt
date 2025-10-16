@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -42,7 +41,6 @@ import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonT
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonDetailsScreen(
     pokemonName: String,
@@ -124,7 +122,7 @@ fun PokemonDetailsScreen(
 
                 PokemonTypes(
                     modifier = Modifier.padding(8.dp),
-                    abilities = state.pokemonDetail?.types ?: emptyList()
+                    types = state.pokemonDetail?.types ?: emptyList()
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))

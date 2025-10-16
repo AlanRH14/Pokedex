@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.utils.DrawableUtils.icon
 
 @Composable
-fun PokemonTypes(ability: String) {
+fun PokemonTypes(types: String) {
     Row(
         modifier = Modifier
             .border(
@@ -37,14 +37,14 @@ fun PokemonTypes(ability: String) {
     ) {
         Icon(
             modifier = Modifier.size(14.dp),
-            painter = painterResource(id = ability.icon),
-            contentDescription = "Icon $ability",
+            painter = painterResource(id = types.icon),
+            contentDescription = "Icon $types",
         )
 
         Spacer(modifier = Modifier.width(8.dp))
 
         Text(
-            text = ability,
+            text = types,
             color = Color.White,
             style = MaterialTheme.typography.bodyLarge,
         )
