@@ -1,4 +1,4 @@
-package com.example.pokedex.presentation.screens.pokemon_details
+package com.example.pokedex.presentation.screens.pokemon_details.widgets
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
