@@ -1,0 +1,35 @@
+Subject: [PATCH] Plataforma | Integracion
+---
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 1b40393967ef5223e50db79aae40aff281e0e3e2)
++++ b/app/src/main/AndroidManifest.xml	(date 1755282356625)
+@@ -47,7 +47,9 @@
+                 <category android:name="com.huawei.android.push.intent.category.PUSH"/>
+             </intent-filter>
+         </service>
+-
++        <meta-data
++            android:name="CLEVERTAP_PROVIDER_1"
++            android:value="@string/hps_manifest_entry" />
+         <provider
+             tools:node="replace"
+             android:name="androidx.core.content.FileProvider"
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 1b40393967ef5223e50db79aae40aff281e0e3e2)
++++ b/app/src/main/res/values/strings.xml	(date 1755282585723)
+@@ -1,3 +1,4 @@
+ <resources>
+     <string name="app_name">Banco Azteca</string>
++    <string name="hps_manifest_entry">com.huawei.hms.push.HmsMessageService</string>
+ </resources>
+\ No newline at end of file
