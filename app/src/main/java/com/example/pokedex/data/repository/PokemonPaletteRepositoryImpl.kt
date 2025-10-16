@@ -13,12 +13,18 @@ class PokemonPaletteRepositoryImpl(
     private val paletteDataSource: PaletteDataSource
 ): PokemonPaletteRepository {
 
-    override suspend fun generatePokemonPalette(pokemonURL: String): Pokemon =
+    override suspend fun generatePokemonPalette(pokemon: Pokemon): Pokemon =
         withContext(Dispatchers.IO) {
             try {
-
+                val bitmap = imageRemoteDataSource.generatePaletteFromURL(pokemon.url)
+                if (bitmap != null) {
+                    val palette = paletteDataSource.generatePalette(bitmap = bitmap)
+                    pokemon.copy(colorPalette = palette)
+                } else {
+                    pokemon
+                }
             } catch (e: Exception) {
-
+                pokemon
             }
         }
 }
