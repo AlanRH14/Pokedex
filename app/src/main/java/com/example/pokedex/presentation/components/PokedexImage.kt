@@ -14,7 +14,6 @@ import coil3.request.crossfade
 fun PokemonImage(
     modifier: Modifier = Modifier,
     image: String,
-    //placeHolder: @Composable () -> Unit = {},
     contentScale: ContentScale = ContentScale.Fit,
     colorFilter: ColorFilter? = null,
     contentDescription: String? = null,
