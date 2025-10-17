@@ -3,6 +3,7 @@ package com.example.pokedex.presentation.screens.pokedex
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.MainRepository
+import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonState
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
@@ -15,8 +16,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class PokemonViewModel(
-    private val pokemonRepository: MainRepository
+class PokedexViewModel(
+    private val pokemonRepository: MainRepository,
+    private val pokemonPaletteRepository: PokemonPaletteRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(PokemonState())
@@ -40,8 +42,16 @@ class PokemonViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> _state.update {
+                        val pokemons = result.data.map { pokemon ->
+                            pokemon.copy(
+                                colorPalette = pokemonPaletteRepository.generatePokemonPalette(
+                                    pokemonURL = pokemon.url
+                                )
+                            )
+                        }
+
                         it.copy(
-                            pokemonList = result.data,
+                            pokemonList = pokemons,
                             isLoading = false
                         )
                     }

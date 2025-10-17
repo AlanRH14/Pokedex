@@ -122,7 +122,8 @@ fun PokemonDetailsScreen(
 
                 PokemonTypes(
                     modifier = Modifier.padding(8.dp),
-                    types = state.pokemonDetail?.types ?: emptyList()
+                    types = state.pokemonDetail?.types ?: emptyList(),
+                    color = state.pokemonDetail?.colorPalette?.domainColor ?: Color.White.hashCode()
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
