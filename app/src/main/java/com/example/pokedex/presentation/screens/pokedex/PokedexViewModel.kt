@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class PokemonViewModel(
+class PokedexViewModel(
     private val pokemonRepository: MainRepository
 ) : ViewModel() {
 

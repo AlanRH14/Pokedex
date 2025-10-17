@@ -24,7 +24,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun PokedexScreen(
     modifier: Modifier,
-    viewModel: PokemonViewModel = koinViewModel(),
+    viewModel: PokedexViewModel = koinViewModel(),
     navController: NavHostController
 ) {
 
