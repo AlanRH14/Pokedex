@@ -6,6 +6,7 @@ data class PokemonDetail(
     val url: String = "",
     val height: Float = 0F,
     val weight: Float = 0F,
+    val colorPalette: PokemonPaletteColors? = null,
     val sprites: Sprites = Sprites(),
     val types: List<Type> = emptyList(),
     val stats: List<Stat> = emptyList(),
