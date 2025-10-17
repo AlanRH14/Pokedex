@@ -45,7 +45,7 @@ class PokemonDetailViewModel(
 
                         val pokemon = pokemonPaletteRepository.generatePokemonPalette(result.data.url)
                         it.copy(
-                            pokemonDetail = result.data.copy(pokemonPalette = pokemon),
+                            pokemonDetail = result.data.copy(colorPalette = pokemon),
                             isLoading = false,
                         )
                     }
