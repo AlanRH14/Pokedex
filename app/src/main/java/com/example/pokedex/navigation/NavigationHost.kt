@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.example.pokedex.presentation.screens.pokedex.PokemonListScreen
+import com.example.pokedex.presentation.screens.pokedex.PokedexScreen
 import com.example.pokedex.presentation.screens.pokemon_details.PokemonDetailsScreen
 
 @Composable
@@ -24,7 +24,7 @@ fun NavigationHost(
     ) {
 
         composable<NavRoute.PokemonsScreen> {
-            PokemonListScreen(
+            PokedexScreen(
                 modifier = modifier,
                 navController = navController,
             )

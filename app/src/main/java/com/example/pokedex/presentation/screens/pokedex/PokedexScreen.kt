@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun PokemonListScreen(
+fun PokedexScreen(
     modifier: Modifier,
     viewModel: PokemonViewModel = koinViewModel(),
     navController: NavHostController
