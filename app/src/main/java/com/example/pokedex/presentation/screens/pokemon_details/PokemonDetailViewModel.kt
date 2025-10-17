@@ -43,9 +43,9 @@ class PokemonDetailViewModel(
 
                     is Resource.Success -> _state.update {
 
-                        val pokemon = pokemonPaletteRepository.generatePokemonPalette(result.data)
+                        val pokemon = pokemonPaletteRepository.generatePokemonPalette(result.data.url)
                         it.copy(
-                            pokemonDetail = result.data,
+                            pokemonDetail = result.data.copy(pokemonPalette = pokemon),
                             isLoading = false,
                         )
                     }
