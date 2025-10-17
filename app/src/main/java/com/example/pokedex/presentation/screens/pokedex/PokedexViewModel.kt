@@ -2,6 +2,8 @@ package com.example.pokedex.presentation.screens.pokedex
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.domain.models.PokemonPaletteColors
 import com.example.pokedex.domain.repository.MainRepository
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
@@ -42,16 +44,10 @@ class PokedexViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> _state.update {
-                        val pokemons = result.data.map { pokemon ->
-                            pokemon.copy(
-                                colorPalette = pokemonPaletteRepository.generatePokemonPalette(
-                                    pokemonURL = pokemon.url
-                                )
-                            )
-                        }
+                        preloadFirstPalettes(result.data.take(20))
 
                         it.copy(
-                            pokemonList = pokemons,
+                            pokemonList = result.data,
                             isLoading = false
                         )
                     }
@@ -64,6 +60,37 @@ class PokedexViewModel(
                     }
                 }
             }
+        }
+    }
+
+    private fun preloadFirstPalettes(firstPokemons: List<Pokemon>)  {
+        viewModelScope.launch {
+            firstPokemons.forEach { loadPaletteForPokemon(it) }
+        }
+    }
+
+    private suspend fun loadPaletteForPokemon(pokemon: Pokemon) {
+        try {
+            val palette = pokemonPaletteRepository.generatePokemonPalette(pokemon.url)
+            if (palette != null) {
+                updatePokemonPalette(pokemon= pokemon, palette = palette)
+            }
+        } catch (e: Exception) {
+            print("Error: ${pokemon.name} ${e.message}")
+        }
+    }
+
+    private fun updatePokemonPalette(pokemon: Pokemon, palette: PokemonPaletteColors) {
+        _state.update {
+            val updateList = it.pokemonList.map { existingPokemon ->
+                if (existingPokemon.id == pokemon.id) {
+                    existingPokemon.copy(colorPalette = palette)
+                } else {
+                    existingPokemon
+                }
+            }
+
+            it.copy(pokemonList = updateList)
         }
     }
 
