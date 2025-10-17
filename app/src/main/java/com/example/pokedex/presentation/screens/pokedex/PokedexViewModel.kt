@@ -44,10 +44,12 @@ class PokedexViewModel(
                     is Resource.Success -> _state.update {
                         val pokemons = result.data.map { pokemon ->
                             pokemonPaletteRepository.generatePokemonPalette(pokemon)
+
+                            pokemon.copy(url = )
                         }
 
                         it.copy(
-                            pokemonList = pokemons,
+                            pokemonList = result.data,
                             isLoading = false
                         )
                     }
