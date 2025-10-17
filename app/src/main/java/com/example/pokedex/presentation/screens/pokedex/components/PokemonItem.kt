@@ -29,10 +29,11 @@ fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
+    val domainColor = Color(pokemon.colorPalette?.domainColor ?: 0x00000000)
     Card(
         modifier = Modifier,
         colors = CardDefaults.cardColors(
-            containerColor = Color.Transparent,
+            containerColor = domainColor,
             contentColor = MaterialTheme.colorScheme.onBackground
         ),
         shape = MaterialTheme.shapes.large,

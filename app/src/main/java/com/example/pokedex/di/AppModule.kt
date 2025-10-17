@@ -6,6 +6,6 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
-    viewModel { PokedexViewModel(pokemonRepository = get()) }
+    viewModel { PokedexViewModel(pokemonRepository = get(), pokemonPaletteRepository = get()) }
     viewModel { PokemonDetailViewModel(pokemonDetailRepository = get()) }
 }
