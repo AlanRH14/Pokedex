@@ -33,8 +33,7 @@ class PokedexViewModel(
         when (event) {
             is PokemonUIEvent.OnGetPokemonList -> getPokemons()
             is PokemonUIEvent.OnClickPokemonDetail -> navigateToPokemonDetail(pokemonName = event.pokemonName)
-            is PokemonUIEvent.OnPokemonItemVisible -> Unit
-
+            is PokemonUIEvent.OnPokemonItemVisible -> onPokemonVisible
         }
     }
 
@@ -92,6 +91,14 @@ class PokedexViewModel(
             }
 
             it.copy(pokemonList = updateList)
+        }
+    }
+
+    private fun onPokemonVisible(pokemon: Pokemon) {
+        viewModelScope.launch {
+            if (pokemon.colorPalette == null) {
+                loadPaletteForPokemon(pokemon)
+            }
         }
     }
 
