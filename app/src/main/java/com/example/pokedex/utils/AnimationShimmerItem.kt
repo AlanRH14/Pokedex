@@ -40,17 +40,21 @@ fun Modifier.animationShimmerItem(
         ),
         label = "",
     )
-    background(
-        brush = Brush.linearGradient(
-            colors = gradiantColors,
-            start = Offset(x = alphaAnim.value, y = 0F),
-            end = Offset(
-                x = alphaAnim.value + size.width.toFloat(),
-                y = size.height.toFloat()
-            )
-        )
-    ).onGloballyPositioned {
-        size = it.size
-    }
 
+    if (isLoading) {
+        background(
+            brush = Brush.linearGradient(
+                colors = gradiantColors,
+                start = Offset(x = alphaAnim.value, y = 0F),
+                end = Offset(
+                    x = alphaAnim.value + size.width.toFloat(),
+                    y = size.height.toFloat()
+                )
+            )
+        ).onGloballyPositioned {
+            size = it.size
+        }
+    } else {
+        this
+    }
 }
