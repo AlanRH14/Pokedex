@@ -52,3 +52,9 @@ val Water = Color(0xFF2648DC)
 val Fighting = Color(0xFF9F422A)
 val Grass = Color(0xFF007C42)
 val Ground = Color(0xFFAD7235)
+
+val LinearGradiantColors = listOf(
+    Color.LightGray.copy(alpha = 0.6F),
+    Color.LightGray.copy(alpha = 0.2F),
+    Color.LightGray.copy(alpha = 0.6F)
+)

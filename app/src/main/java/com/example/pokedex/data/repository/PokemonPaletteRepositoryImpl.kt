@@ -13,15 +13,15 @@ class PokemonPaletteRepositoryImpl(
     private val paletteDataSource: PaletteDataSource
 ): PokemonPaletteRepository {
 
+    private val paletteCache = mutableMapOf<String, PokemonPaletteColors>()
+
     override suspend fun generatePokemonPalette(pokemonURL: String): PokemonPaletteColors? =
         withContext(Dispatchers.IO) {
             try {
-                val bitmap = imageRemoteDataSource.generatePaletteFromURL(pokemonURL)
-                if (bitmap != null) {
-                    paletteDataSource.generatePalette(bitmap = bitmap)
-                } else {
-                    null
-                }
+                paletteCache[pokemonURL]?.let { return@withContext  it }
+                val bitmap = imageRemoteDataSource.generatePaletteFromURL(pokemonURL = pokemonURL)
+                val palette = bitmap?.let { paletteDataSource.generatePalette(bitmap) }
+                palette?.also { paletteCache[pokemonURL] = it }
             } catch (e: Exception) {
                 print("Error: ${e.message}")
                 null

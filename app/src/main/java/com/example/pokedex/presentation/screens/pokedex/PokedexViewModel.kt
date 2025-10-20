@@ -17,6 +17,8 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 
 class PokedexViewModel(
     private val pokemonRepository: MainRepository,
@@ -28,6 +30,8 @@ class PokedexViewModel(
 
     private val _effect = MutableSharedFlow<PokemonEffect>()
     val effect = _effect.asSharedFlow()
+
+    private val paletteSemaphore = Semaphore(4)
 
     fun onEvent(event: PokemonUIEvent) {
         when (event) {
@@ -62,28 +66,29 @@ class PokedexViewModel(
     }
 
     private suspend fun loadPaletteForPokemon(pokemon: Pokemon) {
-        try {
-            val palette = pokemonPaletteRepository.generatePokemonPalette(pokemon.url)
-            if (palette != null) {
-                updatePokemonPalette(pokemon= pokemon, palette = palette)
+        paletteSemaphore.withPermit {
+            try {
+                val palette = pokemonPaletteRepository.generatePokemonPalette(pokemon.url)
+                if (palette != null) {
+                    updatePokemonPalette(pokemon= pokemon, palette = palette)
+                }
+            } catch (e: Exception) {
+                print("Error: ${pokemon.name} ${e.message}")
             }
-        } catch (e: Exception) {
-            print("Error: ${pokemon.name} ${e.message}")
         }
     }
 
     private fun updatePokemonPalette(pokemon: Pokemon, palette: PokemonPaletteColors) {
         _state.update {
-            val test: MutableList<Pokemon> =mutableListOf()
-            it.pokemonList.forEach { existingPokemon ->
-                test.add(if (existingPokemon.id == pokemon.id) {
+           val updateList = it.pokemonList.map { existingPokemon ->
+                if (existingPokemon.id == pokemon.id) {
                     existingPokemon.copy(colorPalette = palette)
                 } else {
                     existingPokemon
-                } )
+                }
             }
 
-            it.copy(pokemonList = test)
+            it.copy(pokemonList = updateList)
         }
     }
 

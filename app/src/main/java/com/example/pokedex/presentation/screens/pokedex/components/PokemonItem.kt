@@ -24,13 +24,13 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
+import com.example.pokedex.utils.animationShimmerItem
 
 @Composable
 fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
-
     LaunchedEffect(key1 = pokemon.id) {
         if (pokemon.colorPalette == null) {
             onEvent(PokemonUIEvent.OnPokemonItemVisible(pokemon = pokemon))
@@ -53,11 +53,15 @@ fun PokemonItem(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.background(Color.Transparent).padding(4.dp)
+            modifier = Modifier
+                .background(Color.Transparent)
+                .padding(4.dp)
         ) {
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
