@@ -21,14 +21,15 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 
 fun Modifier.animationShimmerItem(
+    isLoading: Boolean = true,
     durationMillis: Int = 1500,
     gradiantColors: List<Color>
 ): Modifier = composed {
     var size by remember { mutableStateOf(IntSize.Zero) }
     val transition = rememberInfiniteTransition(label = "")
     val alphaAnim = transition.animateFloat(
-        initialValue = -2 * size.width.toFloat(),
-        targetValue = 2 * size.width.toFloat(),
+        initialValue = 0F,
+        targetValue = (2 * size.width.toFloat()),
         animationSpec = infiniteRepeatable(
             animation = tween(
                 durationMillis = durationMillis,
