@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -45,16 +46,22 @@ fun PokedexScreen(
         modifier = modifier
             .fillMaxSize()
     ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            items(state.pokemonList, key = { it.name }) { pokemon ->
-                PokemonItem(
-                    pokemon = pokemon,
-                    onEvent = viewModel::onEvent
-                )
+        if (state.isLoading) {
+            CircularProgressIndicator()
+        }
+
+        if (state.pokemonList.isNotEmpty()) {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                items(state.pokemonList, key = { it.name }) { pokemon ->
+                    PokemonItem(
+                        pokemon = pokemon,
+                        onEvent = viewModel::onEvent
+                    )
+                }
             }
         }
 
