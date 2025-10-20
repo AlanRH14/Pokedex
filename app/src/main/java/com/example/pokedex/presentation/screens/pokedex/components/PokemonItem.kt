@@ -55,11 +55,15 @@ fun PokemonItem(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.background(Color.Transparent).padding(4.dp)
+            modifier = Modifier
+                .background(Color.Transparent)
+                .padding(4.dp)
         ) {
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
@@ -75,6 +79,7 @@ fun PokemonItem(
                 )
 
                 Text(
+                    modifier = Modifier.animationShimmerItem(isLoading = isLoading),
                     text = pokemon.id,
                     textAlign = TextAlign.End,
                     color = onDomainColor.copy(alpha = 0.5F),
@@ -88,7 +93,8 @@ fun PokemonItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1.2f)
-                    .fillMaxHeight(),
+                    .fillMaxHeight()
+                    .animationShimmerItem(isLoading = isLoading),
                 image = pokemon.url,
                 contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
