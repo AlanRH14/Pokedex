@@ -32,8 +32,8 @@ class PokedexViewModel(
     fun onEvent(event: PokemonUIEvent) {
         when (event) {
             is PokemonUIEvent.OnGetPokemonList -> getPokemons()
-
             is PokemonUIEvent.OnClickPokemonDetail -> navigateToPokemonDetail(pokemonName = event.pokemonName)
+            is PokemonUIEvent.OnPokemonItemVisible -> onPokemonVisible(pokemon = event.pokemon)
         }
     }
 
@@ -44,8 +44,6 @@ class PokedexViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> _state.update {
-                        preloadFirstPalettes(result.data.take(20))
-
                         it.copy(
                             pokemonList = result.data,
                             isLoading = false
@@ -63,12 +61,6 @@ class PokedexViewModel(
         }
     }
 
-    private fun preloadFirstPalettes(firstPokemons: List<Pokemon>)  {
-        viewModelScope.launch {
-            firstPokemons.forEach { loadPaletteForPokemon(it) }
-        }
-    }
-
     private suspend fun loadPaletteForPokemon(pokemon: Pokemon) {
         try {
             val palette = pokemonPaletteRepository.generatePokemonPalette(pokemon.url)
@@ -82,15 +74,24 @@ class PokedexViewModel(
 
     private fun updatePokemonPalette(pokemon: Pokemon, palette: PokemonPaletteColors) {
         _state.update {
-            val updateList = it.pokemonList.map { existingPokemon ->
-                if (existingPokemon.id == pokemon.id) {
+            val test: MutableList<Pokemon> =mutableListOf()
+            it.pokemonList.forEach { existingPokemon ->
+                test.add(if (existingPokemon.id == pokemon.id) {
                     existingPokemon.copy(colorPalette = palette)
                 } else {
                     existingPokemon
-                }
+                } )
             }
 
-            it.copy(pokemonList = updateList)
+            it.copy(pokemonList = test)
+        }
+    }
+
+    private fun onPokemonVisible(pokemon: Pokemon) {
+        viewModelScope.launch {
+            if (pokemon.colorPalette == null) {
+                loadPaletteForPokemon(pokemon)
+            }
         }
     }
 
