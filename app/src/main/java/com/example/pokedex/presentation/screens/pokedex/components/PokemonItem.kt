@@ -13,6 +13,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,8 +30,16 @@ fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
+
+    LaunchedEffect(key1 = pokemon.id) {
+        if (pokemon.colorPalette == null) {
+            onEvent(PokemonUIEvent.OnPokemonItemVisible(pokemon = pokemon))
+        }
+    }
+
     val domainColor = Color(pokemon.colorPalette?.domainColor ?: Color.Transparent.hashCode())
     val onDomainColor = Color(pokemon.colorPalette?.onDominantColor ?: Color.White.hashCode())
+
     Card(
         modifier = Modifier,
         colors = CardDefaults.cardColors(
