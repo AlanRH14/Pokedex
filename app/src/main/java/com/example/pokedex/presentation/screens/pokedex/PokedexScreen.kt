@@ -56,12 +56,19 @@ fun PokedexScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                items(state.pokemonList, key = { it.name }) { pokemon ->
-                    PokemonItem(
-                        pokemon = pokemon,
-                        onEvent = viewModel::onEvent
-                    )
+                if (state.isLoading) {
+                    items(10) {
+
+                    }
+                } else {
+                    items(state.pokemonList, key = { it.name }) { pokemon ->
+                        PokemonItem(
+                            pokemon = pokemon,
+                            onEvent = viewModel::onEvent
+                        )
+                    }
                 }
+
             }
         }
 
