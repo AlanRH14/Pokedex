@@ -53,12 +53,3 @@ fun Modifier.animationShimmerItem(
     }
 
 }
-
-enum class TYPE_COLOR(val color: Color) {
-    Fire(color = Color.White),
-
-    WATER(color = Color.Blue),
-
-
-    GRACE(color = Color.Green)
-}
