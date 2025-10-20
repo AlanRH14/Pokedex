@@ -12,18 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.pokedex.presentation.components.PokemonImage
-import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
-import com.example.pokedex.utils.TYPE_COLOR
 
 @Composable
 fun PokemonItemShimmer() {
@@ -54,27 +47,16 @@ fun PokemonItemShimmer() {
                 Box(
                     modifier = Modifier
                         .weight(1F),
-                    color = onDomainColor.copy(alpha = 0.8F),
                 )
 
-                Text(
-                    text = pokemon.id,
-                    textAlign = TextAlign.End,
-                    color = onDomainColor.copy(alpha = 0.5F),
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
+                Box{}
             }
 
-            PokemonImage(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1.2f)
                     .fillMaxHeight(),
-                image = pokemon.url,
-                contentScale = ContentScale.Fit,
-                contentDescription = "Image ${pokemon.name}",
             )
         }
     }
