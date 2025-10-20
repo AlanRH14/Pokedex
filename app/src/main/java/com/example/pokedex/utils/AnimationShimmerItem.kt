@@ -18,11 +18,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
+import com.example.pokedex.ui.theme.LinearGradiantColors
 
 fun Modifier.animationShimmerItem(
     isLoading: Boolean = true,
     durationMillis: Int = 1500,
-    gradiantColors: List<Color>
+    gradiantColors: List<Color> = LinearGradiantColors
 ): Modifier = composed {
     var size by remember { mutableStateOf(IntSize.Zero) }
     val transition = rememberInfiniteTransition(label = "")
