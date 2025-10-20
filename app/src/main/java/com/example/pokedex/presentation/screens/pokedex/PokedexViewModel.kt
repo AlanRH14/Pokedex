@@ -33,7 +33,7 @@ class PokedexViewModel(
         when (event) {
             is PokemonUIEvent.OnGetPokemonList -> getPokemons()
             is PokemonUIEvent.OnClickPokemonDetail -> navigateToPokemonDetail(pokemonName = event.pokemonName)
-            is PokemonUIEvent.OnPokemonItemVisible -> onPokemonVisible
+            is PokemonUIEvent.OnPokemonItemVisible -> onPokemonVisible(pokemon = event.pokemon)
         }
     }
 
