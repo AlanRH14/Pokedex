@@ -31,8 +31,6 @@ fun PokemonItem(
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
-
-    val isLoading = pokemon.colorPalette == null
     LaunchedEffect(key1 = pokemon.id) {
         if (pokemon.colorPalette == null) {
             onEvent(PokemonUIEvent.OnPokemonItemVisible(pokemon = pokemon))
@@ -68,8 +66,7 @@ fun PokemonItem(
             ) {
                 Text(
                     modifier = Modifier
-                        .weight(1F)
-                        .animationShimmerItem(isLoading = isLoading),
+                        .weight(1F),
                     text = pokemon.name,
                     textAlign = TextAlign.Center,
                     color = onDomainColor.copy(alpha = 0.8F),
@@ -79,7 +76,6 @@ fun PokemonItem(
                 )
 
                 Text(
-                    modifier = Modifier.animationShimmerItem(isLoading = isLoading),
                     text = pokemon.id,
                     textAlign = TextAlign.End,
                     color = onDomainColor.copy(alpha = 0.5F),
@@ -93,8 +89,7 @@ fun PokemonItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1.2f)
-                    .fillMaxHeight()
-                    .animationShimmerItem(isLoading = isLoading),
+                    .fillMaxHeight(),
                 image = pokemon.url,
                 contentScale = ContentScale.Fit,
                 contentDescription = "Image ${pokemon.name}",
