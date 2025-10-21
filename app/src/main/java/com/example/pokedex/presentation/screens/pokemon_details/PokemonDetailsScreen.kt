@@ -66,7 +66,10 @@ fun PokemonDetailsScreen(
                 is PokemonDetailEffect.NavigateToBack -> navController.popBackStack()
                 is PokemonDetailEffect.NavigateToTabs -> {
                     when (effect.route) {
-                        "Information" -> navController.navigate("Info")
+                        "Info" -> navController.navigate("Info")
+                        "Stats" -> navController.navigate("Stats")
+                        "Defence" -> navController.navigate("Defence")
+                        "Evolution" -> navController.navigate("Evolution")
                     }
                 }
             }
