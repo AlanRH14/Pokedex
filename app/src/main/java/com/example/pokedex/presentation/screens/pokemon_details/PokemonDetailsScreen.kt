@@ -42,7 +42,6 @@ import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetai
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonDetailTopBar
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonInfo
-import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonTypes
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
