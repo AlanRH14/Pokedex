@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.navigation.DestinationTabs
 import com.example.pokedex.navigation.InformationTabsHost
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
@@ -25,6 +26,7 @@ import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetai
 fun PokemonTabsInfo(
     modifier: Modifier = Modifier,
     navController: NavHostController,
+    pokemonDetail: PokemonDetail? = null,
     onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
     val startDestination = DestinationTabs.INFORMATION
@@ -60,7 +62,10 @@ fun PokemonTabsInfo(
                 .fillMaxSize(),
             state = pagerState,
         ) {
-            InformationTabsHost(navController = navController)
+            InformationTabsHost(
+                navController = navController,
+                pokemonDetail = pokemonDetail
+            )
         }
     }
 }

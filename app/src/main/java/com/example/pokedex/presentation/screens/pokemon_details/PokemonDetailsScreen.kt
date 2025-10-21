@@ -151,11 +151,10 @@ fun PokemonDetailsScreen(
 
                 Spacer(modifier = Modifier.height(64.dp))
 
-                //PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
-
                 PokemonTabsInfo(
                     modifier = Modifier.fillMaxSize(),
                     navController = tabsNavController,
+                    pokemonDetail = state.pokemonDetail,
                     onEvent = viewModel::onEvent
                 )
             }

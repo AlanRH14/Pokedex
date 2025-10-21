@@ -10,9 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.pokedex.domain.models.PokemonDetail
+import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 
 @Composable
-fun InformationTabsHost(navController: NavHostController) {
+fun InformationTabsHost(
+    navController: NavHostController,
+    pokemonDetail: PokemonDetail? = null
+) {
     NavHost(
         modifier = Modifier.fillMaxSize(),
         startDestination = "Info",
@@ -34,7 +39,7 @@ fun InformationTabsHost(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text("Stats")
+                PokemonStats(stats = pokemonDetail?.stats ?: emptyList())
             }
         }
 
