@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTabsInfo
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect

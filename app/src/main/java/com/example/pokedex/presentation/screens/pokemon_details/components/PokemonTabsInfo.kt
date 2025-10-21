@@ -15,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.navigation.DestinationTabs
 import com.example.pokedex.navigation.InformationTabsHost
@@ -23,9 +24,9 @@ import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetai
 @Composable
 fun PokemonTabsInfo(
     modifier: Modifier = Modifier,
+    navController: NavHostController,
     onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
-    val navController = rememberNavController()
     val startDestination = DestinationTabs.INFORMATION
     val pagerState = rememberPagerState { DestinationTabs.entries.size }
     var selectedDestination by rememberSaveable { mutableIntStateOf(startDestination.ordinal) }
