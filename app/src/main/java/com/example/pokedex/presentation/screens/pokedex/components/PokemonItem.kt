@@ -2,7 +2,6 @@ package com.example.pokedex.presentation.screens.pokedex.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
@@ -25,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
-import com.example.pokedex.utils.animationShimmerItem
 
 @Composable
 fun PokemonItem(
