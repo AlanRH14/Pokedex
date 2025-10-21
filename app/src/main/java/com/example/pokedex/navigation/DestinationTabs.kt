@@ -1,8 +1,10 @@
 package com.example.pokedex.navigation
 
-enum class DestinationTabs(val route: String) {
-    INFORMATION(route = "About"),
-    STATS(route = "Stats"),
-    DEFENCE(route = "Defence"),
-    EVOLUTION(route = "Evolution")
+enum class DestinationTabs(
+    val title: String,
+    val route: TabsNavRoute) {
+    INFORMATION(title = "About", route = TabsNavRoute.About),
+    STATS(title = "Stats", route = TabsNavRoute.Stats),
+    DEFENCE(title = "Defence", route = TabsNavRoute.Defence),
+    EVOLUTION(title = "Evolution", route = TabsNavRoute.Evolution)
 }

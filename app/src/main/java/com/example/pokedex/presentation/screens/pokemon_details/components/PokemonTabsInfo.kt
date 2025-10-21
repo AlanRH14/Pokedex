@@ -49,7 +49,7 @@ fun PokemonTabsInfo(
                         }
                     ) {
                         Text(
-                            text = destination.route,
+                            text = destination.title,
                             maxLines = 2,
                             overflow = TextOverflow.Ellipsis
                         )
