@@ -14,12 +14,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -63,12 +65,13 @@ fun PokedexScreen(
         ) {
             if (state.isLoading) {
                 items(20) {
+
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier
                             .background(Color.Transparent)
-                            .padding(4.dp)
+                            .clip(MaterialTheme.shapes.large)
                             .animationShimmerItem(isLoading = true)
                     ) {
 
@@ -80,14 +83,17 @@ fun PokedexScreen(
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .weight(1F)
+                                    .weight(0.8F)
                                     .height(22.dp)
+                                    .padding(all = 2.dp)
                                     .animationShimmerItem(isLoading = true),
                             )
 
                             Box(
                                 modifier = Modifier
+                                    .weight(0.2F)
                                     .height(16.dp)
+                                    .padding(all = 2.dp)
                                     .animationShimmerItem(isLoading = true),
                             )
                         }
@@ -97,6 +103,7 @@ fun PokedexScreen(
                                 .fillMaxWidth()
                                 .aspectRatio(1.2f)
                                 .fillMaxHeight()
+                                .padding(all = 2.dp)
                                 .animationShimmerItem(isLoading = true),
                         )
                     }
