@@ -25,13 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.navigation.DestinationTabs
 import com.example.pokedex.navigation.InformationTabsHost
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
-import org.koin.core.definition.indexKey
 
 @Composable
 fun PokemonTabsInfo(
