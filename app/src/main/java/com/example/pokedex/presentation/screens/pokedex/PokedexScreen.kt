@@ -56,6 +56,7 @@ fun PokedexScreen(
 
     Column(
         modifier = modifier
+            .padding(16.dp)
             .fillMaxSize()
     ) {
         LazyVerticalGrid(

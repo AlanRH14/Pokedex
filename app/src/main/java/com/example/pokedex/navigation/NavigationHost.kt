@@ -17,17 +17,14 @@ fun NavigationHost(
 ) {
 
     NavHost(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize(),
         navController = navController,
         startDestination = NavRoute.PokemonsScreen
     ) {
 
         composable<NavRoute.PokemonsScreen> {
-            PokedexScreen(
-                modifier = modifier,
-                navController = navController,
-            )
+            PokedexScreen(navController = navController, modifier = modifier)
         }
 
         composable<NavRoute.PokemonDetailScreen> {
