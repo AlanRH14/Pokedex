@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.pokedex.domain.models.PokemonDetail
+import com.example.pokedex.navigation.TabsNavRoute.*
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 
 @Composable
@@ -20,10 +21,10 @@ fun InformationTabsHost(
 ) {
     NavHost(
         modifier = Modifier.fillMaxSize(),
-        startDestination = "Info",
+        startDestination = About,
         navController = navController,
     ) {
-        composable("Info") {
+        composable<About> {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -33,7 +34,7 @@ fun InformationTabsHost(
             }
         }
 
-        composable("Stats") {
+        composable<Stats> {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,7 +44,7 @@ fun InformationTabsHost(
             }
         }
 
-        composable("Defence") {
+        composable<Defence> {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -53,7 +54,7 @@ fun InformationTabsHost(
             }
         }
 
-        composable("Evolution") {
+        composable<Evolution> {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
