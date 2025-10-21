@@ -2,6 +2,7 @@ package com.example.pokedex.presentation.screens.pokemon_details.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.PrimaryTabRow
@@ -15,8 +16,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.navigation.DestinationTabs
 import com.example.pokedex.navigation.InformationTabsHost
@@ -59,7 +60,8 @@ fun PokemonTabsInfo(
 
         HorizontalPager(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(vertical = 8.dp),
             state = pagerState,
         ) {
             InformationTabsHost(

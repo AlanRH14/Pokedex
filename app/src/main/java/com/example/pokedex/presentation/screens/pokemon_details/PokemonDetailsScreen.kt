@@ -149,7 +149,7 @@ fun PokemonDetailsScreen(
                     height = state.pokemonDetail?.height ?: 0F,
                 )
 
-                Spacer(modifier = Modifier.height(64.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
                 PokemonTabsInfo(
                     modifier = Modifier.fillMaxSize(),
