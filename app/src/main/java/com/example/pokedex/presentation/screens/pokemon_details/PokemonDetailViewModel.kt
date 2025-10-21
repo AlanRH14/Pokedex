@@ -32,6 +32,7 @@ class PokemonDetailViewModel(
             is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
             is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
+            is PokemonDetailUIEvent.OnClickTabNavigation -> navigateToTabs(route = event.route)
         }
     }
 
@@ -68,5 +69,11 @@ class PokemonDetailViewModel(
 
     private fun navigateToBack() {
         viewModelScope.launch { _effect.emit(PokemonDetailEffect.NavigateToBack) }
+    }
+
+    private fun navigateToTabs(route: String) {
+        viewModelScope.launch {
+            _effect.emit(PokemonDetailEffect.NavigateToTabs(route = route))
+        }
     }
 }
