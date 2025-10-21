@@ -144,7 +144,7 @@ fun PokemonDetailsScreen(
 
                 //PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
 
-                PokemonTabsInfo (modifier = Modifier.fillMaxSize()){  }
+                PokemonTabsInfo (modifier = Modifier.fillMaxSize(), navController = navController){  }
             }
         }
     }
