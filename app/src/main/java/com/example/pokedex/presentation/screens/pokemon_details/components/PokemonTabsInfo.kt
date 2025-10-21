@@ -40,8 +40,8 @@ fun PokemonTabsInfo(
                     Tab(
                         selected = selectedDestination == index,
                         onClick = {
-                            onEvent(PokemonDetailUIEvent)
                             selectedDestination = index
+                            onEvent(PokemonDetailUIEvent.OnClickTabNavigation(route = destination.text))
                         }
                     ) {
                         Text(
