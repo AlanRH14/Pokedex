@@ -64,14 +64,7 @@ fun PokemonDetailsScreen(
         viewModel.effect.collectLatest { effect ->
             when (effect) {
                 is PokemonDetailEffect.NavigateToBack -> navController.popBackStack()
-                is PokemonDetailEffect.NavigateToTabs -> {
-                    when (effect.route) {
-                        "Info" -> tabsNavController.navigate("Info")
-                        "Stats" -> tabsNavController.navigate("Stats")
-                        "Defence" -> tabsNavController.navigate("Defence")
-                        "Evolution" -> tabsNavController.navigate("Evolution")
-                    }
-                }
+                is PokemonDetailEffect.NavigateToTabs -> tabsNavController.navigate(route = effect.route)
             }
         }
     }
