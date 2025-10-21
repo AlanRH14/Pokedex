@@ -45,7 +45,8 @@ class PokemonDetailViewModel(
 
                     is Resource.Success -> _state.update {
 
-                        val pokemon = pokemonPaletteRepository.generatePokemonPalette(result.data.url)
+                        val pokemon =
+                            pokemonPaletteRepository.generatePokemonPalette(result.data.url)
                         it.copy(
                             pokemonDetail = result.data.copy(colorPalette = pokemon),
                             isLoading = false,
@@ -72,7 +73,7 @@ class PokemonDetailViewModel(
         viewModelScope.launch { _effect.emit(PokemonDetailEffect.NavigateToBack) }
     }
 
-    private fun navigateToTabs(route: String) {
+    private fun navigateToTabs(route: TabsNavRoute) {
         viewModelScope.launch {
             _effect.emit(PokemonDetailEffect.NavigateToTabs(route = route))
         }
