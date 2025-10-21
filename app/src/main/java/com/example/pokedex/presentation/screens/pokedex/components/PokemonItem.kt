@@ -40,7 +40,6 @@ fun PokemonItem(
     val onDomainColor = Color(pokemon.colorPalette?.onDominantColor ?: Color.White.hashCode())
 
     Card(
-        modifier = Modifier,
         colors = CardDefaults.cardColors(
             containerColor = domainColor,
             contentColor = MaterialTheme.colorScheme.onBackground
