@@ -1,15 +1,19 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.pokedex.presentation.components.PokemonImage
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTabsInfo
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonDetailTopBar
@@ -90,8 +95,9 @@ fun PokemonDetailsScreen(
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
+                    .verticalScroll(rememberScrollState())
                     .padding(horizontal = 32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Box(
                     modifier = Modifier,
@@ -135,7 +141,9 @@ fun PokemonDetailsScreen(
 
                 Spacer(modifier = Modifier.height(64.dp))
 
-                PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
+                //PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
+
+                PokemonTabsInfo (modifier = Modifier.fillMaxSize()){  }
             }
         }
     }
