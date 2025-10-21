@@ -72,7 +72,7 @@ class PokemonDetailViewModel(
         viewModelScope.launch { _effect.emit(PokemonDetailEffect.NavigateToBack) }
     }
 
-    private fun navigateToTabs(route: TabsNavRoute) {
+    private fun navigateToTabs(route: String) {
         viewModelScope.launch {
             _effect.emit(PokemonDetailEffect.NavigateToTabs(route = route))
         }
