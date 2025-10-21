@@ -55,6 +55,7 @@ fun PokemonDetailsScreen(
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val tabsNavController = rememberNavController()
 
     LaunchedEffect(key1 = pokemonName) {
         viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonDetail(pokemonName = pokemonName))
@@ -66,10 +67,10 @@ fun PokemonDetailsScreen(
                 is PokemonDetailEffect.NavigateToBack -> navController.popBackStack()
                 is PokemonDetailEffect.NavigateToTabs -> {
                     when (effect.route) {
-                        "Info" -> navController.navigate("Info")
-                        "Stats" -> navController.navigate("Stats")
-                        "Defence" -> navController.navigate("Defence")
-                        "Evolution" -> navController.navigate("Evolution")
+                        "Info" -> tabsNavController.navigate("Info")
+                        "Stats" -> tabsNavController.navigate("Stats")
+                        "Defence" -> tabsNavController.navigate("Defence")
+                        "Evolution" -> tabsNavController.navigate("Evolution")
                     }
                 }
             }
@@ -152,7 +153,11 @@ fun PokemonDetailsScreen(
 
                 //PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
 
-                PokemonTabsInfo (modifier = Modifier.fillMaxSize(), navController = navController){  }
+                PokemonTabsInfo(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = tabsNavController,
+                    onEvent = viewModel::onEvent
+                )
             }
         }
     }
