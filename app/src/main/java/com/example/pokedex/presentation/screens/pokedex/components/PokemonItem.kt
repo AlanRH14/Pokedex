@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.presentation.components.PokemonImage
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
-import com.example.pokedex.utils.animationShimmerItem
 
 @Composable
 fun PokemonItem(
@@ -41,7 +40,6 @@ fun PokemonItem(
     val onDomainColor = Color(pokemon.colorPalette?.onDominantColor ?: Color.White.hashCode())
 
     Card(
-        modifier = Modifier,
         colors = CardDefaults.cardColors(
             containerColor = domainColor,
             contentColor = MaterialTheme.colorScheme.onBackground

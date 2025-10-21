@@ -5,11 +5,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -31,12 +34,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.presentation.components.PokemonImage
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTabsInfo
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonDetailTopBar
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonInfo
-import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonTypes
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
@@ -49,6 +53,7 @@ fun PokemonDetailsScreen(
 ) {
 
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val tabsNavController = rememberNavController()
 
     LaunchedEffect(key1 = pokemonName) {
         viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonDetail(pokemonName = pokemonName))
@@ -58,6 +63,7 @@ fun PokemonDetailsScreen(
         viewModel.effect.collectLatest { effect ->
             when (effect) {
                 is PokemonDetailEffect.NavigateToBack -> navController.popBackStack()
+                is PokemonDetailEffect.NavigateToTabs -> tabsNavController.navigate(route = effect.route)
             }
         }
     }
@@ -90,8 +96,9 @@ fun PokemonDetailsScreen(
             Column(
                 modifier = Modifier
                     .padding(paddingValues)
+                    .verticalScroll(rememberScrollState())
                     .padding(horizontal = 32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Box(
                     modifier = Modifier,
@@ -133,9 +140,14 @@ fun PokemonDetailsScreen(
                     height = state.pokemonDetail?.height ?: 0F,
                 )
 
-                Spacer(modifier = Modifier.height(64.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
-                PokemonStats(stats = state.pokemonDetail?.stats ?: emptyList())
+                PokemonTabsInfo(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = tabsNavController,
+                    pokemonDetail = state.pokemonDetail,
+                    onEvent = viewModel::onEvent
+                )
             }
         }
     }

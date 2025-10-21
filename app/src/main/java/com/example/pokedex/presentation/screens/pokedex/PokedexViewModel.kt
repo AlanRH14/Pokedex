@@ -87,13 +87,13 @@ class PokedexViewModel(
                     existingPokemon
                 }
             }
-
-            it.copy(pokemonList = updateList)
+            it.copy(pokemonList = updateList, isLoading = false)
         }
     }
 
     private fun onPokemonVisible(pokemon: Pokemon) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
+            _state.update { it.copy(isLoading = true) }
             if (pokemon.colorPalette == null) {
                 loadPaletteForPokemon(pokemon)
             }

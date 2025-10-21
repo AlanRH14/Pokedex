@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import coil3.compose.AsyncImage
+import coil3.compose.SubcomposeAsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 
@@ -14,6 +14,8 @@ import coil3.request.crossfade
 fun PokemonImage(
     modifier: Modifier = Modifier,
     image: String,
+    isLoading: Boolean = true,
+    placeHolder: @Composable () -> Unit? = {},
     contentScale: ContentScale = ContentScale.Fit,
     colorFilter: ColorFilter? = null,
     contentDescription: String? = null,
@@ -24,11 +26,16 @@ fun PokemonImage(
         .crossfade(true)
         .build()
 
-    AsyncImage(
+    SubcomposeAsyncImage(
         modifier = modifier,
         model = imageRequest,
         onError = {
             Log.d("LordMiau", "Error Image: ${it.result.throwable.message}")
+        },
+        onLoading = {
+            if (isLoading) {
+                placeHolder
+            }
         },
         contentScale = contentScale,
         colorFilter = colorFilter,

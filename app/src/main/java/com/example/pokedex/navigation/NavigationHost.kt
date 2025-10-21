@@ -1,6 +1,5 @@
 package com.example.pokedex.navigation
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -17,17 +16,12 @@ fun NavigationHost(
 ) {
 
     NavHost(
-        modifier = Modifier
-            .fillMaxSize(),
         navController = navController,
         startDestination = NavRoute.PokemonsScreen
     ) {
 
         composable<NavRoute.PokemonsScreen> {
-            PokedexScreen(
-                modifier = modifier,
-                navController = navController,
-            )
+            PokedexScreen(navController = navController, modifier = modifier)
         }
 
         composable<NavRoute.PokemonDetailScreen> {
