@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
+import com.example.pokedex.navigation.TabsNavRoute
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailState
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
@@ -71,7 +72,7 @@ class PokemonDetailViewModel(
         viewModelScope.launch { _effect.emit(PokemonDetailEffect.NavigateToBack) }
     }
 
-    private fun navigateToTabs(route: String) {
+    private fun navigateToTabs(route: TabsNavRoute) {
         viewModelScope.launch {
             _effect.emit(PokemonDetailEffect.NavigateToTabs(route = route))
         }
