@@ -30,7 +30,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.navigation.DestinationTabs
 import com.example.pokedex.navigation.InformationTabsHost
-import com.example.pokedex.navigation.NavigationHost
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import org.koin.core.definition.indexKey
 
