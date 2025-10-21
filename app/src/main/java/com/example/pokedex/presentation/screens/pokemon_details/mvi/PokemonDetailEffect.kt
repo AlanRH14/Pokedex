@@ -4,5 +4,5 @@ import com.example.pokedex.navigation.TabsNavRoute
 
 sealed interface PokemonDetailEffect {
     data object NavigateToBack: PokemonDetailEffect
-    data class NavigateToTabs(val route: String): PokemonDetailEffect
+    data class NavigateToTabs(val route: TabsNavRoute): PokemonDetailEffect
 }
