@@ -11,7 +11,6 @@ import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonState
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -44,7 +43,6 @@ class PokedexViewModel(
 
     private fun getPokemons() {
         viewModelScope.launch(Dispatchers.IO) {
-            delay(5000)
             pokemonRepository.fetchPokemonList().collect { result ->
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
@@ -89,13 +87,13 @@ class PokedexViewModel(
                     existingPokemon
                 }
             }
-
-            it.copy(pokemonList = updateList)
+            it.copy(pokemonList = updateList, isLoading = false)
         }
     }
 
     private fun onPokemonVisible(pokemon: Pokemon) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
+            _state.update { it.copy(isLoading = true) }
             if (pokemon.colorPalette == null) {
                 loadPaletteForPokemon(pokemon)
             }
