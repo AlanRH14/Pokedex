@@ -22,4 +22,6 @@ interface PokedexService {
     suspend fun fetchPokemonInfo(
         @Path(NAME_PATH) name: String
     ): PokemonDetailDto
+
+
 }
