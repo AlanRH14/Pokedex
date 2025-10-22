@@ -25,7 +25,7 @@ val repositoryNetwork = module {
 
     single<PokemonPaletteRepository> {
         PokemonPaletteRepositoryImpl(
-            imageRemoteDataSource = get(),
+            bitmapFromURLDataSource = get(),
             paletteDataSource = get()
         )
     }

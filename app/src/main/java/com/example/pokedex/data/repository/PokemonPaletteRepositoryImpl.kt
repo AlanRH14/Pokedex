@@ -1,15 +1,14 @@
 package com.example.pokedex.data.repository
 
-import com.example.pokedex.data.remote.ImageRemoteDataSource
+import com.example.pokedex.data.remote.BitmapFromURLDataSource
 import com.example.pokedex.data.remote.PaletteDataSource
-import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.models.PokemonPaletteColors
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class PokemonPaletteRepositoryImpl(
-    private val imageRemoteDataSource: ImageRemoteDataSource,
+    private val bitmapFromURLDataSource: BitmapFromURLDataSource,
     private val paletteDataSource: PaletteDataSource
 ): PokemonPaletteRepository {
 
@@ -19,7 +18,7 @@ class PokemonPaletteRepositoryImpl(
         withContext(Dispatchers.IO) {
             try {
                 paletteCache[pokemonURL]?.let { return@withContext  it }
-                val bitmap = imageRemoteDataSource.generatePaletteFromURL(pokemonURL = pokemonURL)
+                val bitmap = bitmapFromURLDataSource.generatePaletteFromURL(pokemonURL = pokemonURL)
                 val palette = bitmap?.let { paletteDataSource.generatePalette(bitmap) }
                 palette?.also { paletteCache[pokemonURL] = it }
             } catch (e: Exception) {

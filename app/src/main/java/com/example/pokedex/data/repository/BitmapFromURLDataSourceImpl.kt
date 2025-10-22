@@ -2,13 +2,13 @@ package com.example.pokedex.data.repository
 
 import android.graphics.BitmapFactory
 import coil3.Bitmap
-import com.example.pokedex.data.remote.ImageRemoteDataSource
+import com.example.pokedex.data.remote.BitmapFromURLDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
 
-class BitmapFromURLDataSourceImpl : ImageRemoteDataSource {
+class BitmapFromURLDataSourceImpl : BitmapFromURLDataSource {
 
     override suspend fun generatePaletteFromURL(pokemonURL: String): Bitmap? =
         withContext(Dispatchers.IO) {
