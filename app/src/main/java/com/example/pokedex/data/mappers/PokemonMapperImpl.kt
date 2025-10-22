@@ -1,7 +1,7 @@
 package com.example.pokedex.data.mappers
 
 import com.example.pokedex.common.ApiMapper
-import com.example.pokedex.data.models.PokemonResponse
+import com.example.pokedex.data.models.pokedex.PokemonResponse
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.utils.Constants
 import com.example.pokedex.utils.StringUtils.capitalized
