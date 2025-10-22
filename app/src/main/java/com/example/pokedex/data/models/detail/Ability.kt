@@ -1,6 +1,6 @@
 package com.example.pokedex.data.models.detail
 
-import com.example.pokedex.data.models.AbilityInfo
+import com.example.pokedex.data.models.detail.AbilityInfo
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
