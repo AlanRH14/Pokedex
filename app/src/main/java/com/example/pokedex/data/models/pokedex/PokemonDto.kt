@@ -1,4 +1,4 @@
-package com.example.pokedex.data.models
+package com.example.pokedex.data.models.pokedex
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

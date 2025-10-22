@@ -1,5 +1,6 @@
 package com.example.pokedex.data.models
 
+import com.example.pokedex.data.models.pokedex.PokemonDto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
