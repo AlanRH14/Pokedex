@@ -1,7 +1,7 @@
 package com.example.pokedex.data.repository
 
 import com.example.pokedex.common.ApiMapper
-import com.example.pokedex.data.models.pokedex.PokemonResponse
+import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.repository.MainRepository

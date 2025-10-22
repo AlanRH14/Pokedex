@@ -1,7 +1,7 @@
 package com.example.pokedex.data.remote
 
 import com.example.pokedex.data.models.detail.PokemonDetailDto
-import com.example.pokedex.data.models.pokedex.PokemonResponse
+import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.utils.Constants.LIMIT_QUERY
 import com.example.pokedex.utils.Constants.NAME_PATH
 import com.example.pokedex.utils.Constants.OFFSET_QUERY
