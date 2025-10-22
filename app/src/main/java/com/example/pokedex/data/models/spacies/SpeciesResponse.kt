@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SpeciesResponce(
+data class SpeciesResponse(
     @SerialName("base_happiness")
     val baseHappiness: Int?,
     @SerialName("capture_rate")
