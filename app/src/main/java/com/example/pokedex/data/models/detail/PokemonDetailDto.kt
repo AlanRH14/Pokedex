@@ -1,5 +1,9 @@
-package com.example.pokedex.data.models
+package com.example.pokedex.data.models.detail
 
+import com.example.pokedex.data.models.detail.Ability
+import com.example.pokedex.data.models.detail.PokemonType
+import com.example.pokedex.data.models.detail.Sprites
+import com.example.pokedex.data.models.detail.Stat
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
