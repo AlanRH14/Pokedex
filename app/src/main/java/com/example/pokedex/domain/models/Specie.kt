@@ -1,6 +1,6 @@
 package com.example.pokedex.domain.models
 
-data class Species(
+data class Specie(
     val id: Int = 0,
     val name: String = "",
     val baseHappiness: Int = 0,
