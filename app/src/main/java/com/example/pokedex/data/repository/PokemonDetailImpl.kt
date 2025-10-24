@@ -2,6 +2,7 @@ package com.example.pokedex.data.repository
 
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.detail.PokemonDetailDto
+import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.repository.PokemonDetailRepository
@@ -22,5 +23,10 @@ class PokemonDetailImpl(
         } catch (e: Exception) {
             emit(Resource.Error(data = null, message = "Error: $e"))
         }
+    }
+
+    override fun fetchPokemonSpecies(): Flow<SpeciesResponse> = flow {
+        emit(Resource.Loading)
+
     }
 }
