@@ -1,11 +1,11 @@
-package com.example.pokedex.data.models.specie
+package com.example.pokedex.data.models.species
 
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Color(
+data class Pokemon(
     @SerialName("name")
     val name: String?,
     @SerialName("url")
