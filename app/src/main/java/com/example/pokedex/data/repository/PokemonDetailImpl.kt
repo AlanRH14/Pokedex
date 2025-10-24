@@ -25,8 +25,12 @@ class PokemonDetailImpl(
         }
     }
 
-    override fun fetchPokemonSpecies(): Flow<SpeciesResponse> = flow {
+    override fun fetchPokemonSpecies(): Flow<Resource<SpeciesResponse>> = flow {
         emit(Resource.Loading)
-
+        try {
+            val response = pokedexService.fet()
+        } catch (e: Exception) {
+            emit(Resource.Error(data = null, message = "Error: $e"))
+        }
     }
 }

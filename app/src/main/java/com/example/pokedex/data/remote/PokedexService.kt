@@ -2,6 +2,7 @@ package com.example.pokedex.data.remote
 
 import com.example.pokedex.data.models.detail.PokemonDetailDto
 import com.example.pokedex.data.models.pokemon.PokemonResponse
+import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.utils.Constants.LIMIT_QUERY
 import com.example.pokedex.utils.Constants.NAME_PATH
 import com.example.pokedex.utils.Constants.OFFSET_QUERY
@@ -23,5 +24,8 @@ interface PokedexService {
         @Path(NAME_PATH) name: String
     ): PokemonDetailDto
 
-
+    @GET("pokemon-species/{species}")
+    suspend fun fetchPokemonSpecies(
+        @Path("species") species: String
+    ): SpeciesResponse()
 }
