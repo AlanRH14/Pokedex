@@ -1,13 +1,11 @@
-package com.example.pokedex.data.models.species
+package com.example.pokedex.data.models.specie
 
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LanguageX(
-    @SerialName("name")
-    val name: String?,
+data class EvolutionChain(
     @SerialName("url")
     val url: String?
 )
