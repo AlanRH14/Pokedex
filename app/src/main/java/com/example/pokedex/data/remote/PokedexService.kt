@@ -27,5 +27,5 @@ interface PokedexService {
     @GET("pokemon-species/{species}")
     suspend fun fetchPokemonSpecies(
         @Path("species") species: String
-    ): SpeciesResponse()
+    ): SpeciesResponse
 }
