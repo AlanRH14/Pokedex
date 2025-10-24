@@ -2,6 +2,7 @@ package com.example.pokedex.data.repository
 
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.detail.PokemonDetailDto
+import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.repository.PokemonDetailRepository
@@ -19,6 +20,15 @@ class PokemonDetailImpl(
         try {
             val response = pokedexService.fetchPokemonInfo(name = name)
             emit(Resource.Success(data = pokemonDetailMapper.mapperToDomain(response)))
+        } catch (e: Exception) {
+            emit(Resource.Error(data = null, message = "Error: $e"))
+        }
+    }
+
+    override fun fetchPokemonSpecies(): Flow<Resource<SpeciesResponse>> = flow {
+        emit(Resource.Loading)
+        try {
+            val response = pokedexService.fet()
         } catch (e: Exception) {
             emit(Resource.Error(data = null, message = "Error: $e"))
         }
