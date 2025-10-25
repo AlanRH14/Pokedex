@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.PokemonDetailRepository
@@ -64,6 +65,21 @@ class PokemonDetailViewModel(
             }
         }
     }
+
+    private fun getPokemonSpecies(species: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            pokemonDetailRepository.fetchPokemonSpecies(species = species).collect { response ->
+                when (response) {
+                    is Resource.Loading -> _state.update { it.copy(isLoading = true) }
+
+                    is Resource.Success -> Log.d("LordMiua", "${response.data}")
+
+                    is Resource.Error -> _state.update { it.copy(errorMessage = response.message) }
+                }
+            }
+        }
+    }
+
 
     private fun changeToggleFavoriteState() {
         _state.update { it.copy(isFavorite = !it.isFavorite) }
