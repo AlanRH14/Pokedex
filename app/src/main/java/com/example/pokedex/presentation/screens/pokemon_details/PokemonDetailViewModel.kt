@@ -32,6 +32,7 @@ class PokemonDetailViewModel(
     fun onEvent(event: PokemonDetailUIEvent) {
         when (event) {
             is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
+            is PokemonDetailUIEvent.OnGetPokemonSpecies -> getPokemonSpecies(species = event.species)
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
             is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
             is PokemonDetailUIEvent.OnClickTabNavigation -> navigateToTabs(route = event.route)
