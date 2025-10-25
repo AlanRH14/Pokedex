@@ -13,7 +13,8 @@ import kotlinx.coroutines.flow.flow
 
 class PokemonDetailImpl(
     private val pokedexService: PokedexService,
-    private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>
+    private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>,
+    private val pokemonSpeciesMapper: ApiMapper<SpeciesResponse, Species>
 ) : PokemonDetailRepository {
 
     override fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetail>> = flow {
@@ -30,6 +31,7 @@ class PokemonDetailImpl(
         emit(Resource.Loading)
         try {
             val response = pokedexService.fetchPokemonSpecies(species = species)
+            emit(Resource.Success(data = pokemonSpeciesMapper.mapperToDomain(dto = response)))
         } catch (e: Exception) {
             emit(Resource.Error(data = null, message = "Error: $e"))
         }
