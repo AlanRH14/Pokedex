@@ -5,6 +5,7 @@ import com.example.pokedex.data.models.detail.PokemonDetailDto
 import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.PokemonDetail
+import com.example.pokedex.domain.models.Species
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -25,7 +26,7 @@ class PokemonDetailImpl(
         }
     }
 
-    override fun fetchPokemonSpecies(species: String): Flow<Resource<SpeciesResponse>> = flow {
+    override fun fetchPokemonSpecies(species: String): Flow<Resource<Species>> = flow {
         emit(Resource.Loading)
         try {
             val response = pokedexService.fetchPokemonSpecies(species = species)
