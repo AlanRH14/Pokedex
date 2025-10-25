@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.PokemonDetailRepository
@@ -31,6 +32,7 @@ class PokemonDetailViewModel(
     fun onEvent(event: PokemonDetailUIEvent) {
         when (event) {
             is PokemonDetailUIEvent.OnGetPokemonDetail -> getPokemonDetail(pokemonName = event.pokemonName)
+            is PokemonDetailUIEvent.OnGetPokemonSpecies -> getPokemonSpecies(species = event.species)
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
             is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
             is PokemonDetailUIEvent.OnClickTabNavigation -> navigateToTabs(route = event.route)
@@ -44,7 +46,6 @@ class PokemonDetailViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> _state.update {
-
                         val pokemon =
                             pokemonPaletteRepository.generatePokemonPalette(result.data.url)
                         it.copy(
@@ -64,6 +65,31 @@ class PokemonDetailViewModel(
             }
         }
     }
+
+    private fun getPokemonSpecies(species: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val species = species.drop(1).toInt().toString()
+            pokemonDetailRepository.fetchPokemonSpecies(species = species).collect { result ->
+                when (result) {
+                    is Resource.Loading -> _state.update { it.copy(isLoading = true) }
+
+                    is Resource.Success -> {
+                        Log.d("LordMiua", "${result.data}")
+                        _state.update {
+                            it.copy(
+                                isLoading = false, pokemonDetail = it.pokemonDetail?.copy(
+                                    species = result.data
+                                )
+                            )
+                        }
+                    }
+
+                    is Resource.Error -> _state.update { it.copy(errorMessage = result.message) }
+                }
+            }
+        }
+    }
+
 
     private fun changeToggleFavoriteState() {
         _state.update { it.copy(isFavorite = !it.isFavorite) }

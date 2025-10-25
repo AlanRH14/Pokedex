@@ -59,6 +59,12 @@ fun PokemonDetailsScreen(
         viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonDetail(pokemonName = pokemonName))
     }
 
+    LaunchedEffect(key1 = state.pokemonDetail?.id) {
+        state.pokemonDetail?.id?.let { name ->
+            viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = name))
+        }
+    }
+
     LaunchedEffect(key1 = true) {
         viewModel.effect.collectLatest { effect ->
             when (effect) {

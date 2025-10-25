@@ -5,6 +5,7 @@ import com.example.pokedex.data.models.detail.PokemonDetailDto
 import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.PokemonDetail
+import com.example.pokedex.domain.models.Species
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -12,7 +13,8 @@ import kotlinx.coroutines.flow.flow
 
 class PokemonDetailImpl(
     private val pokedexService: PokedexService,
-    private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>
+    private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>,
+    private val pokemonSpeciesMapper: ApiMapper<SpeciesResponse, Species>
 ) : PokemonDetailRepository {
 
     override fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetail>> = flow {
@@ -25,10 +27,11 @@ class PokemonDetailImpl(
         }
     }
 
-    override fun fetchPokemonSpecies(): Flow<Resource<SpeciesResponse>> = flow {
+    override fun fetchPokemonSpecies(species: String): Flow<Resource<Species>> = flow {
         emit(Resource.Loading)
         try {
-            val response = pokedexService.fet()
+            val response = pokedexService.fetchPokemonSpecies(species = species)
+            emit(Resource.Success(data = pokemonSpeciesMapper.mapperToDomain(dto = response)))
         } catch (e: Exception) {
             emit(Resource.Error(data = null, message = "Error: $e"))
         }

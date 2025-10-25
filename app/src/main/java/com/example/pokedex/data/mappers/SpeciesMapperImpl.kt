@@ -6,7 +6,7 @@ import com.example.pokedex.data.models.species.Genera
 import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.domain.models.Species
 
-class SpeciesMapper : ApiMapper<SpeciesResponse, Species> {
+class SpeciesMapperImpl : ApiMapper<SpeciesResponse, Species> {
 
     override fun mapperToDomain(dto: SpeciesResponse): Species {
         return Species(
