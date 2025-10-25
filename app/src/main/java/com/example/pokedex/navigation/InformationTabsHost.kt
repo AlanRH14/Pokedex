@@ -35,13 +35,7 @@ fun InformationTabsHost(
         }
 
         composable<Stats> {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                PokemonStats(stats = pokemonDetail?.stats ?: emptyList())
-            }
+            PokemonStats(stats = pokemonDetail?.stats ?: emptyList())
         }
 
         composable<Defence> {
