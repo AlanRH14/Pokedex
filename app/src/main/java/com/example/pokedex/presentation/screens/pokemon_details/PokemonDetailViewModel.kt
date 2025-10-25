@@ -69,13 +69,22 @@ class PokemonDetailViewModel(
     private fun getPokemonSpecies(species: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val species = species.drop(1).toInt().toString()
-            pokemonDetailRepository.fetchPokemonSpecies(species = species).collect { response ->
-                when (response) {
+            pokemonDetailRepository.fetchPokemonSpecies(species = species).collect { result ->
+                when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
-                    is Resource.Success -> Log.d("LordMiua", "${response.data}")
+                    is Resource.Success -> {
+                        Log.d("LordMiua", "${result.data}")
+                        _state.update {
+                            it.copy(
+                                isLoading = false, pokemonDetail = it.pokemonDetail?.copy(
+                                    species = result.data
+                                )
+                            )
+                        }
+                    }
 
-                    is Resource.Error -> _state.update { it.copy(errorMessage = response.message) }
+                    is Resource.Error -> _state.update { it.copy(errorMessage = result.message) }
                 }
             }
         }
