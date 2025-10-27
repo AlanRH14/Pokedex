@@ -5,7 +5,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Emerald(
-    @SerialName("name_icon")
-    val nameIcon: String?
+data class GameIndices(
+    @SerialName("game_index")
+    val gameIndex: Int?,
+    @SerialName("generation")
+    val generation: GenerationX?
 )
