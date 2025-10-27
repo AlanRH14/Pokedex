@@ -27,10 +27,7 @@ fun InformationTabsHost(
         navController = navController,
     ) {
         composable<About> {
-            PokemonAbout(
-                species = pokemonDetail?.species,
-                pokemonID = pokemonDetail?.id ?: "",
-            )
+            PokemonAbout(species = pokemonDetail?.species)
         }
 
         composable<Stats> {
