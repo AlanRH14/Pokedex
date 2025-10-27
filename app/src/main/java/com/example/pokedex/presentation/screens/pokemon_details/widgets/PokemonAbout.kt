@@ -24,10 +24,8 @@ fun PokemonAbout(
     onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
 
-    if (species == null) {
-        if (pokemonID.isNotEmpty()) {
-            onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = pokemonID))
-        }
+    if (pokemonID.isNotEmpty()) {
+        onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = pokemonID))
     }
 
     Column(
