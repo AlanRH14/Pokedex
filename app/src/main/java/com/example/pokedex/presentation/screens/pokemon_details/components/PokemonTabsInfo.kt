@@ -67,7 +67,6 @@ fun PokemonTabsInfo(
             InformationTabsHost(
                 navController = navController,
                 pokemonDetail = pokemonDetail,
-                onEvent = onEvent
             )
         }
     }
