@@ -17,5 +17,5 @@ data class DamageRelations(
     @SerialName("no_damage_from")
     val noDamageFrom: List<Damage?>?,
     @SerialName("no_damage_to")
-    val noDamageTo: List<NoDamageTo?>?
+    val noDamageTo: List<Damage?>?
 )
