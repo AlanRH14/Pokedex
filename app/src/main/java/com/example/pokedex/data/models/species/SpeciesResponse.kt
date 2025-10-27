@@ -17,7 +17,7 @@ data class SpeciesResponse(
     @SerialName("evolution_chain")
     val evolutionChain: EvolutionChain? = null,
     @SerialName("evolves_from_species")
-    val evolvesFromSpecies: EvolvesFromSpecies? = null,
+    val evolvesFromSpecies: NameUrlBase? = null,
     @SerialName("flavor_text_entries")
     val flavorTextEntries: List<FlavorTextEntry>? = null,
     @SerialName("form_descriptions")
