@@ -16,9 +16,9 @@ data class TypeDto(
     @SerialName("id")
     val id: Int?,
     @SerialName("move_damage_class")
-    val moveDamageClass: MoveDamageClass?,
+    val moveDamageClass: NameUrlBase?,
     @SerialName("moves")
-    val moves: List<Move>?,
+    val moves: List<NameUrlBase>?,
     @SerialName("name")
     val name: String?,
     @SerialName("names")
