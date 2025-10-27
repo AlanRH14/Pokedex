@@ -30,7 +30,6 @@ fun InformationTabsHost(
             PokemonAbout(
                 species = pokemonDetail?.species,
                 pokemonID = pokemonDetail?.id ?: "",
-                onEvent = onEvent
             )
         }
 
