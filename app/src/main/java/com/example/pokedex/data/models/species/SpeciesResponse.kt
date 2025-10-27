@@ -31,7 +31,7 @@ data class SpeciesResponse(
     @SerialName("generation")
     val generation: Generation? = null,
     @SerialName("growth_rate")
-    val growthRate: GrowthRate? = null,
+    val growthRate: NameUrlBase? = null,
     @SerialName("habitat")
     val habitat: NameUrlBase? = null,
     @SerialName("has_gender_differences")
