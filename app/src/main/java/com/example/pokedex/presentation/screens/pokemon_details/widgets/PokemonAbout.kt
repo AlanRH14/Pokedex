@@ -24,10 +24,6 @@ fun PokemonAbout(
     pokemonID: String,
 ) {
 
-    if (pokemonID.isNotEmpty()) {
-        onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = pokemonID))
-    }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
