@@ -65,6 +65,8 @@ fun PokemonAbout(
             )
         }
 
+        Spacer(modifier = Modifier.height(8.dp))
+
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(
                 modifier = Modifier.weight(0.2F),
