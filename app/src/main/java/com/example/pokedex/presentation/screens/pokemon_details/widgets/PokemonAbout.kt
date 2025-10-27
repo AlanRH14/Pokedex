@@ -39,23 +39,10 @@ fun PokemonAbout(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            Text(
-                text = "Happiness:",
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Bold
-                )
-            )
-
-            Text(
-                modifier = Modifier.weight(0.8F),
-                text = "${species?.baseHappiness ?: "Unknown"}",
-                style = MaterialTheme.typography.bodyLarge
-            )
-        }
+        AboutIntoItem(
+            title = "Happiness:",
+            description = "${species?.baseHappiness ?: "Unknown"}"
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
