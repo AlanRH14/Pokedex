@@ -15,11 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Species
+import com.example.pokedex.presentation.screens.pokemon_details.components.AboutIntoItem
 
 @Composable
 fun PokemonAbout(
     species: Species?
-){
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -31,24 +32,10 @@ fun PokemonAbout(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            Text(
-                modifier = Modifier.weight(0.2F),
-                text = "Habitat:",
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Bold
-                )
-            )
-
-            Text(
-                modifier = Modifier.weight(0.8F),
-                text = species?.habitat ?: "Unknown",
-                style = MaterialTheme.typography.bodyLarge
-            )
-        }
+        AboutIntoItem(
+            title = "Habitat:",
+            description = species?.habitat ?: "Unknown"
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
