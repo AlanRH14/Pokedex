@@ -10,7 +10,7 @@ data class GenerationIv(
     @SerialName("diamond-pearl")
     val diamondPearl: DiamondPearl?,
     @SerialName("heartgold-soulsilver")
-    val heartgoldSoulsilver: HeartgoldSoulsilver?,
+    val heartgoldSoulsilver: NameIconBase?,
     @SerialName("platinum")
     val platinum: NameIconBase?
 )
