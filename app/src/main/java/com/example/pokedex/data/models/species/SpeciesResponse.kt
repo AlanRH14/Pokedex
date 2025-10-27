@@ -14,7 +14,7 @@ data class SpeciesResponse(
     @SerialName("color")
     val color: NameUrlBase? = null,
     @SerialName("egg_groups")
-    val eggGroups: List<EggGroup>? = null,
+    val eggGroups: List<NameUrlBase>? = null,
     @SerialName("evolution_chain")
     val evolutionChain: EvolutionChain? = null,
     @SerialName("evolves_from_species")
