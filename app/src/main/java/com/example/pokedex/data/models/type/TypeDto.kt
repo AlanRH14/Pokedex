@@ -26,6 +26,4 @@ data class TypeDto(
     val pastDamageRelations: List<PastDamageRelation>?,
     @SerialName("pokemon")
     val pokemon: List<Pokemon>?,
-    @SerialName("sprites")
-    val sprites: Sprites?
 )
