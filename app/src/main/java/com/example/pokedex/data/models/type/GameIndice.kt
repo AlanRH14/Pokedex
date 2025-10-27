@@ -5,9 +5,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GameIndices(
+data class GameIndice(
     @SerialName("game_index")
     val gameIndex: Int?,
     @SerialName("generation")
-    val generation: Generation?
+    val generation: GenerationX?
 )

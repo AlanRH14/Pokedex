@@ -5,9 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Generation(
-    @SerialName("name")
-    val name: String?,
-    @SerialName("url")
-    val url: String?
+data class Emerald(
+    @SerialName("name_icon")
+    val nameIcon: String?
 )

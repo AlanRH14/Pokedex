@@ -9,9 +9,9 @@ data class TypeDto(
     @SerialName("damage_relations")
     val damageRelations: DamageRelations?,
     @SerialName("game_indices")
-    val gameIndices: List<GameIndices>?,
+    val gameIndices: List<GameIndice>?,
     @SerialName("generation")
-    val generation: Generation?,
+    val generation: GenerationX?,
     @SerialName("id")
     val id: Int?,
     @SerialName("move_damage_class")
@@ -26,4 +26,6 @@ data class TypeDto(
     val pastDamageRelations: List<PastDamageRelation>?,
     @SerialName("pokemon")
     val pokemon: List<Pokemon>?,
+    @SerialName("sprites")
+    val sprites: Sprites?
 )

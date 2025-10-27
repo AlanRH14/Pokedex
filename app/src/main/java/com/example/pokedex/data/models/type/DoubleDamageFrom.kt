@@ -5,9 +5,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Damage(
+data class DoubleDamageFrom(
     @SerialName("name")
-    val name: String? = null,
+    val name: String?,
     @SerialName("url")
-    val url: String? = null
+    val url: String?
 )

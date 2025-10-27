@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PastDamageRelation(
     @SerialName("damage_relations")
-    val damageRelations: DamageRelations?,
+    val damageRelations: DamageRelationsX?,
     @SerialName("generation")
-    val generation: Generation?
+    val generation: GenerationX?
 )
