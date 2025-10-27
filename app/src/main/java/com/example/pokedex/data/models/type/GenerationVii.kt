@@ -10,7 +10,7 @@ data class GenerationVii(
     @SerialName("lets-go-pikachu-lets-go-eevee")
     val letsGoPikachuLetsGoEevee: LetsGoPikachuLetsGoEevee?,
     @SerialName("sun-moon")
-    val sunMoon: SunMoon?,
+    val sunMoon: NameIconBase?,
     @SerialName("ultra-sun-ultra-moon")
     val ultraSunUltraMoon: NameIconBase?
 )

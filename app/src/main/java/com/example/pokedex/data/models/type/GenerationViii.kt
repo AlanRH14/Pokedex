@@ -1,6 +1,7 @@
 package com.example.pokedex.data.models.type
 
 
+import com.example.pokedex.data.models.type.common.NameIconBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -11,5 +12,5 @@ data class GenerationViii(
     @SerialName("legends-arceus")
     val legendsArceus: LegendsArceus?,
     @SerialName("sword-shield")
-    val swordShield: SwordShield?
+    val swordShield: NameIconBase?
 )
