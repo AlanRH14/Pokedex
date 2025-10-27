@@ -12,7 +12,7 @@ data class SpeciesResponse(
     @SerialName("capture_rate")
     val captureRate: Int? = null,
     @SerialName("color")
-    val color: Color? = null,
+    val color: NameUrlBase? = null,
     @SerialName("egg_groups")
     val eggGroups: List<EggGroup>? = null,
     @SerialName("evolution_chain")
