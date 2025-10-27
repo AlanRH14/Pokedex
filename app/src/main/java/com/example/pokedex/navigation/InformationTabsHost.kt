@@ -12,13 +12,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.navigation.TabsNavRoute.*
+import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonAbout
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 
 @Composable
 fun InformationTabsHost(
     navController: NavHostController,
-    pokemonDetail: PokemonDetail? = null
+    pokemonDetail: PokemonDetail? = null,
+    onEvent: (PokemonDetailUIEvent) -> Unit,
 ) {
     NavHost(
         modifier = Modifier.fillMaxSize(),
@@ -26,7 +28,11 @@ fun InformationTabsHost(
         navController = navController,
     ) {
         composable<About> {
-            PokemonAbout(species = pokemonDetail?.species)
+            PokemonAbout(
+                species = pokemonDetail?.species,
+                pokemonID = pokemonDetail?.id ?: "",
+                onEvent = onEvent
+            )
         }
 
         composable<Stats> {

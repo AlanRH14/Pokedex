@@ -15,11 +15,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Species
 import com.example.pokedex.presentation.screens.pokemon_details.components.AboutIntoItem
+import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 
 @Composable
 fun PokemonAbout(
-    species: Species?
+    species: Species?,
+    pokemonID: String,
+    onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
+
+    if (species == null) {
+        if (pokemonID.isNotEmpty()) {
+            onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = pokemonID))
+        }
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
