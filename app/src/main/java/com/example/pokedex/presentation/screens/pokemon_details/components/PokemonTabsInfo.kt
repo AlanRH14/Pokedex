@@ -66,7 +66,7 @@ fun PokemonTabsInfo(
         ) {
             InformationTabsHost(
                 navController = navController,
-                pokemonDetail = pokemonDetail
+                pokemonDetail = pokemonDetail,
             )
         }
     }

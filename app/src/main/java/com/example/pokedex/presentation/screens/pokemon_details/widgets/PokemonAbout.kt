@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,11 +18,12 @@ import com.example.pokedex.domain.models.Species
 import com.example.pokedex.presentation.screens.pokemon_details.components.AboutIntoItem
 
 @Composable
-fun PokemonAbout(
-    species: Species?
-) {
+fun PokemonAbout(species: Species?) {
+
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(all = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
