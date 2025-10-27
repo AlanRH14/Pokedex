@@ -1,4 +1,4 @@
-package com.example.pokedex.data.models.type.common
+package com.example.pokedex.data.models.common
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
