@@ -57,7 +57,7 @@ data class SpeciesResponse(
     @SerialName("pokedex_numbers")
     val pokedexNumbers: List<PokedexNumber>? = null,
     @SerialName("shape")
-    val shape: Shape? = null,
+    val shape: NameUrlBase? = null,
     @SerialName("varieties")
     val varieties: List<Variety>? = null
 )
