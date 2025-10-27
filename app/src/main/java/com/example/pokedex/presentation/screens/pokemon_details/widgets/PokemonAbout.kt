@@ -39,28 +39,20 @@ fun PokemonAbout(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        AboutIntoItem(
-            title = "Happiness:",
-            description = "${species?.baseHappiness ?: "Unknown"}"
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text(
-                text = "Capture Rate:",
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Bold
-                )
+            AboutIntoItem(
+                modifier = Modifier.weight(0.5F),
+                title = "Happiness:",
+                description = "${species?.baseHappiness ?: "Unknown"}"
             )
 
-            Text(
-                modifier = Modifier.weight(0.8F),
-                text = "${species?.captureRate ?: "Unknown"}",
-                style = MaterialTheme.typography.bodyLarge
+            AboutIntoItem(
+                modifier = Modifier.weight(0.5F),
+                title = "Capture Rate:",
+                description = "${species?.captureRate ?: "Unknown"}"
             )
         }
     }
