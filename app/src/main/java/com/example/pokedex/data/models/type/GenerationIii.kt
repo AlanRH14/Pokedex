@@ -8,9 +8,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationIii(
     @SerialName("colosseum")
-    val colosseum: Colosseum?,
+    val colosseum: NameIconBase?,
     @SerialName("emerald")
-    val emerald: Emerald?,
+    val emerald: NameIconBase?,
     @SerialName("firered-leafgreen")
     val fireredLeafgreen: NameIconBase?,
     @SerialName("ruby-saphire")
