@@ -11,7 +11,7 @@ data class TypeDto(
     @SerialName("game_indices")
     val gameIndices: List<GameIndices>?,
     @SerialName("generation")
-    val generation: GenerationX?,
+    val generation: Generation?,
     @SerialName("id")
     val id: Int?,
     @SerialName("move_damage_class")

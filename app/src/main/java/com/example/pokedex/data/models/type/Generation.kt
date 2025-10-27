@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GenerationX(
+data class Generation(
     @SerialName("name")
     val name: String?,
     @SerialName("url")

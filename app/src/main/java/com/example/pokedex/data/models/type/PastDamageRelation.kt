@@ -9,5 +9,5 @@ data class PastDamageRelation(
     @SerialName("damage_relations")
     val damageRelations: DamageRelations?,
     @SerialName("generation")
-    val generation: GenerationX?
+    val generation: Generation?
 )

@@ -9,5 +9,5 @@ data class GameIndices(
     @SerialName("game_index")
     val gameIndex: Int?,
     @SerialName("generation")
-    val generation: GenerationX?
+    val generation: Generation?
 )
