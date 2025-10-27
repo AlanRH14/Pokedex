@@ -16,13 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Species
 import com.example.pokedex.presentation.screens.pokemon_details.components.AboutIntoItem
-import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 
 @Composable
-fun PokemonAbout(
-    species: Species?,
-    pokemonID: String,
-) {
+fun PokemonAbout(species: Species?) {
 
     Column(
         modifier = Modifier
