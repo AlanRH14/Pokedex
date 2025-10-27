@@ -11,5 +11,5 @@ data class FlavorTextEntry(
     @SerialName("language")
     val language: NameUrlBase?,
     @SerialName("version")
-    val version: Version?
+    val version: NameUrlBase?
 )

@@ -29,7 +29,7 @@ data class SpeciesResponse(
     @SerialName("genera")
     val genera: List<Genera>? = null,
     @SerialName("generation")
-    val generation: Generation? = null,
+    val generation: NameUrlBase? = null,
     @SerialName("growth_rate")
     val growthRate: NameUrlBase? = null,
     @SerialName("habitat")
