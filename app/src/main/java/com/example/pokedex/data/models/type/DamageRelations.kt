@@ -9,7 +9,7 @@ data class DamageRelations(
     @SerialName("double_damage_from")
     val damage: List<Damage?>?,
     @SerialName("double_damage_to")
-    val doubleDamageTo: List<DoubleDamageTo?>?,
+    val doubleDamageTo: List<Damage?>?,
     @SerialName("half_damage_from")
     val halfDamageFrom: List<HalfDamageFrom?>?,
     @SerialName("half_damage_to")
