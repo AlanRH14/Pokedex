@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class damage(
+data class Damage(
     @SerialName("name")
     val name: String?,
     @SerialName("url")
