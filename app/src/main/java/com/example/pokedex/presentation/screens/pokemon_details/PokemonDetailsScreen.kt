@@ -152,7 +152,6 @@ fun PokemonDetailsScreen(
                     modifier = Modifier.fillMaxSize(),
                     navController = tabsNavController,
                     pokemonDetail = state.pokemonDetail,
-                    onEvent = viewModel::onEvent
                 )
             }
         }
