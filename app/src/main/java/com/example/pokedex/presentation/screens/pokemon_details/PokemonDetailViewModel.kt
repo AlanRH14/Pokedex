@@ -1,6 +1,5 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.PokemonDetailRepository
@@ -74,7 +73,6 @@ class PokemonDetailViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> {
-                        Log.d("LordMiua", "${result.data}")
                         _state.update {
                             it.copy(
                                 isLoading = false, pokemonDetail = it.pokemonDetail?.copy(
