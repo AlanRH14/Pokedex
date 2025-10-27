@@ -22,7 +22,6 @@ import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetai
 fun PokemonAbout(
     species: Species?,
     pokemonID: String,
-    onEvent: (PokemonDetailUIEvent) -> Unit
 ) {
 
     if (pokemonID.isNotEmpty()) {
