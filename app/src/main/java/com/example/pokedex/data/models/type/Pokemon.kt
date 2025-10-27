@@ -1,13 +1,13 @@
-package com.example.pokedex.data.models.species
+package com.example.pokedex.data.models.type
 
 import com.example.pokedex.data.models.common.NameUrlBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Variety(
-    @SerialName("is_default")
-    val isDefault: Boolean?,
+data class Pokemon(
     @SerialName("pokemon")
-    val pokemon: NameUrlBase?
+    val pokemon: NameUrlBase?,
+    @SerialName("slot")
+    val slot: Int?
 )

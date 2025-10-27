@@ -1,11 +1,10 @@
-package com.example.pokedex.data.models.species
-
+package com.example.pokedex.data.models.common
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Generation(
+data class NameUrlBase(
     @SerialName("name")
     val name: String?,
     @SerialName("url")

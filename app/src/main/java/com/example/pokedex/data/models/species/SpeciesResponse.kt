@@ -1,6 +1,6 @@
 package com.example.pokedex.data.models.species
 
-
+import com.example.pokedex.data.models.common.NameUrlBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -11,13 +11,13 @@ data class SpeciesResponse(
     @SerialName("capture_rate")
     val captureRate: Int? = null,
     @SerialName("color")
-    val color: Color? = null,
+    val color: NameUrlBase? = null,
     @SerialName("egg_groups")
-    val eggGroups: List<EggGroup>? = null,
+    val eggGroups: List<NameUrlBase>? = null,
     @SerialName("evolution_chain")
     val evolutionChain: EvolutionChain? = null,
     @SerialName("evolves_from_species")
-    val evolvesFromSpecies: EvolvesFromSpecies? = null,
+    val evolvesFromSpecies: NameUrlBase? = null,
     @SerialName("flavor_text_entries")
     val flavorTextEntries: List<FlavorTextEntry>? = null,
     @SerialName("form_descriptions")
@@ -29,11 +29,11 @@ data class SpeciesResponse(
     @SerialName("genera")
     val genera: List<Genera>? = null,
     @SerialName("generation")
-    val generation: Generation? = null,
+    val generation: NameUrlBase? = null,
     @SerialName("growth_rate")
-    val growthRate: GrowthRate? = null,
+    val growthRate: NameUrlBase? = null,
     @SerialName("habitat")
-    val habitat: Habitat? = null,
+    val habitat: NameUrlBase? = null,
     @SerialName("has_gender_differences")
     val hasGenderDifferences: Boolean? = null,
     @SerialName("hatch_counter")
@@ -57,7 +57,7 @@ data class SpeciesResponse(
     @SerialName("pokedex_numbers")
     val pokedexNumbers: List<PokedexNumber>? = null,
     @SerialName("shape")
-    val shape: Shape? = null,
+    val shape: NameUrlBase? = null,
     @SerialName("varieties")
     val varieties: List<Variety>? = null
 )

@@ -1,15 +1,13 @@
-package com.example.pokedex.data.models.species
+package com.example.pokedex.data.models.type
 
 import com.example.pokedex.data.models.common.NameUrlBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FlavorTextEntry(
-    @SerialName("flavor_text")
-    val flavorText: String?,
+data class Name(
     @SerialName("language")
     val language: NameUrlBase?,
-    @SerialName("version")
-    val version: NameUrlBase?
+    @SerialName("name")
+    val name: String?
 )
