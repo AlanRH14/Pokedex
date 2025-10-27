@@ -51,7 +51,7 @@ fun PokemonAbout(
 
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = "Happiness",
+                text = "Happiness:",
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Bold
                 )
