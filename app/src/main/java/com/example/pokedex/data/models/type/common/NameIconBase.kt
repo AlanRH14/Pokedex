@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class NameIcon(
+data class NameIconBase(
     @SerialName("name_icon")
     val nameIcon: String?
 )

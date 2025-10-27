@@ -9,7 +9,7 @@ data class TypeDto(
     @SerialName("damage_relations")
     val damageRelations: DamageRelations?,
     @SerialName("game_indices")
-    val gameIndices: List<GameIndice>?,
+    val gameIndices: List<GameIndices>?,
     @SerialName("generation")
     val generation: GenerationX?,
     @SerialName("id")
