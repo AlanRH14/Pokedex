@@ -1,6 +1,7 @@
 package com.example.pokedex.data.models.type
 
 
+import com.example.pokedex.data.models.type.common.NameUrlBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -11,7 +12,7 @@ data class TypeDto(
     @SerialName("game_indices")
     val gameIndices: List<GameIndices>?,
     @SerialName("generation")
-    val generation: GenerationX?,
+    val generation: NameUrlBase?,
     @SerialName("id")
     val id: Int?,
     @SerialName("move_damage_class")
