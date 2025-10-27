@@ -5,6 +5,7 @@ import com.example.pokedex.data.models.species.FlavorTextEntry
 import com.example.pokedex.data.models.species.Genera
 import com.example.pokedex.data.models.species.SpeciesResponse
 import com.example.pokedex.domain.models.Species
+import com.example.pokedex.utils.StringUtils.capitalized
 
 class SpeciesMapperImpl : ApiMapper<SpeciesResponse, Species> {
 
@@ -17,7 +18,7 @@ class SpeciesMapperImpl : ApiMapper<SpeciesResponse, Species> {
             idEvolutionChain = "",
             description = dto.flavorTextEntries?.getDescription() ?: "",
             pokemonClass = dto.genera?.getPokemonClass() ?: "",
-            habitat = dto.habitat?.name ?: "",
+            habitat = dto.habitat?.name.capitalized(),
             isBaby = dto.isBaby ?: false,
             isLegendary = dto.isLegendary ?: false,
             isMythical = dto.isMythical ?: false
@@ -28,7 +29,7 @@ class SpeciesMapperImpl : ApiMapper<SpeciesResponse, Species> {
         var description = ""
         this.forEach {
             if (it.language?.name == "en") {
-                description = it.flavorText ?: ""
+                description = it.flavorText?.replace("\n", " ") ?: ""
             }
         }
 
