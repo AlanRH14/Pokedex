@@ -20,7 +20,6 @@ import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonS
 fun InformationTabsHost(
     navController: NavHostController,
     pokemonDetail: PokemonDetail? = null,
-    onEvent: (PokemonDetailUIEvent) -> Unit,
 ) {
     NavHost(
         modifier = Modifier.fillMaxSize(),
