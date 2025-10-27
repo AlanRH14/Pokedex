@@ -12,7 +12,7 @@ data class GenerationIii(
     @SerialName("emerald")
     val emerald: Emerald?,
     @SerialName("firered-leafgreen")
-    val fireredLeafgreen: FireredLeafgreen?,
+    val fireredLeafgreen: NameIconBase?,
     @SerialName("ruby-saphire")
     val rubySaphire: NameIconBase?,
     @SerialName("xd")
