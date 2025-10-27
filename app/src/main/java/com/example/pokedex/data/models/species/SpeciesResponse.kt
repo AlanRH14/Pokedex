@@ -1,6 +1,7 @@
 package com.example.pokedex.data.models.species
 
 
+import com.example.pokedex.data.models.type.common.NameUrlBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -33,7 +34,7 @@ data class SpeciesResponse(
     @SerialName("growth_rate")
     val growthRate: GrowthRate? = null,
     @SerialName("habitat")
-    val habitat: Habitat? = null,
+    val habitat: NameUrlBase? = null,
     @SerialName("has_gender_differences")
     val hasGenderDifferences: Boolean? = null,
     @SerialName("hatch_counter")
