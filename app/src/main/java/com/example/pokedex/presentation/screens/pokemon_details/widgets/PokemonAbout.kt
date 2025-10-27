@@ -68,7 +68,7 @@ fun PokemonAbout(
 
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = "Capture Rate",
+                text = "Capture Rate:",
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Bold
                 )
