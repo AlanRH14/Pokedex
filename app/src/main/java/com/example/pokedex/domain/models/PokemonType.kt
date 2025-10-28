@@ -7,9 +7,9 @@ data class PokemonType(
     val namePokemon: String = "",
     val doubleDamageFrom: List<String> = emptyList(),
     val doubleDamage: List<String> = emptyList(),
-    val doubleDamageTo: List<String>,
-    val halfDamageFrom: List<String>,
-    val halfDamageTo: List<String>,
-    val noDamageFrom: List<String>,
-    val noDamageTo: List<String>
+    val doubleDamageTo: List<String> = emptyList(),
+    val halfDamageFrom: List<String> = emptyList(),
+    val halfDamageTo: List<String> = emptyList(),
+    val noDamageFrom: List<String> = emptyList(),
+    val noDamageTo: List<String> = emptyList(),
 )

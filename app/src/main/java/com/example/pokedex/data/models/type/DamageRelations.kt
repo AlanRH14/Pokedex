@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DamageRelations(
     @SerialName("double_damage_from")
-    val damage: List<NameUrlBase?>?,
+    val doubleDamageFrom: List<NameUrlBase?>?,
     @SerialName("double_damage_to")
     val doubleDamageTo: List<NameUrlBase?>?,
     @SerialName("half_damage_from")
