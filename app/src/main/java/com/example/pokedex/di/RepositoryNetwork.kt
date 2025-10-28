@@ -20,7 +20,8 @@ val repositoryNetwork = module {
         PokemonDetailImpl(
             pokedexService = get(),
             pokemonDetailMapper = get(named("PokemonDetailMapperImpl")),
-            pokemonSpeciesMapper = get(named("SpeciesMapperImpl"))
+            pokemonSpeciesMapper = get(named("SpeciesMapperImpl")),
+            pokemonTypeMapper = get(named("PokemonTypeMapperImpl"))
         )
     }
 
