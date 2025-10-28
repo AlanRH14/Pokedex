@@ -18,7 +18,8 @@ class TypeMapperImpl : ApiMapper<TypeDto, PokemonType> {
                 ?: emptyList(),
             halfDamageTo = dto.damageRelations?.doubleDamageTo?.map { it?.name ?: "" }
                 ?: emptyList(),
-            noDamageTo = dto.damageRelations?.doubleDamageTo?.map { it?.name ?: "" } ?: emptyList()
+            noDamageFrom = dto.damageRelations?.noDamageFrom?.map { it?.name ?: "" } ?: emptyList(),
+            noDamageTo = dto.damageRelations?.noDamageTo?.map { it?.name ?: "" } ?: emptyList(),
         )
     }
 }
