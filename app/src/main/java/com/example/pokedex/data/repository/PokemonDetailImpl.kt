@@ -46,7 +46,7 @@ class PokemonDetailImpl(
             val response = pokedexService.getType(type = type)
             emit(Resource.Success(data = pokemonTypeMapper.mapperToDomain(dto = response)))
         } catch (e: Exception) {
-
+            emit(Resource.Error(data = null, message = "Error: $e"))
         }
     }
 }
