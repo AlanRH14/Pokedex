@@ -6,7 +6,6 @@ data class PokemonType(
     val typeSlot: Int = 0,
     val namePokemon: String = "",
     val doubleDamageFrom: List<String> = emptyList(),
-    val doubleDamage: List<String> = emptyList(),
     val doubleDamageTo: List<String> = emptyList(),
     val halfDamageFrom: List<String> = emptyList(),
     val halfDamageTo: List<String> = emptyList(),
