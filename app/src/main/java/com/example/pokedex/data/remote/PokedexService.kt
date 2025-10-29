@@ -31,7 +31,7 @@ interface PokedexService {
         @Path(SPECIES_PATH) species: String
     ): SpeciesResponse
 
-    @GET("type/type")
+    @GET("type/{type}")
     suspend fun getType(
         @Path("type") type: String
     ): TypeDto
