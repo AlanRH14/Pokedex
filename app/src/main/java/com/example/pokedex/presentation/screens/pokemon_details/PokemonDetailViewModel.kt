@@ -103,6 +103,7 @@ class PokemonDetailViewModel(
                     }
 
                     is Resource.Error -> _state.update {
+                        Log.d("LordMiau", "Error: ${result.message}")
                         it.copy(
                             isLoading = false,
                             errorMessage = result.message
