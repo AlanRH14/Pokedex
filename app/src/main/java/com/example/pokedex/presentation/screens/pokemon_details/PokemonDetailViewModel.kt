@@ -92,6 +92,7 @@ class PokemonDetailViewModel(
 
     private fun getPokemonType(pokemonID: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            val pokemonID = pokemonID.drop(1).toInt().toString()
             pokemonDetailRepository.fetchPokemonType(type = pokemonID).collect { result ->
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
