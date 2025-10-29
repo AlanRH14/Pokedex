@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.repository.PokemonDetailRepository
@@ -88,6 +89,27 @@ class PokemonDetailViewModel(
         }
     }
 
+    private fun getPokemonType(pokemonID: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            pokemonDetailRepository.fetchPokemonType(type = pokemonID).collect { result ->
+                when (result) {
+                    is Resource.Loading -> _state.update { it.copy(isLoading = true) }
+
+                    is Resource.Success -> _state.update {
+                        Log.d("LordMiau", "Result: ${result.data}")
+                        it.copy(isLoading = false)
+                    }
+
+                    is Resource.Error -> _state.update {
+                        it.copy(
+                            isLoading = false,
+                            errorMessage = result.message
+                        )
+                    }
+                }
+            }
+        }
+    }
 
     private fun changeToggleFavoriteState() {
         _state.update { it.copy(isFavorite = !it.isFavorite) }
