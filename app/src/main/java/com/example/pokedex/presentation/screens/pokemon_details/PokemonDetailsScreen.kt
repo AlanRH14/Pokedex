@@ -60,8 +60,9 @@ fun PokemonDetailsScreen(
     }
 
     LaunchedEffect(key1 = state.pokemonDetail?.id) {
-        state.pokemonDetail?.id?.let { name ->
-            viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = name))
+        state.pokemonDetail?.id?.let { id ->
+            viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonSpecies(species = id))
+            viewModel.onEvent(PokemonDetailUIEvent.OnGetPokemonType(pokemonID = id))
         }
     }
 
