@@ -7,9 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationIv(
     @SerialName("diamond-pearl")
-    val diamondPearl: NameIconBase?,
+    val diamondPearl: NameIconBase? = null,
     @SerialName("heartgold-soulsilver")
-    val heartgoldSoulsilver: NameIconBase?,
+    val heartgoldSoulsilver: NameIconBase? = null,
     @SerialName("platinum")
-    val platinum: NameIconBase?
+    val platinum: NameIconBase? = null
 )
