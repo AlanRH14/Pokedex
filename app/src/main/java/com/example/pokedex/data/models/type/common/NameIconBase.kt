@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NameIconBase(
     @SerialName("name_icon")
-    val nameIcon: String?
+    val nameIcon: String? = null
 )
