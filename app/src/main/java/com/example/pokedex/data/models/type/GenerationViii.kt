@@ -7,9 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationViii(
     @SerialName("brilliant-diamond-and-shining-pearl")
-    val brilliantDiamondAndShiningPearl: NameIconBase?,
+    val brilliantDiamondAndShiningPearl: NameIconBase? = null,
     @SerialName("legends-arceus")
-    val legendsArceus: NameIconBase?,
+    val legendsArceus: NameIconBase? = null,
     @SerialName("sword-shield")
-    val swordShield: NameIconBase?
+    val swordShield: NameIconBase? = null
 )
