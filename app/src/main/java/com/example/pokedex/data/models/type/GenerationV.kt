@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationV(
     @SerialName("black-2-white-2")
-    val black2White2: NameIconBase?,
+    val black2White2: NameIconBase? = null,
     @SerialName("black-white")
-    val blackWhite: NameIconBase?
+    val blackWhite: NameIconBase? = null
 )
