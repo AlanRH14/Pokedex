@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Name(
     @SerialName("language")
-    val language: NameUrlBase?,
+    val language: NameUrlBase? = null,
     @SerialName("name")
-    val name: String?
+    val name: String? = null
 )
