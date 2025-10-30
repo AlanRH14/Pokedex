@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationVi(
     @SerialName("omega-ruby-alpha-sapphire")
-    val omegaRubyAlphaSapphire: NameIconBase?,
+    val omegaRubyAlphaSapphire: NameIconBase? = null,
     @SerialName("x-y")
-    val xY: NameIconBase?
+    val xY: NameIconBase? = null
 )
