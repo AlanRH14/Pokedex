@@ -7,13 +7,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationIii(
     @SerialName("colosseum")
-    val colosseum: NameIconBase?,
+    val colosseum: NameIconBase? = null,
     @SerialName("emerald")
-    val emerald: NameIconBase?,
+    val emerald: NameIconBase? = null,
     @SerialName("firered-leafgreen")
-    val fireredLeafgreen: NameIconBase?,
+    val fireredLeafgreen: NameIconBase? = null,
     @SerialName("ruby-saphire")
-    val rubySaphire: NameIconBase?,
+    val rubySaphire: NameIconBase? = null,
     @SerialName("xd")
-    val xd: NameIconBase?
+    val xd: NameIconBase? = null
 )
