@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationIx(
     @SerialName("scarlet-violet")
-    val scarletViolet: NameIconBase?
+    val scarletViolet: NameIconBase? = null
 )
