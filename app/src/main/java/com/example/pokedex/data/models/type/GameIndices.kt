@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GameIndices(
     @SerialName("game_index")
-    val gameIndex: Int?,
+    val gameIndex: Int? = null,
     @SerialName("generation")
-    val generation: NameUrlBase?
+    val generation: NameUrlBase? = null
 )
