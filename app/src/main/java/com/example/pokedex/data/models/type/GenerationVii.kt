@@ -7,9 +7,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GenerationVii(
     @SerialName("lets-go-pikachu-lets-go-eevee")
-    val letsGoPikachuLetsGoEevee: NameIconBase?,
+    val letsGoPikachuLetsGoEevee: NameIconBase? = null,
     @SerialName("sun-moon")
-    val sunMoon: NameIconBase?,
+    val sunMoon: NameIconBase? = null,
     @SerialName("ultra-sun-ultra-moon")
-    val ultraSunUltraMoon: NameIconBase?
+    val ultraSunUltraMoon: NameIconBase? = null
 )
