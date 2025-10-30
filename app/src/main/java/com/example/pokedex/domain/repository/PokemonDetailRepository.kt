@@ -9,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface PokemonDetailRepository {
     fun fetchPokemonDetail(name: String): Flow<Resource<PokemonDetail>>
     fun fetchPokemonSpecies(species: String): Flow<Resource<Species>>
-    fun fetchPokemonType(type: String): Flow<Resource<PokemonType>>
+    fun fetchPokemonType(type: List<String>): Flow<Resource<PokemonType>>
 }

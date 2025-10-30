@@ -40,7 +40,7 @@ class PokemonDetailImpl(
         }
     }
 
-    override fun fetchPokemonType(type: String): Flow<Resource<PokemonType>> = flow {
+    override fun fetchPokemonType(type: List<String>): Flow<Resource<PokemonType>> = flow {
         emit(Resource.Loading)
         try {
             val response = pokedexService.getType(type = type)
