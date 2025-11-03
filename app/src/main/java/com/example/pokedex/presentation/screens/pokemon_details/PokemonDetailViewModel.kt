@@ -3,6 +3,7 @@ package com.example.pokedex.presentation.screens.pokemon_details
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.data.models.detail.Type
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import com.example.pokedex.navigation.TabsNavRoute
@@ -90,10 +91,9 @@ class PokemonDetailViewModel(
         }
     }
 
-    private fun getPokemonType(pokemonID: String) {
+    private fun getPokemonType(types: List<Type>) {
         viewModelScope.launch(Dispatchers.IO) {
-            val pokemonID = pokemonID.drop(1).toInt().toString()
-            pokemonDetailRepository.fetchPokemonType(type = pokemonID).collect { result ->
+            pokemonDetailRepository.fetchPokemonType(type = types).collect { result ->
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 

@@ -8,6 +8,7 @@ import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.domain.models.PokemonType
 import com.example.pokedex.domain.models.Species
+import com.example.pokedex.domain.models.Type
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -40,12 +41,12 @@ class PokemonDetailImpl(
         }
     }
 
-    override fun fetchPokemonType(type: List<String>): Flow<Resource<List<PokemonType>>> = flow {
+    override fun fetchPokemonType(type: List<Type>): Flow<Resource<List<PokemonType>>> = flow {
         emit(Resource.Loading)
         try {
             var types: List<PokemonType> = emptyList()
             type.forEach { type ->
-                val response = pokedexService.getType(type = type)
+                val response = pokedexService.getType(type = type.type)
                 types = listOf(pokemonTypeMapper.mapperToDomain(dto = response))
             }
             emit(Resource.Success(data = types))
