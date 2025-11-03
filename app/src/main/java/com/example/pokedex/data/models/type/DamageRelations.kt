@@ -7,15 +7,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DamageRelations(
     @SerialName("double_damage_from")
-    val doubleDamageFrom: List<NameUrlBase?>?,
+    val doubleDamageFrom: List<NameUrlBase>? = null,
     @SerialName("double_damage_to")
-    val doubleDamageTo: List<NameUrlBase?>?,
+    val doubleDamageTo: List<NameUrlBase>? = null,
     @SerialName("half_damage_from")
-    val halfDamageFrom: List<NameUrlBase?>?,
+    val halfDamageFrom: List<NameUrlBase>? = null,
     @SerialName("half_damage_to")
-    val halfDamageTo: List<NameUrlBase?>?,
+    val halfDamageTo: List<NameUrlBase>? = null,
     @SerialName("no_damage_from")
-    val noDamageFrom: List<NameUrlBase?>?,
+    val noDamageFrom: List<NameUrlBase>? = null,
     @SerialName("no_damage_to")
-    val noDamageTo: List<NameUrlBase?>?
+    val noDamageTo: List<NameUrlBase>? = null,
 )

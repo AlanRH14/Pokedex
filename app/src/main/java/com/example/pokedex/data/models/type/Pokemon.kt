@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Pokemon(
     @SerialName("pokemon")
-    val pokemon: NameUrlBase?,
+    val pokemon: NameUrlBase? = null,
     @SerialName("slot")
-    val slot: Int?
+    val slot: Int? = null
 )

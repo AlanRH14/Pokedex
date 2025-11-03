@@ -3,6 +3,7 @@ package com.example.pokedex.presentation.screens.pokemon_details
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.domain.models.Type
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import com.example.pokedex.navigation.TabsNavRoute
@@ -36,7 +37,7 @@ class PokemonDetailViewModel(
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
             is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
             is PokemonDetailUIEvent.OnClickTabNavigation -> navigateToTabs(route = event.route)
-            is PokemonDetailUIEvent.OnGetPokemonType -> getPokemonType(pokemonID = event.pokemonID)
+            is PokemonDetailUIEvent.OnGetPokemonType -> getPokemonType(types = event.types)
         }
     }
 
@@ -90,10 +91,9 @@ class PokemonDetailViewModel(
         }
     }
 
-    private fun getPokemonType(pokemonID: String) {
+    private fun getPokemonType(types: List<Type>) {
         viewModelScope.launch(Dispatchers.IO) {
-            val pokemonID = pokemonID.drop(1).toInt().toString()
-            pokemonDetailRepository.fetchPokemonType(type = pokemonID).collect { result ->
+            pokemonDetailRepository.fetchPokemonType(type = types).collect { result ->
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
