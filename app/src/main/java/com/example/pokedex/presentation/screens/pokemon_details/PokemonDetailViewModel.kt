@@ -3,7 +3,7 @@ package com.example.pokedex.presentation.screens.pokemon_details
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.data.models.detail.Type
+import com.example.pokedex.domain.models.Type
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import com.example.pokedex.navigation.TabsNavRoute
