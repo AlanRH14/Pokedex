@@ -44,11 +44,12 @@ class PokemonDetailImpl(
     override fun fetchPokemonType(type: List<Type>): Flow<Resource<List<PokemonType>>> = flow {
         emit(Resource.Loading)
         try {
-            var types: List<PokemonType> = emptyList()
+            val types: MutableList<PokemonType> = mutableListOf()
             type.forEach { type ->
                 val response = pokedexService.getType(type = type.type)
-                types = listOf(pokemonTypeMapper.mapperToDomain(dto = response))
+                types.add(pokemonTypeMapper.mapperToDomain(dto = response))
             }
+
             emit(Resource.Success(data = types))
         } catch (e: Exception) {
             emit(Resource.Error(data = null, message = "Error: $e"))
