@@ -37,7 +37,7 @@ class PokemonDetailViewModel(
             is PokemonDetailUIEvent.OnClickedToggleFavorite -> changeToggleFavoriteState()
             is PokemonDetailUIEvent.OnClickedBack -> navigateToBack()
             is PokemonDetailUIEvent.OnClickTabNavigation -> navigateToTabs(route = event.route)
-            is PokemonDetailUIEvent.OnGetPokemonType -> getPokemonType(pokemonID = event.pokemonID)
+            is PokemonDetailUIEvent.OnGetPokemonType -> getPokemonType(types = event.type)
         }
     }
 
