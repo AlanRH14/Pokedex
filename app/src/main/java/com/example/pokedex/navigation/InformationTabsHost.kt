@@ -12,8 +12,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.navigation.TabsNavRoute.*
-import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonAbout
+import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonDamage
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 
 @Composable
@@ -40,7 +40,7 @@ fun InformationTabsHost(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text("Defence")
+                PokemonDamage(damages = pokemonDetail?.pokemonDamage)
             }
         }
 

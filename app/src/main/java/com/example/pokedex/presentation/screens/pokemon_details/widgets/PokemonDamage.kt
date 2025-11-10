@@ -14,14 +14,16 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTypeItem
 
 @Composable
-fun PokemonDamage(damage: Map<Double, List<String>>) {
+fun PokemonDamage(damages: Map<Double, List<String>>? = null) {
+    if (damages == null) return
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        damage.entries.forEach { (damage, types) ->
+        damages.entries.forEach { (damage, types) ->
             Text(text = "x$damage")
             LazyRow(modifier = Modifier.fillMaxWidth()) {
                 items(types) { type ->
