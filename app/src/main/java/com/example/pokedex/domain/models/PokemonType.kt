@@ -11,4 +11,5 @@ data class PokemonType(
     val halfDamageTo: List<String> = emptyList(),
     val noDamageFrom: List<String> = emptyList(),
     val noDamageTo: List<String> = emptyList(),
+    val defense: List<String> = emptyList(),
 )
