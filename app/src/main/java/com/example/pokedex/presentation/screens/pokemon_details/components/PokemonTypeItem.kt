@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex.utils.DrawableUtils.icon
 
 @Composable
-fun PokemonTypes(
+fun PokemonTypeItem(
     types: String,
     color: Int,
 ) {

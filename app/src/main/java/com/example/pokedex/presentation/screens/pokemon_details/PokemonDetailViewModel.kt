@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.models.Type
 import com.example.pokedex.domain.repository.PokemonDetailRepository
 import com.example.pokedex.domain.repository.PokemonPaletteRepository
+import com.example.pokedex.domain.use_case.CalculateDamageUseCase
 import com.example.pokedex.navigation.TabsNavRoute
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailEffect
 import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailState
@@ -22,6 +23,7 @@ import kotlinx.coroutines.launch
 class PokemonDetailViewModel(
     private val pokemonDetailRepository: PokemonDetailRepository,
     private val pokemonPaletteRepository: PokemonPaletteRepository,
+    private val calculateDamageUseCase: CalculateDamageUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(PokemonDetailState())
@@ -98,8 +100,14 @@ class PokemonDetailViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> _state.update {
-                        Log.d("LordMiau", "Result: ${result.data}")
-                        it.copy(isLoading = false)
+                        it.copy(
+                            pokemonDetail = it.pokemonDetail?.copy(
+                                pokemonDamage = calculateDamageUseCase.calculateDefenseMultiplier(
+                                    types = result.data
+                                )
+                            ),
+                            isLoading = false
+                        )
                     }
 
                     is Resource.Error -> _state.update {

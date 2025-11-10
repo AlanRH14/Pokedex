@@ -7,13 +7,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.pokedex.domain.models.PokemonDetail
 import com.example.pokedex.navigation.TabsNavRoute.*
-import com.example.pokedex.presentation.screens.pokemon_details.mvi.PokemonDetailUIEvent
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonAbout
+import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonDamage
 import com.example.pokedex.presentation.screens.pokemon_details.widgets.PokemonStats
 
 @Composable
@@ -35,13 +36,10 @@ fun InformationTabsHost(
         }
 
         composable<Defence> {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text("Defence")
-            }
+            PokemonDamage(
+                damages = pokemonDetail?.pokemonDamage,
+                color = pokemonDetail?.colorPalette?.domainColor ?: Color.White.hashCode()
+            )
         }
 
         composable<Evolution> {
