@@ -103,7 +103,7 @@ class PokemonDetailViewModel(
                         it.copy(
                             pokemonDetail = it.pokemonDetail?.copy(
                                 pokemonDamage = calculateDamageUseCase.calculateDefenseMultiplier(
-                                    result.data
+                                    types = result.data
                                 )
                             ),
                             isLoading = false

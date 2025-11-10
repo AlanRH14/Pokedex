@@ -1,5 +1,7 @@
 package com.example.pokedex.domain.models
 
+import java.util.SortedMap
+
 data class PokemonDetail(
     val id: String = "",
     val name: String = "",
@@ -12,5 +14,5 @@ data class PokemonDetail(
     val stats: List<Stat> = emptyList(),
     val abilities: List<String> = emptyList(),
     val species: Species = Species(),
-    val pokemonDamage: Map<String, Double> = emptyMap()
+    val pokemonDamage: SortedMap<Double, List<String>> = sortedMapOf()
 )
