@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -35,13 +36,10 @@ fun InformationTabsHost(
         }
 
         composable<Defence> {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                PokemonDamage(damages = pokemonDetail?.pokemonDamage)
-            }
+            PokemonDamage(
+                damages = pokemonDetail?.pokemonDamage,
+                color = pokemonDetail?.colorPalette?.domainColor ?: Color.White.hashCode()
+            )
         }
 
         composable<Evolution> {
