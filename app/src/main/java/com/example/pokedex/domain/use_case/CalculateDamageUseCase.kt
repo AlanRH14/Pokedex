@@ -28,6 +28,6 @@ class CalculateDamageUseCase {
             result[attackType] = multiplier
         }
 
-        return result.filter { it.value > 1.0 }.toSortedMap()
+        return result.toSortedMap()
     }
 }
