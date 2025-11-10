@@ -14,7 +14,7 @@ import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class PokemonDetailImpl(
+class v(
     private val pokedexService: PokedexService,
     private val pokemonDetailMapper: ApiMapper<PokemonDetailDto, PokemonDetail>,
     private val pokemonSpeciesMapper: ApiMapper<SpeciesResponse, Species>,
