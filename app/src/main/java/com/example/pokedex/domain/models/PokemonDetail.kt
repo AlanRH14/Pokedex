@@ -11,5 +11,6 @@ data class PokemonDetail(
     val types: List<Type> = emptyList(),
     val stats: List<Stat> = emptyList(),
     val abilities: List<String> = emptyList(),
-    val species: Species = Species()
+    val species: Species = Species(),
+    val pokemonDamage: Map<String, Double> = emptyMap()
 )

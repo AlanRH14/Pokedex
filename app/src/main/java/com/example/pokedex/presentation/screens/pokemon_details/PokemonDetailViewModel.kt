@@ -100,12 +100,14 @@ class PokemonDetailViewModel(
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
 
                     is Resource.Success -> _state.update {
-                        Log.d("LordMiau", "Result: ${result.data}")
-                        Log.d(
-                            "LordMiau",
-                            "Result Calculate Damage: ${calculateDamageUseCase.calculateDefenseMultiplier(result.data)}"
+                        it.copy(
+                            pokemonDetail = it.pokemonDetail?.copy(
+                                pokemonDamage = calculateDamageUseCase.calculateDefenseMultiplier(
+                                    result.data
+                                )
+                            ),
+                            isLoading = false
                         )
-                        it.copy(isLoading = false)
                     }
 
                     is Resource.Error -> _state.update {
