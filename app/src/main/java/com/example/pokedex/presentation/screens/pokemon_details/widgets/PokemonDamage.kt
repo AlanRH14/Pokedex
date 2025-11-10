@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTypes
+import com.example.pokedex.presentation.screens.pokemon_details.components.PokemonTypeItem
 
 @Composable
 fun PokemonDamage(damage: Map<Double, List<String>>) {
@@ -25,7 +25,7 @@ fun PokemonDamage(damage: Map<Double, List<String>>) {
             Text(text = "x$damage")
             LazyRow(modifier = Modifier.fillMaxWidth()) {
                 items(types) { type ->
-                    PokemonTypes(
+                    PokemonTypeItem(
                         types = type,
                         color = 0xFF000000.toInt()
                     )
