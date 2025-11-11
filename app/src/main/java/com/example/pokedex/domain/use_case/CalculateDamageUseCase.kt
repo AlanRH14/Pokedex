@@ -1,12 +1,13 @@
 package com.example.pokedex.domain.use_case
 
 import com.example.pokedex.domain.models.PokemonType
+import com.example.pokedex.domain.models.Type
 import java.util.SortedMap
 
 class CalculateDamageUseCase {
-    fun calculateDefenseMultiplier(types: List<PokemonType>): SortedMap<Double, List<String>> {
+    fun calculateDefenseMultiplier(types: List<PokemonType>): Map<Double, List<Type>> {
         if (types.isEmpty()) return sortedMapOf()
-        val allAttackTypes = mutableSetOf<String>()
+        val allAttackTypes = mutableSetOf<Type>()
 
         types.forEach { type ->
             allAttackTypes += type.doubleDamageFrom
@@ -25,11 +26,11 @@ class CalculateDamageUseCase {
                 if (attackType in type.noDamageFrom) multiplier *= 0.0
             }
 
-            result[attackType] = multiplier
+            result[attackType.type] = multiplier
         }
 
         return result.entries
-            .groupBy({ value -> value.value }, { key -> key.key })
+            .groupBy({ value -> value.value }, { key -> Type(type = key.key) })
             .toSortedMap(compareByDescending { compare -> compare })
     }
 }
