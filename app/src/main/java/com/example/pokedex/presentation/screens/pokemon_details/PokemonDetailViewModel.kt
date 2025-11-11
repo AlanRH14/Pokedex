@@ -1,6 +1,5 @@
 package com.example.pokedex.presentation.screens.pokemon_details
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.domain.models.Type
@@ -111,7 +110,6 @@ class PokemonDetailViewModel(
                     }
 
                     is Resource.Error -> _state.update {
-                        Log.d("LordMiau", "Error: ${result.message}")
                         it.copy(
                             isLoading = false,
                             errorMessage = result.message
