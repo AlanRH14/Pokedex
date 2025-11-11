@@ -19,7 +19,7 @@ fun PokemonTypes(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(types, key = { it.slot }) { ability ->
+        items(types, key = { it.type }) { ability ->
             PokemonTypeItem(
                 types = ability.type,
                 color = color
