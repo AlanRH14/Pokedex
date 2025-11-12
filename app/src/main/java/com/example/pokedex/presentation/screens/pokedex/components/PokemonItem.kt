@@ -79,6 +79,8 @@ fun PokemonItem(
                     text = pokemon.id,
                     textAlign = TextAlign.End,
                     color = onDomainColor.copy(alpha = 0.5F),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Bold
                     )
