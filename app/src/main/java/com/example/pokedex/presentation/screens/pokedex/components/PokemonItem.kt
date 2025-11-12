@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.presentation.components.PokemonImage
@@ -55,7 +56,6 @@ fun PokemonItem(
                 .background(Color.Transparent)
                 .padding(4.dp)
         ) {
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -68,6 +68,8 @@ fun PokemonItem(
                     text = pokemon.name,
                     textAlign = TextAlign.Center,
                     color = onDomainColor.copy(alpha = 0.8F),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.Bold
                     ),
