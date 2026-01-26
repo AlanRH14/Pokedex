@@ -42,7 +42,6 @@ fun PokedexScreen(
     viewModel: PokedexViewModel = koinViewModel(),
     navController: NavHostController
 ) {
-
     val state by viewModel.state.collectAsStateWithLifecycle()
     val pokemons = state.pokemonList.collectAsLazyPagingItems()
     val result = HandlerPagingResult(pokemons = pokemons)
