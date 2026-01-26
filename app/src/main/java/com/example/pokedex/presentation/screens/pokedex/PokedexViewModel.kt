@@ -2,6 +2,7 @@ package com.example.pokedex.presentation.screens.pokedex
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.models.PokemonPaletteColors
 import com.example.pokedex.domain.repository.MainRepository
@@ -9,7 +10,6 @@ import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonState
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
-import com.example.pokedex.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -42,7 +42,7 @@ class PokedexViewModel(
     }
 
     private fun getPokemons() {
-        viewModelScope.launch(Dispatchers.IO) {
+        /*viewModelScope.launch(Dispatchers.IO) {
             pokemonRepository.fetchPokemonList().collect { result ->
                 when (result) {
                     is Resource.Loading -> _state.update { it.copy(isLoading = true) }
@@ -62,7 +62,10 @@ class PokedexViewModel(
                     }
                 }
             }
-        }
+        }*/
+
+        val pokemonPagingFlow = pokemonRepository.fetchPokemonList().cachedIn(viewModelScope)
+        _state.update { it.copy(pokemonList = pokemonPagingFlow) }
     }
 
     private suspend fun loadPaletteForPokemon(pokemon: Pokemon) {
@@ -70,24 +73,19 @@ class PokedexViewModel(
             try {
                 val palette = pokemonPaletteRepository.generatePokemonPalette(pokemon.url)
                 if (palette != null) {
-                    updatePokemonPalette(pokemon= pokemon, palette = palette)
+                    updatePokemonPalette(pokemon= pokemon.name, palette = palette)
                 }
             } catch (e: Exception) {
-                print("Error: ${pokemon.name} ${e.message}")
+                print("Error: $pokemon ${e.message}")
             }
         }
     }
 
-    private fun updatePokemonPalette(pokemon: Pokemon, palette: PokemonPaletteColors) {
+    private fun updatePokemonPalette(pokemon: String, palette: PokemonPaletteColors) {
         _state.update {
-           val updateList = it.pokemonList.map { existingPokemon ->
-                if (existingPokemon.id == pokemon.id) {
-                    existingPokemon.copy(colorPalette = palette)
-                } else {
-                    existingPokemon
-                }
-            }
-            it.copy(pokemonList = updateList, isLoading = false)
+            it.copy(
+                pokemonPalettes = it.pokemonPalettes + (pokemon to palette)
+            )
         }
     }
 

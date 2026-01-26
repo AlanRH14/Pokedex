@@ -1,5 +1,9 @@
 package com.example.pokedex.data.repository
 
+import androidx.compose.ui.res.painterResource
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.data.remote.PokedexService
@@ -14,13 +18,19 @@ class MainRepositoryImpl(
     private val pokemonMapper: ApiMapper<PokemonResponse, List<Pokemon>>
 ) : MainRepository {
 
-    override fun fetchPokemonList(): Flow<Resource<List<Pokemon>>> = flow {
-        emit(Resource.Loading)
-        try {
-            val response = pokedexService.fetchPokemonList()
-            emit(Resource.Success(data = pokemonMapper.mapperToDomain(dto = response)))
-        } catch (e: Exception) {
-            emit(Resource.Error(data = null, message = "Error: $e"))
-        }
+    companion object {
+        const val MAX_ITEMS_FOR_PAGE = 20
+    }
+
+    override fun fetchPokemonList(): Flow<PagingData<Pokemon>> {
+        return Pager(
+            config = PagingConfig(pageSize = MAX_ITEMS_FOR_PAGE),
+            pagingSourceFactory = {
+                PokemonMediator(
+                    pokedexService = pokedexService,
+                    pokemonMapper = pokemonMapper
+                )
+            }
+        ).flow
     }
 }
