@@ -9,7 +9,7 @@ lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.2"
 composeBom = "2026.01.00"
 
-coreSplashscreen = "1.0.1"
+coreSplashscreen = "1.2.0"
 koinAndroid = "4.1.1"
 ksp = "2.1.21-2.0.1"
 
