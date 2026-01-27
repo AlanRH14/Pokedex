@@ -15,8 +15,8 @@ class PokemonMediator(
 
     override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition = anchorPosition)?.prevKey?.plus(1)
-                ?: state.closestPageToPosition(anchorPosition = anchorPosition)?.nextKey?.minus(1)
+            state.closestPageToPosition(anchorPosition = anchorPosition)?.prevKey?.plus(20)
+                ?: state.closestPageToPosition(anchorPosition = anchorPosition)?.nextKey?.minus(20)
         }
     }
 
@@ -32,8 +32,8 @@ class PokemonMediator(
 
             val page = params.key ?: 1
             val response = pokedexService.fetchPokemonList(offset = page)
-            val prevKey = if (page > 0) 0 else null
-            val nextPageNumber = if (response.next != null) page + 1 else null
+            val prevKey = if (page == 0) null else page - 20
+            val nextPageNumber = if (response.next != null) page + 20 else null
 
             return LoadResult.Page(
                 data = pokemonMapper.mapperToDomain(dto = response),
