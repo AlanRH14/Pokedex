@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +25,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
 import com.example.pokedex.navigation.NavRoute
+import com.example.pokedex.presentation.components.HandlerPagingResult
 import com.example.pokedex.presentation.screens.pokedex.components.PokemonItem
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
@@ -40,9 +42,9 @@ fun PokedexScreen(
     viewModel: PokedexViewModel = koinViewModel(),
     navController: NavHostController
 ) {
-
     val state by viewModel.state.collectAsStateWithLifecycle()
-
+    val pokemons = state.pokemonList.collectAsLazyPagingItems()
+    val result = HandlerPagingResult(pokemons = pokemons)
     LaunchedEffect(key1 = true) {
         viewModel.onEvent(PokemonUIEvent.OnGetPokemonList)
         viewModel.effect.collectLatest { effect ->
@@ -64,7 +66,7 @@ fun PokedexScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            if (state.isLoading) {
+            if (state.isLoading && !result) {
                 items(20) {
 
                     Column(
@@ -110,11 +112,13 @@ fun PokedexScreen(
                     }
                 }
             } else {
-                items(state.pokemonList, key = { it.name }) { pokemon ->
-                    PokemonItem(
-                        pokemon = pokemon,
-                        onEvent = viewModel::onEvent
-                    )
+                items( count = pokemons.itemCount, key = pokemons.itemKey{ it.id }) { pokemonIndex ->
+                    pokemons[pokemonIndex]?.let { pokemon ->
+                        PokemonItem(
+                            pokemon = pokemon,
+                            onEvent = viewModel::onEvent
+                        )
+                    }
                 }
             }
         }

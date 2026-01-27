@@ -7,7 +7,7 @@ import com.example.pokedex.data.models.type.TypeDto
 import com.example.pokedex.utils.Constants.LIMIT_QUERY
 import com.example.pokedex.utils.Constants.NAME_PATH
 import com.example.pokedex.utils.Constants.OFFSET_QUERY
-import com.example.pokedex.utils.Constants.PAGING_SIZE
+import com.example.pokedex.utils.Constants.PAGING_MAX_SIZE
 import com.example.pokedex.utils.Constants.SPECIES_PATH
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,8 +17,8 @@ interface PokedexService {
 
     @GET("pokemon")
     suspend fun fetchPokemonList(
-        @Query(LIMIT_QUERY) limit: Int = PAGING_SIZE,
         @Query(OFFSET_QUERY) offset: Int = 0,
+        @Query(LIMIT_QUERY) limit: Int = PAGING_MAX_SIZE,
     ): PokemonResponse
 
     @GET("pokemon/{name}")
