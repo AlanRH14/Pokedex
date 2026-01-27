@@ -15,7 +15,7 @@ import retrofit2.http.Query
 
 interface PokedexService {
 
-    @GET("pokemon")
+    @GET("pokemon/")
     suspend fun fetchPokemonList(
         @Query(LIMIT_QUERY) limit: Int = PAGING_MAX_SIZE,
         @Query(OFFSET_QUERY) offset: Int = 0,

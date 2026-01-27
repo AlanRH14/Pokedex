@@ -15,13 +15,13 @@ class PokemonMediator(
 
     override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
-            state.closestPageToPosition(anchorPosition = anchorPosition)?.prevKey?.plus(20)
-                ?: state.closestPageToPosition(anchorPosition = anchorPosition)?.nextKey?.minus(20)
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(state.config.pageSize)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(state.config.pageSize)
         }
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Pokemon> {
-        try {
+        return try {
             when (params) {
                 is LoadParams.Refresh -> {}
 
@@ -30,18 +30,18 @@ class PokemonMediator(
                 is LoadParams.Append -> {}
             }
 
-            val page = params.key ?: 1
-            val response = pokedexService.fetchPokemonList(offset = page)
-            val prevKey = if (page == 0) null else page - 20
-            val nextPageNumber = if (response.next != null) page + 20 else null
+            val page = params.key ?: 0
+            val response = pokedexService.fetchPokemonList(limit = params.loadSize, offset = page)
+            val prevKey = if (page == 0) null else  page - params.loadSize
+            val nextPageNumber = if (response.next != null) page + params.loadSize else null
 
-            return LoadResult.Page(
+            LoadResult.Page(
                 data = pokemonMapper.mapperToDomain(dto = response),
                 prevKey = prevKey,
                 nextKey = nextPageNumber,
             )
         } catch (e: Exception) {
-            return LoadResult.Error(throwable = e)
+            LoadResult.Error(throwable = e)
         }
     }
 }
