@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
@@ -42,38 +43,17 @@ class PokedexViewModel(
     }
 
     private fun getPokemons() {
-        /*viewModelScope.launch(Dispatchers.IO) {
-            pokemonRepository.fetchPokemonList().collect { result ->
-                when (result) {
-                    is Resource.Loading -> _state.update { it.copy(isLoading = true) }
-
-                    is Resource.Success -> _state.update {
-                        it.copy(
-                            pokemonList = result.data,
-                            isLoading = false
-                        )
-                    }
-
-                    is Resource.Error -> _state.update {
-                        it.copy(
-                            errorMessage = result.message,
-                            isLoading = false
-                        )
-                    }
-                }
-            }
-        }*/
-
         val pokemonPagingFlow = pokemonRepository.fetchPokemonList().cachedIn(viewModelScope)
         _state.update { it.copy(pokemonList = pokemonPagingFlow) }
     }
 
     private suspend fun loadPaletteForPokemon(pokemon: Pokemon) {
+        if (_state.value.pokemonPalettes.containsKey(pokemon.name)) return
         paletteSemaphore.withPermit {
             try {
                 val palette = pokemonPaletteRepository.generatePokemonPalette(pokemon.url)
                 if (palette != null) {
-                    updatePokemonPalette(pokemon= pokemon.name, palette = palette)
+                    updatePokemonPalette(pokemonName = pokemon.name, palette = palette)
                 }
             } catch (e: Exception) {
                 print("Error: $pokemon ${e.message}")
@@ -81,18 +61,17 @@ class PokedexViewModel(
         }
     }
 
-    private fun updatePokemonPalette(pokemon: String, palette: PokemonPaletteColors) {
+    private fun updatePokemonPalette(pokemonName: String, palette: PokemonPaletteColors) {
         _state.update {
             it.copy(
-                pokemonPalettes = it.pokemonPalettes + (pokemon to palette)
+                pokemonPalettes = it.pokemonPalettes + (pokemonName to palette)
             )
         }
     }
 
     private fun onPokemonVisible(pokemon: Pokemon) {
         viewModelScope.launch(Dispatchers.IO) {
-            _state.update { it.copy(isLoading = false) }
-            if (pokemon.colorPalette == null) {
+            if (_state.value.pokemonPalettes.containsKey(pokemon.name)) {
                 loadPaletteForPokemon(pokemon)
             }
         }
