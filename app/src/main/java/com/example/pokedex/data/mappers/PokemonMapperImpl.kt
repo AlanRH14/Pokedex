@@ -1,5 +1,6 @@
 package com.example.pokedex.data.mappers
 
+import android.util.Log
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.domain.models.Pokemon
@@ -11,6 +12,7 @@ class PokemonMapperImpl : ApiMapper<PokemonResponse, List<Pokemon>> {
 
     override fun mapperToDomain(dto: PokemonResponse): List<Pokemon> {
         return dto.results?.mapIndexed { index, pokemon ->
+            Log.d("PokemonMapperImpl", "Pokemon: ${(index.toLong() + 1).formatPokemonID()}")
             Pokemon(
                 id = (index.toLong() + 1).formatPokemonID(),
                 name = pokemon.name.capitalized(),

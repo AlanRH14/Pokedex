@@ -112,7 +112,7 @@ fun PokedexScreen(
                     }
                 }
             } else {
-                items( count = pokemons.itemCount) { pokemonIndex ->
+                items(count = pokemons.itemCount) { pokemonIndex ->
                     pokemons[pokemonIndex]?.let { pokemon ->
                         PokemonItem(
                             pokemon = pokemon,

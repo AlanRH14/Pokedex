@@ -15,10 +15,14 @@ class MainRepositoryImpl(
     private val pokemonMapper: ApiMapper<PokemonResponse, List<Pokemon>>
 ) : MainRepository {
 
-
     override fun fetchPokemonList(): Flow<PagingData<Pokemon>> {
         return Pager(
-            config = PagingConfig(pageSize = 20, prefetchDistance = 2, initialLoadSize = 20),
+            config = PagingConfig(
+                pageSize = 20,
+                initialLoadSize = 20,
+                prefetchDistance = 2,
+                enablePlaceholders = false
+            ),
             pagingSourceFactory = {
                 PokemonMediator(
                     pokedexService = pokedexService,
