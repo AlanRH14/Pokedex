@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokedex
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
@@ -46,6 +47,14 @@ class PokedexViewModel(
         _state.update { it.copy(pokemonList = pokemonPagingFlow) }
     }
 
+    private fun onPokemonVisible(pokemon: Pokemon) {
+        viewModelScope.launch(Dispatchers.IO) {
+            if (!_state.value.pokemonPalettes.containsKey(pokemon.name)) {
+                loadPaletteForPokemon(pokemon)
+            }
+        }
+    }
+
     private suspend fun loadPaletteForPokemon(pokemon: Pokemon) {
         if (_state.value.pokemonPalettes.containsKey(pokemon.name)) return
         paletteSemaphore.withPermit {
@@ -65,14 +74,6 @@ class PokedexViewModel(
             it.copy(
                 pokemonPalettes = it.pokemonPalettes + (pokemonName to palette)
             )
-        }
-    }
-
-    private fun onPokemonVisible(pokemon: Pokemon) {
-        viewModelScope.launch(Dispatchers.IO) {
-            if (_state.value.pokemonPalettes.containsKey(pokemon.name)) {
-                loadPaletteForPokemon(pokemon)
-            }
         }
     }
 
