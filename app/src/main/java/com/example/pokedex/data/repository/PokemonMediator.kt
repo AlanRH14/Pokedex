@@ -33,20 +33,10 @@ class PokemonMediator(
 
             val page = params.key ?: 0
             val response = pokedexService.fetchPokemonList(offset = page, limit = params.loadSize)
-            val prevKey = if (page == 0) null else page - params.loadSize
-            val nextPageNumber =
-                if (!response.results.isNullOrEmpty()) page + params.loadSize else null
-
-            Log.d("PokemonMediator", "loadSize: ${params.loadSize}")
-            Log.d("PokemonMediator", "page: $page")
-            Log.d("PokemonMediator", "response: $response")
-            Log.d("PokemonMediator", "prevKey: $prevKey")
-            Log.d("PokemonMediator", "nextPageNumber: $prevKey")
-
             LoadResult.Page(
                 data = pokemonMapper.mapperToDomain(dto = response),
-                prevKey = prevKey,
-                nextKey = nextPageNumber,
+                prevKey = if (page == 0) null else page - params.loadSize,
+                nextKey = if (!response.results.isNullOrEmpty()) page + params.loadSize else null,
             )
         } catch (e: Exception) {
             LoadResult.Error(throwable = e)
