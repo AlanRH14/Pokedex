@@ -29,10 +29,10 @@ class PokemonMediator(
                 is LoadParams.Append -> {}
             }
 
-            val page = params.key ?: 20
-            val response = pokedexService.fetchPokemonList(limit = page , offset = page)
-            val prevKey = if (page == 0) null else  page - PAGING_MAX_SIZE
-            val nextPageNumber = if (response.next != null) page + PAGING_MAX_SIZE else null
+            val page = params.key ?: 0
+            val response = pokedexService.fetchPokemonList( offset = page, limit = params.loadSize)
+            val prevKey = if (page == 0) null else page - params.loadSize
+            val nextPageNumber = if (!response.results.isNullOrEmpty()) page + params.loadSize else null
 
             Log.d("PokemonMediator", "loadSize: ${params.loadSize}")
             Log.d("PokemonMediator", "page: $page")

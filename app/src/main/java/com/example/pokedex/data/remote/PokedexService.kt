@@ -17,8 +17,8 @@ interface PokedexService {
 
     @GET("pokemon")
     suspend fun fetchPokemonList(
-        @Query(OFFSET_QUERY) offset: Int = 0,
         @Query(LIMIT_QUERY) limit: Int = PAGING_MAX_SIZE,
+        @Query(OFFSET_QUERY) offset: Int = 0,
     ): PokemonResponse
 
     @GET("pokemon/{name}")
