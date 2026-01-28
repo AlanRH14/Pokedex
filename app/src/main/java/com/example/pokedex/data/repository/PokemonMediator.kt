@@ -1,6 +1,5 @@
 package com.example.pokedex.data.repository
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedex.common.ApiMapper
