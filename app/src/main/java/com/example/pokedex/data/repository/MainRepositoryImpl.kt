@@ -21,7 +21,7 @@ class MainRepositoryImpl(
                 pageSize = 20,
                 initialLoadSize = 20,
                 prefetchDistance = 2,
-                enablePlaceholders = false
+                enablePlaceholders = true
             ),
             pagingSourceFactory = {
                 PokemonMediator(

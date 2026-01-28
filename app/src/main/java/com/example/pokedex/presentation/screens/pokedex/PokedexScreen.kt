@@ -8,20 +8,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
@@ -32,7 +26,6 @@ import com.example.pokedex.presentation.components.HandlerPagingResult
 import com.example.pokedex.presentation.screens.pokedex.components.PokemonItem
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonEffect
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
-import com.example.pokedex.utils.animationShimmerItem
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
@@ -67,7 +60,7 @@ fun PokedexScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            if (!state.isLoading && result) {
+            if (result) {
                 items(count = pokemons.itemCount, key = pokemons.itemKey { it.id }) { pokemonIndex ->
                     pokemons[pokemonIndex]?.let { pokemon ->
                         PokemonItem(
