@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.presentation.screens.pokedex.components.PokemonItemShimmer
 
 @Composable
 fun HandlerPagingResult(
@@ -19,14 +20,17 @@ fun HandlerPagingResult(
 
         return when {
             loadState.refresh is LoadState.Loading -> {
+                PokemonItemShimmer()
                 false
             }
 
             error != null -> {
+                PokemonItemShimmer()
                 false
             }
 
             pokemons.itemCount < 1 -> {
+                PokemonItemShimmer()
                 false
             }
 

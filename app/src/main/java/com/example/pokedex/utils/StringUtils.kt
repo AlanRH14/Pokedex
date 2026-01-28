@@ -12,6 +12,17 @@ object StringUtils {
         }
     }
 
+    fun String?.getIDFromURL(): Long {
+        if (this.isNullOrEmpty()) return 0L
+        return try {
+            val url = this.trimEnd('/')
+            val getID = url.substringAfterLast('/')
+            getID.toLong()
+        } catch (e: Exception) {
+            0L
+        }
+    }
+
     fun String?.capitalized(): String {
         return this?.replaceFirstChar {
             if (it.isLowerCase())
