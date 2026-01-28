@@ -71,6 +71,7 @@ class PokedexViewModel(
     private fun updatePokemonPalette(pokemonName: String, palette: PokemonPaletteColors) {
         _state.update {
             it.copy(
+                isLoading = false,
                 pokemonPalettes = it.pokemonPalettes + (pokemonName to palette)
             )
         }

@@ -67,52 +67,7 @@ fun PokedexScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            if (state.isLoading && !result) {
-                items(20) {
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center,
-                        modifier = Modifier
-                            .background(Color.Transparent)
-                            .clip(MaterialTheme.shapes.large)
-                            .animationShimmerItem(isLoading = true)
-                    ) {
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .weight(0.8F)
-                                    .height(22.dp)
-                                    .padding(all = 2.dp)
-                                    .animationShimmerItem(isLoading = true),
-                            )
-
-                            Box(
-                                modifier = Modifier
-                                    .weight(0.2F)
-                                    .height(16.dp)
-                                    .padding(all = 2.dp)
-                                    .animationShimmerItem(isLoading = true),
-                            )
-                        }
-
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .aspectRatio(1.2f)
-                                .fillMaxHeight()
-                                .padding(all = 2.dp)
-                                .animationShimmerItem(isLoading = true),
-                        )
-                    }
-                }
-            } else {
+            if (!state.isLoading && result) {
                 items(count = pokemons.itemCount, key = pokemons.itemKey { it.id }) { pokemonIndex ->
                     pokemons[pokemonIndex]?.let { pokemon ->
                         PokemonItem(
