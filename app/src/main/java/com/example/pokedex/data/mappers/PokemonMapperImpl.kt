@@ -11,8 +11,7 @@ import com.example.pokedex.utils.StringUtils.getIDFromURL
 
 class PokemonMapperImpl : ApiMapper<PokemonResponse, List<Pokemon>> {
     override fun mapperToDomain(dto: PokemonResponse): List<Pokemon> {
-        return dto.results?.mapIndexed { index, pokemon ->
-            Log.d("PokemonMapperImpl", "Pokemon: ${pokemon.url.getIDFromURL().formatPokemonID()}")
+        return dto.results?.map { pokemon ->
             val pokemonID = pokemon.url.getIDFromURL()
             Pokemon(
                 id = pokemonID.formatPokemonID(),
