@@ -13,10 +13,11 @@ class PokemonMapperImpl : ApiMapper<PokemonResponse, List<Pokemon>> {
     override fun mapperToDomain(dto: PokemonResponse): List<Pokemon> {
         return dto.results?.mapIndexed { index, pokemon ->
             Log.d("PokemonMapperImpl", "Pokemon: ${pokemon.url.getIDFromURL().formatPokemonID()}")
+            val pokemonID = pokemon.url.getIDFromURL()
             Pokemon(
-                id = pokemon.url.getIDFromURL().formatPokemonID(),
+                id = pokemonID.formatPokemonID(),
                 name = pokemon.name.capitalized(),
-                url = "${Constants.BAR_URL_IMAGE}${index + 1}.png"
+                url = "${Constants.BAR_URL_IMAGE}${pokemonID}.png"
             )
         } ?: emptyList()
     }
