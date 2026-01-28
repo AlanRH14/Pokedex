@@ -1,6 +1,5 @@
 package com.example.pokedex.data.mappers
 
-import android.util.Log
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.domain.models.Pokemon
