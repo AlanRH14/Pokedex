@@ -8,7 +8,6 @@ import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.repository.MainRepository
-import com.example.pokedex.utils.Constants.PAGING_MAX_SIZE
 import kotlinx.coroutines.flow.Flow
 
 class MainRepositoryImpl(
@@ -19,7 +18,7 @@ class MainRepositoryImpl(
 
     override fun fetchPokemonList(): Flow<PagingData<Pokemon>> {
         return Pager(
-            config = PagingConfig(pageSize = PAGING_MAX_SIZE),
+            config = PagingConfig(pageSize = 20, prefetchDistance = 2, initialLoadSize = 20),
             pagingSourceFactory = {
                 PokemonMediator(
                     pokedexService = pokedexService,
