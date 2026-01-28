@@ -117,6 +117,7 @@ fun PokedexScreen(
                     pokemons[pokemonIndex]?.let { pokemon ->
                         PokemonItem(
                             pokemon = pokemon,
+                            pokemonState = state,
                             onEvent = viewModel::onEvent
                         )
                     }

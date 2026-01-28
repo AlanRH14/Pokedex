@@ -1,6 +1,5 @@
 package com.example.pokedex.presentation.screens.pokedex.components
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,10 +24,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.presentation.components.PokemonImage
+import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonState
 import com.example.pokedex.presentation.screens.pokedex.mvi.PokemonUIEvent
 
 @Composable
 fun PokemonItem(
+    pokemonState: PokemonState,
     pokemon: Pokemon,
     onEvent: (PokemonUIEvent) -> Unit
 ) {
@@ -38,10 +39,9 @@ fun PokemonItem(
         }
     }
 
-    val domainColor = Color(pokemon.colorPalette?.domainColor ?: Color.Transparent.hashCode())
-    val onDomainColor = Color(pokemon.colorPalette?.onDominantColor ?: Color.White.hashCode())
-    Log.d("LordMiau", "domainColor: $domainColor")
-    Log.d("LordMiau", "onDomainColor: $onDomainColor")
+    val paletteColors = pokemonState.pokemonPalettes[pokemon.name]
+    val domainColor = Color(paletteColors?.domainColor ?: Color.Transparent.hashCode())
+    val onDomainColor = Color(paletteColors?.onDominantColor ?: Color.White.hashCode())
     Card(
         colors = CardDefaults.cardColors(
             containerColor = domainColor,
