@@ -1,5 +1,6 @@
 package com.example.pokedex.presentation.screens.pokedex.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -39,7 +40,8 @@ fun PokemonItem(
 
     val domainColor = Color(pokemon.colorPalette?.domainColor ?: Color.Transparent.hashCode())
     val onDomainColor = Color(pokemon.colorPalette?.onDominantColor ?: Color.White.hashCode())
-
+    Log.d("LordMiau", "domainColor: $domainColor")
+    Log.d("LordMiau", "onDomainColor: $onDomainColor")
     Card(
         colors = CardDefaults.cardColors(
             containerColor = domainColor,

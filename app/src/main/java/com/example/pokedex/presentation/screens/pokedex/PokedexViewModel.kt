@@ -91,7 +91,7 @@ class PokedexViewModel(
 
     private fun onPokemonVisible(pokemon: Pokemon) {
         viewModelScope.launch(Dispatchers.IO) {
-            _state.update { it.copy(isLoading = true) }
+            _state.update { it.copy(isLoading = false) }
             if (pokemon.colorPalette == null) {
                 loadPaletteForPokemon(pokemon)
             }

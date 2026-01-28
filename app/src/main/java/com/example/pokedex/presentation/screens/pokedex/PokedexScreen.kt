@@ -45,6 +45,7 @@ fun PokedexScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val pokemons = state.pokemonList.collectAsLazyPagingItems()
     val result = HandlerPagingResult(pokemons = pokemons)
+
     LaunchedEffect(key1 = true) {
         viewModel.onEvent(PokemonUIEvent.OnGetPokemonList)
         viewModel.effect.collectLatest { effect ->
@@ -112,7 +113,7 @@ fun PokedexScreen(
                     }
                 }
             } else {
-                items(count = pokemons.itemCount) { pokemonIndex ->
+                items(count = pokemons.itemCount, key = pokemons.itemKey { it.id }) { pokemonIndex ->
                     pokemons[pokemonIndex]?.let { pokemon ->
                         PokemonItem(
                             pokemon = pokemon,
