@@ -56,7 +56,9 @@ fun PokedexScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             if (result) {
-                items(count = pokemons.itemCount, key = pokemons.itemKey { it.id }) { pokemonIndex ->
+                items(
+                    count = pokemons.itemCount,
+                    key = pokemons.itemKey { it.id }) { pokemonIndex ->
                     pokemons[pokemonIndex]?.let { pokemon ->
                         PokemonItem(
                             pokemon = pokemon,

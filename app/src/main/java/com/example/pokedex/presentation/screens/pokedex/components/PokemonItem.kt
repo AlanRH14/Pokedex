@@ -42,62 +42,67 @@ fun PokemonItem(
     val paletteColors = pokemonState.pokemonPalettes[pokemon.name]
     val domainColor = Color(paletteColors?.domainColor ?: Color.Transparent.hashCode())
     val onDomainColor = Color(paletteColors?.onDominantColor ?: Color.White.hashCode())
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = domainColor,
-            contentColor = MaterialTheme.colorScheme.onBackground
-        ),
-        shape = MaterialTheme.shapes.large,
-        elevation = CardDefaults.cardElevation(4.dp),
-        onClick = { onEvent(PokemonUIEvent.OnClickPokemonDetail(pokemonName = pokemon.name)) }
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .background(Color.Transparent)
-                .padding(4.dp)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 4.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier
-                        .weight(1F),
-                    text = pokemon.name,
-                    textAlign = TextAlign.Center,
-                    color = onDomainColor.copy(alpha = 0.8F),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold
-                    ),
-                )
 
-                Text(
-                    text = pokemon.id,
-                    textAlign = TextAlign.End,
-                    color = onDomainColor.copy(alpha = 0.5F),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        fontWeight = FontWeight.Bold
+    if (paletteColors != null) {
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = domainColor,
+                contentColor = MaterialTheme.colorScheme.onBackground
+            ),
+            shape = MaterialTheme.shapes.large,
+            elevation = CardDefaults.cardElevation(4.dp),
+            onClick = { onEvent(PokemonUIEvent.OnClickPokemonDetail(pokemonName = pokemon.name)) }
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .background(Color.Transparent)
+                    .padding(4.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        modifier = Modifier
+                            .weight(1F),
+                        text = pokemon.name,
+                        textAlign = TextAlign.Center,
+                        color = onDomainColor.copy(alpha = 0.8F),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.Bold
+                        ),
                     )
+
+                    Text(
+                        text = pokemon.id,
+                        textAlign = TextAlign.End,
+                        color = onDomainColor.copy(alpha = 0.5F),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                }
+
+                PokemonImage(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1.2f)
+                        .fillMaxHeight(),
+                    image = pokemon.url,
+                    contentScale = ContentScale.Fit,
+                    contentDescription = "Image ${pokemon.name}",
                 )
             }
-
-            PokemonImage(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(1.2f)
-                    .fillMaxHeight(),
-                image = pokemon.url,
-                contentScale = ContentScale.Fit,
-                contentDescription = "Image ${pokemon.name}",
-            )
         }
+    } else {
+        PokemonItemShimmer()
     }
 }
