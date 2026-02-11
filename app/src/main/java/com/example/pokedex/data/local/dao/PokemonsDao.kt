@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PokemonsDao {
 
-    @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
-    suspend fun insertPokemons(pokemonS: List<PokemonEntity>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPokemons(pokemons: List<PokemonEntity>)
 
     @Query("SELECT * FROM pokemonEntity WHERE page = :page")
     fun getCurrentPagePokemons(page: Int): Flow<List<PokemonEntity>>

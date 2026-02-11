@@ -5,6 +5,7 @@ import com.example.pokedex.domain.models.Sprites
 import com.example.pokedex.domain.models.Stat
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
+import kotlin.collections.isNullOrEmpty
 
 class DatabaseConverter {
     private val json = Json { ignoreUnknownKeys = true }
@@ -15,34 +16,34 @@ class DatabaseConverter {
     }
 
     @TypeConverter
-    fun converterStringToSprints(sprites: String): Sprites? {
-        return if (sprites == "null")
+    fun converterStringToSprints(sprites: String?): Sprites? {
+        return if (sprites == null)
             null
         else
             json.decodeFromString(Sprites.serializer(), sprites)
     }
 
     @TypeConverter
-    fun converterListStrToString(types: List<String>?): String {
-        return if (types.isNullOrEmpty()) "[]" else json.encodeToString(types)
+    fun converterListStrToString(types: List<String>?): String? {
+        return if (types.isNullOrEmpty()) null else json.encodeToString(types)
     }
 
     @TypeConverter
-    fun converterStringToListStr(types: String): List<String> {
-        return if (types.isBlank() || types == "[]") emptyList() else json.decodeFromString(types)
+    fun converterStringToListStr(types: String?): List<String>? {
+        return if (types.isNullOrEmpty()) null else json.decodeFromString(types)
     }
 
     @TypeConverter
-    fun converterStatsToString(stats: List<Stat>?): String {
+    fun converterStatsToString(stats: List<Stat>?): String? {
         return if (stats.isNullOrEmpty())
-            "[]"
+            null
         else
             json.encodeToString(ListSerializer(Stat.serializer()), stats)
     }
 
     @TypeConverter
-    fun converterStringToStats(stats: String): List<Stat> {
-        return if(stats.isBlank() || stats == "[]") emptyList()
-        else json.decodeFromString(ListSerializer(Stat.serializer()),stats)
+    fun converterStringToStats(stats: String?): List<Stat>? {
+        return if (stats.isNullOrEmpty()) null
+        else json.decodeFromString(ListSerializer(Stat.serializer()), stats)
     }
 }
