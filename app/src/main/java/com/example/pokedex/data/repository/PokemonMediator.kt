@@ -1,5 +1,6 @@
 package com.example.pokedex.data.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedex.common.ApiMapper
@@ -44,6 +45,7 @@ class PokemonMediator(
                 nextKey = if (!response.results.isNullOrEmpty()) page + params.loadSize else null,
             )
         } catch (e: Exception) {
+            Log.d("LordMiau", "Exception: ${e.message}")
             LoadResult.Error(throwable = e)
         }
     }

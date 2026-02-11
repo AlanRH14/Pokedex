@@ -14,8 +14,8 @@ val repositoryNetwork = module {
         MainRepositoryImpl(
             pokedexService = get(),
             pokemonsDao = get(),
-            pokemonMapper = get(),
-            pokemonEntityMapper = get()
+            pokemonEntityMapper = get(named("PokemonEntityMapperImpl")),
+            pokemonMapper = get(named("PokemonMapperImpl")),
         )
     }
     single<PokemonDetailRepository> {
