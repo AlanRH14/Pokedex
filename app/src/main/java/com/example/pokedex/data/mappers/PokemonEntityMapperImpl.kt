@@ -1,6 +1,6 @@
 package com.example.pokedex.data.mappers
 
-import android.util.Log
+import androidx.core.net.toUri
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.local.entity.PokemonEntity
 import com.example.pokedex.data.models.pokemon.PokemonResponse
@@ -16,14 +16,24 @@ class PokemonEntityMapperImpl : ApiMapper<PokemonResponse, List<PokemonEntity>> 
                 val pokemonID = pokemonRes.url.getIDFromURL()
                 PokemonEntity(
                     id = pokemonID,
-                    page = 0,
+                    page = getOffsetFromUrl(url = dto.next),
                     name = pokemonRes.name.capitalized(),
                     url = "${Constants.BAR_URL_IMAGE}${pokemonID}.png"
                 )
             } ?: emptyList()
-        } catch (e: Exception) {
-            Log.d("LordMiau", "Exception PokemonEntityMapperImpl: ${e.message}")
+        } catch (_: Exception) {
             emptyList()
+        }
+    }
+
+    private fun getOffsetFromUrl(url: String?): Int? {
+        if (url == null) return null
+
+        return try {
+            val uri = url.toUri()
+            uri.getQueryParameter("offset")?.toInt()
+        } catch (_: Exception) {
+            null
         }
     }
 }

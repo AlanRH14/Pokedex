@@ -37,7 +37,9 @@ class PokemonMediator(
 
             val page = params.key ?: 0
             val response = pokedexService.fetchPokemonList(offset = page, limit = params.loadSize)
+            Log.d("LordMiau", "Response: $response")
             val pokemonEntity = pokemonEntityMapper.mapperToDomain(dto = response)
+
             pokemonsDao.insertPokemons(pokemons = pokemonEntity)
             LoadResult.Page(
                 data = pokemonMapper.mapperToDomain(dto = pokemonEntity),
@@ -45,7 +47,6 @@ class PokemonMediator(
                 nextKey = if (!response.results.isNullOrEmpty()) page + params.loadSize else null,
             )
         } catch (e: Exception) {
-            Log.d("LordMiau", "Exception: ${e.message}")
             LoadResult.Error(throwable = e)
         }
     }
