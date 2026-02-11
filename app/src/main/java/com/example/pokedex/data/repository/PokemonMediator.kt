@@ -39,6 +39,7 @@ class PokemonMediator(
             val response = pokedexService.fetchPokemonList(offset = page, limit = params.loadSize)
             Log.d("LordMiau", "Response: $response")
             val pokemonEntity = pokemonEntityMapper.mapperToDomain(dto = response)
+            Log.d("LordMiau", "Entity: $pokemonEntity")
 
             pokemonsDao.insertPokemons(pokemons = pokemonEntity)
             LoadResult.Page(

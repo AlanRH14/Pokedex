@@ -16,7 +16,7 @@ class PokemonEntityMapperImpl : ApiMapper<PokemonResponse, List<PokemonEntity>> 
                 val pokemonID = pokemonRes.url.getIDFromURL()
                 PokemonEntity(
                     id = pokemonID,
-                    page = getOffsetFromUrl(url = dto.next),
+                    page = getOffsetFromUrl(url = dto.next) ?: 0,
                     name = pokemonRes.name.capitalized(),
                     url = "${Constants.BAR_URL_IMAGE}${pokemonID}.png"
                 )
