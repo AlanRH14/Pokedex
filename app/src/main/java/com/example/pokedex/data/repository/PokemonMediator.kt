@@ -3,12 +3,14 @@ package com.example.pokedex.data.repository
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedex.common.ApiMapper
+import com.example.pokedex.data.local.dao.PokemonsDao
 import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.Pokemon
 
 class PokemonMediator(
     private val pokedexService: PokedexService,
+    private val pokemonsDao: PokemonsDao,
     private val pokemonMapper: ApiMapper<PokemonResponse, List<Pokemon>>
 ) : PagingSource<Int, Pokemon>() {
 

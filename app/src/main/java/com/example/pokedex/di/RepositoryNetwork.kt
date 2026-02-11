@@ -13,6 +13,7 @@ val repositoryNetwork = module {
     single<MainRepository> {
         MainRepositoryImpl(
             pokedexService = get(),
+            pokemonsDao = get(),
             pokemonMapper = get()
         )
     }

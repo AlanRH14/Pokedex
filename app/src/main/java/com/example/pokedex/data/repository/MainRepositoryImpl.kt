@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.pokedex.common.ApiMapper
+import com.example.pokedex.data.local.dao.PokemonsDao
 import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.Pokemon
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.Flow
 
 class MainRepositoryImpl(
     private val pokedexService: PokedexService,
+    private val pokemonsDao: PokemonsDao,
     private val pokemonMapper: ApiMapper<PokemonResponse, List<Pokemon>>
 ) : MainRepository {
 
@@ -27,6 +29,7 @@ class MainRepositoryImpl(
             pagingSourceFactory = {
                 PokemonMediator(
                     pokedexService = pokedexService,
+                    pokemonsDao = pokemonsDao,
                     pokemonMapper = pokemonMapper
                 )
             }
