@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedex.common.ApiMapper
 import com.example.pokedex.data.local.dao.PokemonsDao
+import com.example.pokedex.data.local.entity.PokemonEntity
 import com.example.pokedex.data.models.pokemon.PokemonResponse
 import com.example.pokedex.data.remote.PokedexService
 import com.example.pokedex.domain.models.Pokemon
@@ -11,7 +12,8 @@ import com.example.pokedex.domain.models.Pokemon
 class PokemonMediator(
     private val pokedexService: PokedexService,
     private val pokemonsDao: PokemonsDao,
-    private val pokemonMapper: ApiMapper<PokemonResponse, List<Pokemon>>
+    private val pokemonMapper: ApiMapper<PokemonResponse, List<Pokemon>>,
+    private val pokemonEntityMapper: ApiMapper<PokemonResponse, List<PokemonEntity>>
 ) : PagingSource<Int, Pokemon>() {
 
     override fun getRefreshKey(state: PagingState<Int, Pokemon>): Int? {
@@ -34,6 +36,8 @@ class PokemonMediator(
 
             val page = params.key ?: 0
             val response = pokedexService.fetchPokemonList(offset = page, limit = params.loadSize)
+            val pokemonEntity = pokemonEntityMapper.mapperToDomain(dto = response)
+            pokemonsDao.insertPokemons(pokemons = pokemonEntity)
             LoadResult.Page(
                 data = pokemonMapper.mapperToDomain(dto = response),
                 prevKey = if (page == 0) null else page - params.loadSize,
