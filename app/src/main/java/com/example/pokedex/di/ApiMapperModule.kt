@@ -1,7 +1,9 @@
 package com.example.pokedex.di
 
 import com.example.pokedex.common.ApiMapper
+import com.example.pokedex.data.local.entity.PokemonEntity
 import com.example.pokedex.data.mappers.PokemonDetailMapperImpl
+import com.example.pokedex.data.mappers.PokemonEntityMapperImpl
 import com.example.pokedex.data.mappers.PokemonMapperImpl
 import com.example.pokedex.data.mappers.SpeciesMapperImpl
 import com.example.pokedex.data.mappers.TypeMapperImpl
@@ -17,7 +19,8 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val apiMapperModule = module {
-    factory<ApiMapper<PokemonResponse, List<Pokemon>>> { PokemonMapperImpl() }
+    factory<ApiMapper<PokemonResponse, List<PokemonEntity>>> { PokemonEntityMapperImpl() }
+    factory<ApiMapper<List<PokemonEntity>, List<Pokemon>>> { PokemonMapperImpl() }
     single<ApiMapper<PokemonDetailDto, PokemonDetail>>(named("PokemonDetailMapperImpl")) { PokemonDetailMapperImpl() }
     single<ApiMapper<SpeciesResponse, Species>>(named("SpeciesMapperImpl")) { SpeciesMapperImpl() }
     single<ApiMapper<TypeDto, PokemonType>>(named("PokemonTypeMapperImpl")) { TypeMapperImpl() }
