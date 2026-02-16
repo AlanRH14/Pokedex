@@ -23,6 +23,7 @@ room = "2.8.4"
 paletteKtx = "1.0.0"
 
 pagingVersion = "3.3.6"
+pagingCommon = "3.4.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,9 +57,12 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-okthp = { module = "io.coil-kt.coil3:coil-network-okhttp", name = "coil-network", version.ref = "coil" }
 
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+
 androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", version.ref = "paletteKtx" }
 
 paging = { module = "androidx.paging:paging-compose", name = "paging", version.ref = "pagingVersion" }

@@ -78,9 +78,10 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okthp)
 
-    implementation(libs.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
 
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.room.paging)
     implementation(libs.paging)
+    ksp(libs.androidx.room.compiler)
 }

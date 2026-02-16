@@ -1,5 +1,6 @@
 package com.example.pokedex.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.example.pokedex.data.repository.MainRepositoryImpl
 import com.example.pokedex.data.repository.PokemonDetailImpl
 import com.example.pokedex.data.repository.PokemonPaletteRepositoryImpl
@@ -9,6 +10,7 @@ import com.example.pokedex.domain.repository.PokemonPaletteRepository
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+@OptIn(ExperimentalPagingApi::class)
 val repositoryNetwork = module {
     single<MainRepository> {
         MainRepositoryImpl(
