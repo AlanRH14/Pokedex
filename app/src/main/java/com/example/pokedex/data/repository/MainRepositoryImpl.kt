@@ -29,8 +29,8 @@ class MainRepositoryImpl(
             config = PagingConfig(
                 pageSize = PAGING_MAX_SIZE,
                 initialLoadSize = PAGING_MAX_SIZE,
-                prefetchDistance = 2,
-                enablePlaceholders = true
+                prefetchDistance = 5,
+                enablePlaceholders = false
             ),
             remoteMediator = PokemonMediator(
                 pokedexService = pokedexService,

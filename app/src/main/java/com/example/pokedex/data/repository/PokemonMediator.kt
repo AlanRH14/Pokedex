@@ -1,5 +1,6 @@
 package com.example.pokedex.data.repository
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -26,16 +27,15 @@ class PokemonMediator(
                 LoadType.REFRESH -> 0
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> {
-                    val lastItem = state.lastItemOrNull()
-                    if (lastItem == null) {
-                        0
-                    } else {
-                        state.pages.sumOf { it.data.size }
+                    if (state.lastItemOrNull() == null) {
+                        return MediatorResult.Success(endOfPaginationReached = false)
                     }
+                    state.pages.sumOf { it.data.size }
                 }
             }
 
             val response = pokedexService.fetchPokemonList(offset = offset, limit = state.config.pageSize)
+            Log.d("LordMiau", "Response: $response")
             val entities = pokemonEntityMapper.mapperToDomain(dto = response)
 
             if (loadType == LoadType.REFRESH) {
@@ -44,7 +44,7 @@ class PokemonMediator(
 
             pokemonsDao.insertPokemons(pokemons = entities)
 
-            MediatorResult.Success(endOfPaginationReached = response.results.isNullOrEmpty())
+            MediatorResult.Success(endOfPaginationReached = entities.isEmpty())
         } catch (e: Exception) {
             MediatorResult.Error(e)
         }
