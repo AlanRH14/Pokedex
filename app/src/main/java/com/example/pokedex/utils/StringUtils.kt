@@ -1,5 +1,6 @@
 package com.example.pokedex.utils
 
+import android.util.Log
 import com.example.pokedex.utils.Constants.BAR_URL_IMAGE
 import java.util.Locale
 
@@ -19,6 +20,7 @@ object StringUtils {
             val getID = url.substringAfterLast('/')
             getID.toLong()
         } catch (e: Exception) {
+            Log.d("LordMiau", "Exception getIDFromURL: ${e.message}")
             0L
         }
     }

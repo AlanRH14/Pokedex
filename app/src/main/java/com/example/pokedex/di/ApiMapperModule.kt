@@ -19,8 +19,8 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val apiMapperModule = module {
-    factory<ApiMapper<PokemonResponse, List<PokemonEntity>>> { PokemonEntityMapperImpl() }
-    factory<ApiMapper<List<PokemonEntity>, List<Pokemon>>> { PokemonMapperImpl() }
+    factory<ApiMapper<PokemonResponse, List<PokemonEntity>>>(named("PokemonEntityMapperImpl")) { PokemonEntityMapperImpl() }
+    factory<ApiMapper<PokemonEntity, Pokemon>>(named("PokemonMapperImpl")) { PokemonMapperImpl() }
     single<ApiMapper<PokemonDetailDto, PokemonDetail>>(named("PokemonDetailMapperImpl")) { PokemonDetailMapperImpl() }
     single<ApiMapper<SpeciesResponse, Species>>(named("SpeciesMapperImpl")) { SpeciesMapperImpl() }
     single<ApiMapper<TypeDto, PokemonType>>(named("PokemonTypeMapperImpl")) { TypeMapperImpl() }
