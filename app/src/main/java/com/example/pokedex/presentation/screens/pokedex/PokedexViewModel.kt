@@ -33,9 +33,12 @@ class PokedexViewModel(
 
     private val paletteSemaphore = Semaphore(4)
 
+    init {
+        getPokemons()
+    }
+
     fun onEvent(event: PokemonUIEvent) {
         when (event) {
-            is PokemonUIEvent.OnGetPokemonList -> getPokemons()
             is PokemonUIEvent.OnClickPokemonDetail -> navigateToPokemonDetail(pokemonName = event.pokemonName)
             is PokemonUIEvent.OnPokemonItemVisible -> onPokemonVisible(pokemon = event.pokemon)
         }
