@@ -35,7 +35,6 @@ fun PokedexScreen(
     val result = HandlerPagingResult(pokemons = pokemons)
 
     LaunchedEffect(key1 = true) {
-        viewModel.onEvent(PokemonUIEvent.OnGetPokemonList)
         viewModel.effect.collectLatest { effect ->
             when (effect) {
                 is PokemonEffect.NavigateToPokemonDetail -> {
